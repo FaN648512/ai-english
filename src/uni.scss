@@ -1,0 +1,54 @@
+/* uView Plus 主题变量 */
+@import 'uview-plus/theme.scss';
+
+/* ===== 品牌主题色 ===== */
+$brand-primary: #35c4f0;
+$brand-secondary: #5b8cff;
+$brand-bg: #0f1420;
+$brand-card: #1a2233;
+$brand-text: #e8ecf4;
+$brand-text-sub: #8b96ab;
+
+/* 行为相关颜色 */
+$uni-color-primary: $brand-primary;
+$uni-color-success: #4cd964;
+$uni-color-warning: #f0ad4e;
+$uni-color-error: #ff6b6b;
+
+/* 文字基本颜色 */
+$uni-text-color: $brand-text;
+$uni-text-color-inverse: #fff;
+$uni-text-color-grey: $brand-text-sub;
+$uni-text-color-placeholder: #5a6478;
+$uni-text-color-disable: #3a4254;
+
+/* 背景颜色 */
+$uni-bg-color: $brand-bg;
+$uni-bg-color-grey: #161d2c;
+$uni-bg-color-hover: #202a40;
+$uni-bg-color-mask: rgba(0, 0, 0, 0.5);
+
+/* 边框颜色 */
+$uni-border-color: #2a3450;
+
+/* 尺寸变量 */
+$uni-font-size-sm: 12px;
+$uni-font-size-base: 14px;
+$uni-font-size-lg: 16px;
+
+/* 圆角 */
+$uni-border-radius-sm: 4px;
+$uni-border-radius-base: 8px;
+$uni-border-radius-lg: 16px;
+$uni-border-radius-circle: 50%;
+
+/* 间距 */
+$uni-spacing-row-sm: 5px;
+$uni-spacing-row-base: 10px;
+$uni-spacing-row-lg: 15px;
+$uni-spacing-col-sm: 4px;
+$uni-spacing-col-base: 8px;
+$uni-spacing-col-lg: 12px;
+
+/* 透明度 */
+$uni-opacity-disabled: 0.3;

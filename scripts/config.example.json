@@ -1,0 +1,6 @@
+{
+  "base_url": "https://api.openai.com/v1",
+  "api_key": "sk-在这里填入你的API密钥",
+  "model": "gpt-4o-mini",
+  "temperature": 0.4
+}
