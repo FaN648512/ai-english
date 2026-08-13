@@ -119,22 +119,23 @@ export default {
   margin-bottom: 28rpx;
 }
 
-/* 双栏对照 */
+/* 双栏对照(原意 1/3 : AI 义 2/3) */
 .wc-dual {
   display: flex;
   gap: 20rpx;
   margin-bottom: 28rpx;
 }
 .wc-panel {
-  flex: 1;
   border-radius: 20rpx;
   padding: 24rpx;
 }
 .wc-origin {
+  flex: 1;
   background: rgba(139, 150, 171, 0.1);
   border: 1rpx solid rgba(139, 150, 171, 0.25);
 }
 .wc-ai {
+  flex: 2;
   background: rgba(53, 196, 240, 0.1);
   border: 1rpx solid rgba(53, 196, 240, 0.35);
 }
