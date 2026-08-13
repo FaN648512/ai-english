@@ -1,0 +1,280 @@
+{
+  "topicId": "coding-tools",
+  "words": [
+    {
+      "word": "code",
+      "phonetic": "/kəʊd/",
+      "pos": "n. / v.",
+      "originMeaning": "代码;密码;编码",
+      "aiMeaning": "代码:让 AI 写程序,一句话描述功能就能出代码",
+      "example": "Ask the AI to write code for a simple calculator.",
+      "exampleZh": "让 AI 写一个简单计算器的代码。",
+      "memoryTip": "code=代码,AI 是能听懂人话的\"程序员\"。",
+      "level": 1
+    },
+    {
+      "word": "bug",
+      "phonetic": "/bʌɡ/",
+      "pos": "n.",
+      "originMeaning": "虫子;小虫",
+      "aiMeaning": "程序缺陷:代码里出问题的地方,让 AI 找 bug 是高频用法",
+      "example": "There is a bug in this function — can you find it?",
+      "exampleZh": "这个函数里有个 bug——你能找到吗?",
+      "memoryTip": "历史上真有虫子跑进电脑里造成故障,所以 bug=程序里的\"虫子\"。",
+      "level": 1
+    },
+    {
+      "word": "error",
+      "phonetic": "/ˈerə(r)/",
+      "pos": "n.",
+      "originMeaning": "错误;差错",
+      "aiMeaning": "报错:程序报错信息,把 error 原文丢给 AI 就能得到解决方案",
+      "example": "Paste the error message into the AI to fix it.",
+      "exampleZh": "把报错信息贴给 AI 让它修复。",
+      "memoryTip": "error=报错,看到红字别慌,贴给 AI。",
+      "level": 1
+    },
+    {
+      "word": "fix",
+      "phonetic": "/fɪks/",
+      "pos": "v.",
+      "originMeaning": "修理;固定;解决",
+      "aiMeaning": "修复:让 AI 修 bug、解决问题,报错+代码一起给它",
+      "example": "Can you fix this login bug?",
+      "exampleZh": "你能修复这个登录 bug 吗?",
+      "memoryTip": "fix=修好,一句话让 AI 当\"维修工\"。",
+      "level": 1
+    },
+    {
+      "word": "test",
+      "phonetic": "/test/",
+      "pos": "n. / v.",
+      "originMeaning": "测试;检验;考试",
+      "aiMeaning": "测试:让 AI 写测试用例、跑测试,保证代码质量",
+      "example": "Write unit tests for this function.",
+      "exampleZh": "为这个函数写单元测试。",
+      "memoryTip": "test=测试,让 AI 当\"质检员\"。",
+      "level": 1
+    },
+    {
+      "word": "function",
+      "phonetic": "/ˈfʌŋkʃn/",
+      "pos": "n.",
+      "originMeaning": "功能;函数;职务",
+      "aiMeaning": "函数:代码里实现特定功能的独立模块,AI 经常按函数为单位生成/修改代码",
+      "example": "Refactor this function to make it reusable.",
+      "exampleZh": "重构这个函数,让它可复用。",
+      "memoryTip": "function=函数,代码世界的\"积木块\"。",
+      "level": 1
+    },
+    {
+      "word": "syntax",
+      "phonetic": "/ˈsɪntæks/",
+      "pos": "n.",
+      "originMeaning": "句法;语法",
+      "aiMeaning": "语法:代码的书写规则,报\"syntax error\"说明代码格式有错",
+      "example": "There's a syntax error on line 5.",
+      "exampleZh": "第 5 行有一个语法错误。",
+      "memoryTip": "syntax=代码的\"文法\",写错标点它就报错。",
+      "level": 2
+    },
+    {
+      "word": "debug",
+      "phonetic": "/ˌdiːˈbʌɡ/",
+      "pos": "v.",
+      "originMeaning": "调试;除错",
+      "aiMeaning": "调试:定位并修复代码问题,让 AI 帮你 debug",
+      "example": "The AI helped me debug the crashing app.",
+      "exampleZh": "AI 帮我调试了崩溃的应用。",
+      "memoryTip": "de(去除)+bug(虫子)=抓虫,调试就是抓 bug。",
+      "level": 1
+    },
+    {
+      "word": "review",
+      "phonetic": "/rɪˈvjuː/",
+      "pos": "v. / n.",
+      "originMeaning": "复习;审查;评论",
+      "aiMeaning": "审查:让 AI 检查代码质量、找潜在问题,相当于\"代码评审\"",
+      "example": "Review my code and suggest improvements.",
+      "exampleZh": "审查我的代码并给出改进建议。",
+      "memoryTip": "review=过一遍,让 AI 当\"代码评审官\"。",
+      "level": 1
+    },
+    {
+      "word": "refactor",
+      "phonetic": "/ˌriːˈfæktə(r)/",
+      "pos": "v.",
+      "originMeaning": "重构(代码专用词)",
+      "aiMeaning": "重构:不改变功能,只优化代码结构和可读性",
+      "example": "Refactor this code to remove duplication.",
+      "exampleZh": "重构这段代码,消除重复。",
+      "memoryTip": "refactor=代码\"翻新\",功能不变,结构更清爽。",
+      "level": 2
+    },
+    {
+      "word": "library",
+      "phonetic": "/ˈlaɪbrəri/",
+      "pos": "n.",
+      "originMeaning": "图书馆;藏书",
+      "aiMeaning": "代码库:现成功能包,引入即可用,如 requests、pandas 就是库",
+      "example": "This library handles all the date formatting.",
+      "exampleZh": "这个代码库处理了所有日期格式化。",
+      "memoryTip": "library=图书馆,代码库就是\"现成工具书\"。",
+      "level": 1
+    },
+    {
+      "word": "framework",
+      "phonetic": "/ˈfreɪmwɜːk/",
+      "pos": "n.",
+      "originMeaning": "框架;骨架;体制",
+      "aiMeaning": "框架:搭建应用的整体架子,如 Vue、React、Spring 都是框架",
+      "example": "This project is built on the Vue framework.",
+      "exampleZh": "这个项目基于 Vue 框架构建。",
+      "memoryTip": "frame(框架)+work(工作),框架=盖楼的\"脚手架\"。",
+      "level": 2
+    },
+    {
+      "word": "repository",
+      "phonetic": "/rɪˈpɒzətri/",
+      "pos": "n.",
+      "originMeaning": "仓库;贮藏室",
+      "aiMeaning": "代码仓库:存放代码的地方,如 GitHub 上的一个项目",
+      "example": "The source code is in this GitHub repository.",
+      "exampleZh": "源代码在这个 GitHub 仓库里。",
+      "memoryTip": "repository=仓库,代码的家。",
+      "level": 2
+    },
+    {
+      "word": "fork",
+      "phonetic": "/fɔːk/",
+      "pos": "n. / v.",
+      "originMeaning": "叉子;分叉;岔路",
+      "aiMeaning": "分叉:把别人的项目复制一份到自己名下改,AI 时代也常指\"衍生版本\"",
+      "example": "I forked the open-source project to add my features.",
+      "exampleZh": "我分叉了这个开源项目来加自己的功能。",
+      "memoryTip": "fork=叉路口分道,代码在岔路上走出自己的版本。",
+      "level": 2
+    },
+    {
+      "word": "branch",
+      "phonetic": "/brɑːntʃ/",
+      "pos": "n.",
+      "originMeaning": "树枝;分支;分部",
+      "aiMeaning": "分支:代码并行开发的分线,互不干扰,最后合并",
+      "example": "Create a new branch for this feature.",
+      "exampleZh": "为这个功能创建一个新分支。",
+      "memoryTip": "branch=树枝,代码从主干上分出枝丫。",
+      "level": 2
+    },
+    {
+      "word": "commit",
+      "phonetic": "/kəˈmɪt/",
+      "pos": "v. / n.",
+      "originMeaning": "提交;承诺;犯(错)",
+      "aiMeaning": "提交:把代码改动保存为一个版本节点,带说明文字",
+      "example": "Commit your changes with a clear message.",
+      "exampleZh": "用清晰的说明提交你的改动。",
+      "memoryTip": "commit=存档,代码改完\"保存一下\"。",
+      "level": 2
+    },
+    {
+      "word": "merge",
+      "phonetic": "/mɜːdʒ/",
+      "pos": "v.",
+      "originMeaning": "合并;融合;兼并",
+      "aiMeaning": "合并:把分支代码合并回主干,或合并多个人的改动",
+      "example": "Merge the feature branch into the main branch.",
+      "exampleZh": "把功能分支合并到主分支。",
+      "memoryTip": "merge=合并,支流汇入主流。",
+      "level": 2
+    },
+    {
+      "word": "dependency",
+      "phonetic": "/dɪˈpendənsi/",
+      "pos": "n.",
+      "originMeaning": "依赖;附属;依存关系",
+      "aiMeaning": "依赖:项目引用的第三方包,报\"dependency error\"就是装包出问题",
+      "example": "This project has too many dependencies.",
+      "exampleZh": "这个项目的依赖太多了。",
+      "memoryTip": "dependency=依赖,你的代码\"靠别人\"的包。",
+      "level": 2
+    },
+    {
+      "word": "plugin",
+      "phonetic": "/ˈplʌɡɪn/",
+      "pos": "n.",
+      "originMeaning": "插件;外挂程序",
+      "aiMeaning": "插件:给软件加功能的组件,AI 工具大多有插件生态",
+      "example": "Install the AI plugin in your editor.",
+      "exampleZh": "在编辑器里安装 AI 插件。",
+      "memoryTip": "plug(插头)+in(进去),插上去就能用。",
+      "level": 1
+    },
+    {
+      "word": "extension",
+      "phonetic": "/ɪkˈstenʃn/",
+      "pos": "n.",
+      "originMeaning": "扩展;延长;分机",
+      "aiMeaning": "扩展:浏览器/编辑器扩展,和插件类似,给软件加能力",
+      "example": "This browser extension adds AI translation.",
+      "exampleZh": "这个浏览器扩展增加了 AI 翻译功能。",
+      "memoryTip": "extension=扩展,软件能力的\"外挂\"。",
+      "level": 1
+    },
+    {
+      "word": "tool",
+      "phonetic": "/tuːl/",
+      "pos": "n.",
+      "originMeaning": "工具;手段",
+      "aiMeaning": "工具:AI 可调用的外部能力(联网搜索、计算器、画图),让 AI 从\"只会说\"到\"能做事\"",
+      "example": "The AI used a web search tool to find the latest news.",
+      "exampleZh": "AI 用联网搜索工具查到了最新新闻。",
+      "memoryTip": "tool=工具,AI 有了工具就能\"动手干活\"。",
+      "level": 1
+    },
+    {
+      "word": "integrate",
+      "phonetic": "/ˈɪntɪɡreɪt/",
+      "pos": "v.",
+      "originMeaning": "整合;集成;融入",
+      "aiMeaning": "集成:把 AI 功能接入现有系统,如\"把 AI 集成到你的网站\"",
+      "example": "We integrated the AI into our customer service.",
+      "exampleZh": "我们把 AI 集成到了客服系统里。",
+      "memoryTip": "integrate=装进体系里,让 AI 成为你系统的一部分。",
+      "level": 2
+    },
+    {
+      "word": "variable",
+      "phonetic": "/ˈveəriəbl/",
+      "pos": "n.",
+      "originMeaning": "变量;可变量",
+      "aiMeaning": "变量:代码里存储数据的\"盒子\",值可以变",
+      "example": "Define a variable to store the user's name.",
+      "exampleZh": "定义一个变量来存用户名。",
+      "memoryTip": "variable=可变的量,代码里的\"便签盒\"。",
+      "level": 1
+    },
+    {
+      "word": "API",
+      "phonetic": "/ˌeɪ piː ˈaɪ/",
+      "pos": "n.",
+      "originMeaning": "Application Programming Interface 的缩写",
+      "aiMeaning": "接口:程序之间调用的通道,用 API 调用大模型就是\"接 AI\"",
+      "example": "We call the GPT API to power our app.",
+      "exampleZh": "我们调用 GPT 接口来驱动我们的应用。",
+      "memoryTip": "API=接口,两个程序\"对话\"的窗口。",
+      "level": 1
+    },
+    {
+      "word": "environment",
+      "phonetic": "/ɪnˈvaɪrənmənt/",
+      "pos": "n.",
+      "originMeaning": "环境;周围状况",
+      "aiMeaning": "运行环境:代码运行所需的配置(系统、依赖、版本),报\"环境问题\"最常见",
+      "example": "The code runs fine in my environment but fails on your machine.",
+      "exampleZh": "代码在我的环境里没问题,在你的机器上却报错。",
+      "memoryTip": "environment=环境,\"我这没问题\"的经典原因就是环境不同。",
+      "level": 2
+    }
+  ]
+}

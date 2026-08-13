@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 英语卡 · 选词方案审阅(由易到难)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f1420; color: #e8ecf4; line-height: 1.7;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    padding: 32px 16px 60px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 26px; font-weight: 800; }
+  .sub { color: #8b96ab; font-size: 14px; margin: 8px 0 28px; }
+  h2 { font-size: 19px; font-weight: 700; margin: 36px 0 6px; padding-left: 12px; border-left: 4px solid #35c4f0; }
+  .topic-desc { color: #8b96ab; font-size: 13px; margin-bottom: 12px; }
+  .card { background: #1a2233; border-radius: 14px; padding: 18px 20px; border: 1px solid #2a3450; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td { padding: 6px 8px; border-bottom: 1px solid #222c40; }
+  tr:last-child td { border-bottom: none; }
+  .idx { color: #5a6478; font-size: 12px; width: 32px; }
+  .word { font-weight: 700; color: #fff; }
+  .hit { color: #ffd166; margin-left: 4px; font-size: 12px; }
+  .lv { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 11px; float: right; }
+  .lv-1 { background: rgba(76,217,100,.15); color: #4cd964; }
+  .lv-2 { background: rgba(240,173,78,.15); color: #f0ad4e; }
+  .lv-3 { background: rgba(255,143,157,.15); color: #ff8f9d; }
+  .principle { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 8px; font-size: 14px; }
+  .principle .n { color: #35c4f0; font-weight: 700; flex-shrink: 0; }
+  .notice { background: rgba(240,173,78,.08); border: 1px solid rgba(240,173,78,.3); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #f0ad4e; margin-top: 14px; }
+  .legend { font-size: 12px; color: #8b96ab; margin-top: 6px; }
+  .footer { margin-top: 40px; text-align: center; color: #5a6478; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📋 AI 英语卡 · 选词方案审阅稿(重构版)</h1>
+  <div class="sub">按老板 2026-08-13 反馈重选:以「日常使用 AI」的真实场景为中心,由易到难 · 2026-08-13</div>
+
+  <!-- 设计原则 -->
+  <h2>一、选词原则</h2>
+  <div class="card">
+    <div class="principle"><span class="n">①</span><div><b>日常优先</b>:优先收「用 AI 聊天 / 写码 / 做图 / 建工作流」时高频出现的词,而不是论文术语。</div></div>
+    <div class="principle"><span class="n">②</span><div><b>由易到难</b>:8 个主题从「入门聊天」到「行业前沿」层层递进;每个主题内部 25 词也按易到难排列。</div></div>
+    <div class="principle"><span class="n">③</span><div><b>专业词少量穿插</b>:像 transformer / attention / RAG / RLHF 这类专业词只占少数,放到中后段,作为进阶内容。</div></div>
+    <div class="principle"><span class="n">④</span><div><b>难度 3 档</b>:1=日常必会 / 2=进阶理解 / 3=专业概念。学习者先吃透 1,再逐步上 2、3。</div></div>
+    <div class="legend">🎯 = 老板点名提到的词(LLM / agent / work / code / design / AGI / token / markdown / tool / fork)</div>
+  </div>
+
+  <!-- 主题1 -->
+  <h2>主题 1 · AI 入门基础 <span class="legend">(难度 1 —— 跟 AI 说的第一句话)</span></h2>
+  <div class="topic-desc">AI 是什么、怎么开口、最基本的输出与概念,全是日常聊天最高频的词。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">AI</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">model</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">data</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">prompt</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">chatbot</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">assistant</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">conversation</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">response</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">input</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">output</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">generate</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">app</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">artificial intelligence</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">machine learning</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">deep learning</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">neural network</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">algorithm</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">LLM <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">GPT</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">token <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">context</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">hallucination</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">parameter</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">automation</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">AGI <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+  </table></div>
+
+  <!-- 主题2 -->
+  <h2>主题 2 · 与 AI 对话 <span class="legend">(难度 1→2 —— 把话说清楚,让 AI 懂你)</span></h2>
+  <div class="topic-desc">写 prompt 的高频词:角色、指令、示例、追问、打磨——会提问才会用 AI。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">instruction</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">role</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">example</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">detail</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">specific</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">concise</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">format</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">tone</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">style</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">clarify</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">revise</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">refine</td><td><span class="lv lv-1">2</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">summarize</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">translate</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">explain</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">feedback</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">follow-up</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">step by step</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">bullet points</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">system prompt</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">persona</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">few-shot</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">zero-shot</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">iteration</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">chain-of-thought</td><td><span class="lv lv-2">2</span></td></tr>
+  </table></div>
+
+  <!-- 主题3 -->
+  <h2>主题 3 · AI 创作与生成 <span class="legend">(难度 1→2 —— 让 AI 帮你造东西)</span></h2>
+  <div class="topic-desc">写文章、做图、生成视频音频:创作场景高频词。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">creation</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">draft</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">outline</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">story</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">article</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">essay</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">image</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">design <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">logo</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">art</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">illustration</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">poster</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">video</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">voice</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">music</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">poem</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">headline</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">caption</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">brainstorm</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">idea</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">enhance</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">realistic</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">creativity</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">avatar</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">portrait</td><td><span class="lv lv-2">2</span></td></tr>
+  </table></div>
+
+  <!-- 主题4 -->
+  <h2>主题 4 · AI 处理内容 <span class="legend">(难度 2 —— 让 AI 帮你干活)</span></h2>
+  <div class="topic-desc">文档、邮件、表格、Markdown:办公与内容处理场景。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">document</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">report</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">email</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">notes</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">markdown <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">table</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">spreadsheet</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">chart</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">analysis</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">extract</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">edit</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">proofread</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">grammar</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">spelling</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">rewrite</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">structure</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">template</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">checklist</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">action items</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">key points</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">citation</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">reference</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">quote</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">paragraph</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">heading</td><td><span class="lv lv-1">1</span></td></tr>
+  </table></div>
+
+  <!-- 主题5 -->
+  <h2>主题 5 · AI 编码与工具 <span class="legend">(难度 2 —— 让 AI 帮你写代码)</span></h2>
+  <div class="topic-desc">code、bug、fork、API…… 用 AI 写代码/搭工具时的高频词。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">code <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">bug</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">error</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">fix</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">test</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">function</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">syntax</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">debug</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">review</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">refactor</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">library</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">framework</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">repository</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">fork <span class="hit">🎯</span></td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">branch</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">commit</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">merge</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">dependency</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">plugin</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">extension</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">tool <span class="hit">🎯</span></td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">integrate</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">variable</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">API</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">environment</td><td><span class="lv lv-2">2</span></td></tr>
+  </table></div>
+
+  <!-- 主题6 -->
+  <h2>主题 6 · AI 进阶概念 <span class="legend">(难度 2→3 —— 懂点原理,不被忽悠)</span></h2>
+  <div class="topic-desc">训练/推理/嵌入/RAG/Transformer…… 少量专业词从这里开始穿插。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">training</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">inference</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">fine-tuning</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">embedding</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">vector</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">similarity</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">retrieval</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">RAG</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">multimodal</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">temperature</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">transformer</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">attention</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">neuron</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">weight</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">bias</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">gradient</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">regression</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">classification</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">clustering</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">supervised learning</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">unsupervised learning</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">reinforcement learning</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">probability</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">distribution</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">generalization</td><td><span class="lv lv-3">3</span></td></tr>
+  </table></div>
+
+  <!-- 主题7 -->
+  <h2>主题 7 · Agent 与工作流 <span class="legend">(难度 3 —— AI 开始自己干活)</span></h2>
+  <div class="topic-desc">Agent、工具调用、多智能体、工作流编排:新一代 AI 应用的核心词。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">agent <span class="hit">🎯</span></td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">workflow <span class="hit">🎯 work</span></td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">task</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">action</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">tool use</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">function calling</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">planning</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">memory</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">autonomy</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">orchestration</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">multi-agent</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">pipeline</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">loop</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">decision</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">reasoning</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">execute</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">delegate</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">subtask</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">progress</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">status</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">retry</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">fallback</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">timeout</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">quota</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">sandbox</td><td><span class="lv lv-3">3</span></td></tr>
+  </table></div>
+
+  <!-- 主题8 -->
+  <h2>主题 8 · 行业与前沿 <span class="legend">(难度 3 —— 看懂新闻与趋势)</span></h2>
+  <div class="topic-desc">安全、对齐、监管、开源、评测:吃瓜看懂 AI 头条必备。</div>
+  <div class="card"><table>
+    <tr><td class="idx">1</td><td class="word">ethics</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">2</td><td class="word">bias</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">3</td><td class="word">safety</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">4</td><td class="word">alignment</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">5</td><td class="word">RLHF</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">6</td><td class="word">jailbreak</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">7</td><td class="word">guardrail</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">8</td><td class="word">regulation</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">9</td><td class="word">copyright</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">10</td><td class="word">privacy</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">11</td><td class="word">deepfake</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">12</td><td class="word">robotics</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">13</td><td class="word">computer vision</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">14</td><td class="word">speech recognition</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">15</td><td class="word">autonomous</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">16</td><td class="word">benchmark</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">17</td><td class="word">state-of-the-art</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">18</td><td class="word">open source</td><td><span class="lv lv-1">1</span></td></tr>
+    <tr><td class="idx">19</td><td class="word">evaluation</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">20</td><td class="word">deployment</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">21</td><td class="word">scalability</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">22</td><td class="word">efficiency</td><td><span class="lv lv-2">2</span></td></tr>
+    <tr><td class="idx">23</td><td class="word">quantization</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">24</td><td class="word">distillation</td><td><span class="lv lv-3">3</span></td></tr>
+    <tr><td class="idx">25</td><td class="word">responsible AI</td><td><span class="lv lv-3">3</span></td></tr>
+  </table></div>
+
+  <div class="notice">
+    ✅ 老板点名的 10 个词已全部收录:LLM(主题1)、AGI(主题1)、token(主题1)、code(主题5)、fork(主题5)、tool(主题5)、design(主题3)、markdown(主题4)、agent(主题7)、work→workflow(主题7)。
+    <br>❓ 请老板确认:这个主题框架和选词方向 OK 吗?OK 我就按此写全 200 词的完整内容(原意/AI义/例句/记忆点)。
+  </div>
+
+  <div class="footer">AI 英语卡 · 选词方案 v2 · 小布出品</div>
+</div>
+</body>
+</html>

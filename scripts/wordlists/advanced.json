@@ -1,0 +1,280 @@
+{
+  "topicId": "advanced",
+  "words": [
+    {
+      "word": "training",
+      "phonetic": "/ˈtreɪnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "训练;培训;锻炼",
+      "aiMeaning": "训练:让模型从海量数据中学习的过程,相当于 AI 的\"上学\"",
+      "example": "Training a large model costs millions of dollars.",
+      "exampleZh": "训练一个大模型要花费数百万美元。",
+      "memoryTip": "training=AI 的\"上学读书\",读的数据越多越聪明。",
+      "level": 2
+    },
+    {
+      "word": "inference",
+      "phonetic": "/ˈɪnfərəns/",
+      "pos": "n.",
+      "originMeaning": "推断;推理;结论",
+      "aiMeaning": "推理:模型用学到的知识回答问题的过程,即\"用模型\"那一刻",
+      "example": "Each question you ask triggers an inference on the model.",
+      "exampleZh": "你问的每个问题都会触发模型的一次推理。",
+      "memoryTip": "训练是\"上学\",推理是\"考试答题\"。",
+      "level": 2
+    },
+    {
+      "word": "fine-tuning",
+      "phonetic": "/ˌfaɪn ˈtjuːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "精细调校(收音机调台那种微调)",
+      "aiMeaning": "微调:在预训练好的大模型上,用你的数据再训练一轮,让它更懂你的领域",
+      "example": "Fine-tuning makes the model better at legal documents.",
+      "exampleZh": "微调让模型更擅长法律文书。",
+      "memoryTip": "fine(精细)+tuning(调音),给 AI\"特训\"。",
+      "level": 2
+    },
+    {
+      "word": "embedding",
+      "phonetic": "/ɪmˈbedɪŋ/",
+      "pos": "n.",
+      "originMeaning": "嵌入;镶嵌",
+      "aiMeaning": "词嵌入:把词变成一串数字(向量),语义相近的词数字也相近",
+      "example": "Embedding turns 'king' and 'queen' into nearby numbers.",
+      "exampleZh": "嵌入把\"国王\"和\"王后\"变成相近的数字。",
+      "memoryTip": "把词\"嵌\"进数字空间,意思近的靠一起。",
+      "level": 2
+    },
+    {
+      "word": "vector",
+      "phonetic": "/ˈvektə(r)/",
+      "pos": "n.",
+      "originMeaning": "向量;矢量",
+      "aiMeaning": "向量:一串数字,AI 里词、句子、图片都被表示成向量",
+      "example": "Words are stored as high-dimensional vectors.",
+      "exampleZh": "词被存储为高维向量。",
+      "memoryTip": "vector=一串坐标数字,AI 世界的\"身份证号\"。",
+      "level": 2
+    },
+    {
+      "word": "similarity",
+      "phonetic": "/ˌsɪməˈlærəti/",
+      "pos": "n.",
+      "originMeaning": "相似;相似性",
+      "aiMeaning": "相似度:衡量两个内容多接近,靠向量距离计算,是搜索/推荐的核心",
+      "example": "The system finds documents by semantic similarity.",
+      "exampleZh": "系统通过语义相似度找文档。",
+      "memoryTip": "similarity=有多像,AI 靠数字算\"像不像\"。",
+      "level": 2
+    },
+    {
+      "word": "retrieval",
+      "phonetic": "/rɪˈtriːvl/",
+      "pos": "n.",
+      "originMeaning": "检索;取回;找回",
+      "aiMeaning": "检索:从资料库中找出相关内容,是 AI 知识库问答的第一步",
+      "example": "Retrieval finds the right documents before the AI answers.",
+      "exampleZh": "检索在 AI 回答前先找到相关文档。",
+      "memoryTip": "retrieval=先找资料,再回答问题。",
+      "level": 2
+    },
+    {
+      "word": "RAG",
+      "phonetic": "/ræɡ/",
+      "pos": "n.",
+      "originMeaning": "Retrieval-Augmented Generation 的缩写",
+      "aiMeaning": "检索增强生成:先检索你的资料库再让 AI 回答,能大幅减少 AI 幻觉",
+      "example": "RAG lets the chatbot answer questions about your own documents.",
+      "exampleZh": "RAG 让聊天机器人能回答你自家文档的问题。",
+      "memoryTip": "RAG=给 AI 配个\"资料库\",先查再答。",
+      "level": 3
+    },
+    {
+      "word": "multimodal",
+      "phonetic": "/ˌmʌltiˈməʊdl/",
+      "pos": "adj.",
+      "originMeaning": "多模态(multi=多, modal=模态)",
+      "aiMeaning": "多模态:能同时处理文字、图片、音频、视频的模型能力",
+      "example": "A multimodal model can read text and understand images.",
+      "exampleZh": "多模态模型既能读文字又能理解图片。",
+      "memoryTip": "multi(多)+modal(形式),眼耳口鼻全开。",
+      "level": 3
+    },
+    {
+      "word": "temperature",
+      "phonetic": "/ˈtemprətʃə(r)/",
+      "pos": "n.",
+      "originMeaning": "温度;气温",
+      "aiMeaning": "温度:控制 AI 回答随机性的参数,温度高=更有创意更发散,低=更保守更稳定",
+      "example": "Set temperature low for factual answers, high for creativity.",
+      "exampleZh": "回答事实类问题用低温度,创意类用高温度。",
+      "memoryTip": "温度越高 AI \"脑洞\"越大——像水烧开了冒泡。",
+      "level": 3
+    },
+    {
+      "word": "transformer",
+      "phonetic": "/trænsˈfɔːmə(r)/",
+      "pos": "n.",
+      "originMeaning": "变压器;变形金刚",
+      "aiMeaning": "Transformer:基于注意力机制的深度学习架构,GPT 等大模型的基石",
+      "example": "The Transformer architecture powers modern language models.",
+      "exampleZh": "Transformer 架构驱动着现代语言模型。",
+      "memoryTip": "原意\"变压器\",它把整段文本\"变压\"成深层理解。",
+      "level": 3
+    },
+    {
+      "word": "attention",
+      "phonetic": "/əˈtenʃn/",
+      "pos": "n.",
+      "originMeaning": "注意力;关注",
+      "aiMeaning": "注意力机制:让模型自动聚焦文本关键部分的技术,Transformer 的核心",
+      "example": "Attention lets the model focus on the most relevant words.",
+      "exampleZh": "注意力机制让模型聚焦最相关的词。",
+      "memoryTip": "日常是\"注意力\",AI 里是模型决定\"注意力放哪\"。",
+      "level": 3
+    },
+    {
+      "word": "neuron",
+      "phonetic": "/ˈnjʊərɒn/",
+      "pos": "n.",
+      "originMeaning": "神经元(生物神经细胞)",
+      "aiMeaning": "神经元:神经网络中的最小计算单元,模拟大脑神经细胞",
+      "example": "Each neuron computes a weighted sum of its inputs.",
+      "exampleZh": "每个神经元计算输入的加权和。",
+      "memoryTip": "仿照大脑细胞造的\"小计算器\"。",
+      "level": 2
+    },
+    {
+      "word": "weight",
+      "phonetic": "/weɪt/",
+      "pos": "n.",
+      "originMeaning": "重量;砝码;分量",
+      "aiMeaning": "权重:决定各输入重要性的参数,训练就是在不断调权重",
+      "example": "The model adjusts its weights during training.",
+      "exampleZh": "模型在训练中不断调整权重。",
+      "memoryTip": "买东西按重量,模型按\"权重\"决定谁更重要。",
+      "level": 2
+    },
+    {
+      "word": "bias",
+      "phonetic": "/ˈbaɪəs/",
+      "pos": "n.",
+      "originMeaning": "偏见;偏向",
+      "aiMeaning": "偏置:神经元上加的可学习参数,让模型拟合更灵活",
+      "example": "Each neuron has a bias term to adjust its output.",
+      "exampleZh": "每个神经元都有一个偏置项来调整输出。",
+      "memoryTip": "带点\"偏见\"更灵活——偏置让模型不被原点锁死。",
+      "level": 2
+    },
+    {
+      "word": "gradient",
+      "phonetic": "/ˈɡreɪdiənt/",
+      "pos": "n.",
+      "originMeaning": "梯度;坡度;斜坡",
+      "aiMeaning": "梯度:误差变化的\"坡度\",模型沿梯度方向调整权重来学习",
+      "example": "Gradient descent is how the model learns from mistakes.",
+      "exampleZh": "梯度下降是模型从错误中学习的方式。",
+      "memoryTip": "梯度=下山的方向,模型沿着\"下坡\"找最优解。",
+      "level": 3
+    },
+    {
+      "word": "regression",
+      "phonetic": "/rɪˈɡreʃn/",
+      "pos": "n.",
+      "originMeaning": "回归;倒退;退化",
+      "aiMeaning": "回归:预测连续数值的任务,如预测房价、气温",
+      "example": "Regression predicts house prices from features.",
+      "exampleZh": "回归根据特征预测房价。",
+      "memoryTip": "回归=猜一个\"数值\",比如房价 350 万。",
+      "level": 3
+    },
+    {
+      "word": "classification",
+      "phonetic": "/ˌklæsɪfɪˈkeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "分类;归类",
+      "aiMeaning": "分类:把东西分到固定类别里,如垃圾邮件/正常邮件",
+      "example": "The model performs spam classification.",
+      "exampleZh": "这个模型做垃圾邮件分类。",
+      "memoryTip": "classification=分门别类,像把苹果和梨分开。",
+      "level": 2
+    },
+    {
+      "word": "clustering",
+      "phonetic": "/ˈklʌstərɪŋ/",
+      "pos": "n.",
+      "originMeaning": "聚类;聚集",
+      "aiMeaning": "聚类:不告诉类别,让模型自己把相似的东西分成一群",
+      "example": "Clustering groups similar customer profiles automatically.",
+      "exampleZh": "聚类自动把相似的客户画像分到一组。",
+      "memoryTip": "clustering=自动分堆,没人告诉你规则,它自己归类。",
+      "level": 3
+    },
+    {
+      "word": "supervised learning",
+      "phonetic": "/ˈsuːpəvaɪzd ˈlɜːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "监督(supervised)+ 学习(learning)",
+      "aiMeaning": "监督学习:用\"带标准答案\"的数据训练模型,教它从输入到输出",
+      "example": "Supervised learning trains the model with labeled examples.",
+      "exampleZh": "监督学习用带标签的示例训练模型。",
+      "memoryTip": "老师(supervisor)看着做题——有标准答案的学习。",
+      "level": 3
+    },
+    {
+      "word": "unsupervised learning",
+      "phonetic": "/ˌʌnˈsuːpəvaɪzd ˈlɜːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "无监督(unsupervised)+ 学习(learning)",
+      "aiMeaning": "无监督学习:没有标准答案,让模型自己从数据中发现规律",
+      "example": "Unsupervised learning finds hidden patterns in data.",
+      "exampleZh": "无监督学习在数据中发现隐藏规律。",
+      "memoryTip": "没有老师,自己摸索规律——比如聚类。",
+      "level": 3
+    },
+    {
+      "word": "reinforcement learning",
+      "phonetic": "/ˌriːɪnˈfɔːsmənt ˈlɜːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "强化(reinforcement)+ 学习(learning)",
+      "aiMeaning": "强化学习:靠\"做对了给奖励\"训练模型,下棋 AI、机器人多用它",
+      "example": "Reinforcement learning taught the AI to beat world champions.",
+      "exampleZh": "强化学习教会 AI 击败世界冠军。",
+      "memoryTip": "像训狗:做对了给零食,做错了没奖励。",
+      "level": 3
+    },
+    {
+      "word": "probability",
+      "phonetic": "/ˌprɒbəˈbɪləti/",
+      "pos": "n.",
+      "originMeaning": "概率;可能性",
+      "aiMeaning": "概率:模型输出每个词/答案都带概率,LLM 本质是\"概率预测器\"",
+      "example": "The model assigns a probability to each possible word.",
+      "exampleZh": "模型给每个可能的词分配一个概率。",
+      "memoryTip": "AI 其实在\"猜概率\"——哪个词最可能接下去。",
+      "level": 2
+    },
+    {
+      "word": "distribution",
+      "phonetic": "/ˌdɪstrɪˈbjuːʃn/",
+      "pos": "n.",
+      "originMeaning": "分布;分配",
+      "aiMeaning": "分布:数据或概率的分布情况,模型学的是训练数据的分布",
+      "example": "The model learned the distribution of human language.",
+      "exampleZh": "模型学习了人类语言的分布规律。",
+      "memoryTip": "distribution=数据\"长什么样\",AI 学的是这个规律。",
+      "level": 2
+    },
+    {
+      "word": "generalization",
+      "phonetic": "/ˌdʒenrəlaɪˈzeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "泛化;概括;推广",
+      "aiMeaning": "泛化:模型对没见过的数据也能表现好,泛化能力决定模型好坏",
+      "example": "Good generalization means the model works on new data.",
+      "exampleZh": "好的泛化意味着模型在新数据上也能表现好。",
+      "memoryTip": "会\"举一反三\"才是真学会——这就是泛化。",
+      "level": 3
+    }
+  ]
+}

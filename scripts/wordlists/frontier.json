@@ -1,0 +1,280 @@
+{
+  "topicId": "frontier",
+  "words": [
+    {
+      "word": "ethics",
+      "phonetic": "/ˈeθɪks/",
+      "pos": "n.",
+      "originMeaning": "伦理;道德规范",
+      "aiMeaning": "AI 伦理:AI 该不该做的事、责任归属、对人类的影响等道德问题",
+      "example": "AI ethics asks who is responsible when AI makes a mistake.",
+      "exampleZh": "AI 伦理探讨 AI 犯错时谁该负责。",
+      "memoryTip": "ethics=道德标尺,AI 越强越要谈伦理。",
+      "level": 2
+    },
+    {
+      "word": "fairness",
+      "phonetic": "/ˈfeənəs/",
+      "pos": "n.",
+      "originMeaning": "公平;公正",
+      "aiMeaning": "公平:AI 对不同人群一视同仁,避免性别、种族歧视是重点议题",
+      "example": "Fairness in AI means the model treats everyone equally.",
+      "exampleZh": "AI 的公平意味着模型平等对待每个人。",
+      "memoryTip": "fair=公平,AI 不能\"看人下菜碟\"。",
+      "level": 2
+    },
+    {
+      "word": "safety",
+      "phonetic": "/ˈseɪfti/",
+      "pos": "n.",
+      "originMeaning": "安全;平安",
+      "aiMeaning": "AI 安全:防止 AI 被滥用、失控的技术与措施",
+      "example": "AI safety research focuses on preventing harmful use.",
+      "exampleZh": "AI 安全研究聚焦于防止有害使用。",
+      "memoryTip": "safety=安全带,AI 越强越要系好。",
+      "level": 2
+    },
+    {
+      "word": "alignment",
+      "phonetic": "/əˈlaɪnmənt/",
+      "pos": "n.",
+      "originMeaning": "对齐;校准;结盟",
+      "aiMeaning": "对齐:让 AI 的目标和价值观与人类一致,是前沿研究的核心难题",
+      "example": "Alignment ensures the AI does what humans actually want.",
+      "exampleZh": "对齐确保 AI 做人类真正想让它做的事。",
+      "memoryTip": "alignment=让 AI 和人类\"步调一致\"。",
+      "level": 3
+    },
+    {
+      "word": "RLHF",
+      "phonetic": "/ˌɑː el eɪtʃ ˈef/",
+      "pos": "n.",
+      "originMeaning": "Reinforcement Learning from Human Feedback 的缩写",
+      "aiMeaning": "人类反馈强化学习:让人给 AI 的回答打分,用奖励信号训练它变得更听话、更有用",
+      "example": "RLHF made ChatGPT much more helpful and polite.",
+      "exampleZh": "人类反馈强化学习让 ChatGPT 变得更有用、更礼貌。",
+      "memoryTip": "RLHF=人类当\"考官\",给 AI 的答案打分逼它进步。",
+      "level": 3
+    },
+    {
+      "word": "jailbreak",
+      "phonetic": "/ˈdʒeɪlbreɪk/",
+      "pos": "n. / v.",
+      "originMeaning": "越狱(逃出监狱)",
+      "aiMeaning": "越狱:用特殊提示词绕过 AI 的安全限制,让它回答不该答的内容",
+      "example": "Jailbreak prompts try to bypass the AI's safety rules.",
+      "exampleZh": "越狱提示词试图绕过 AI 的安全规则。",
+      "memoryTip": "给 AI\"越狱\"=突破它的安全围栏,别玩,有风险。",
+      "level": 3
+    },
+    {
+      "word": "guardrail",
+      "phonetic": "/ˈɡɑːdreɪl/",
+      "pos": "n.",
+      "originMeaning": "护栏;防护栏",
+      "aiMeaning": "护栏:防止 AI 输出有害内容的过滤机制,是产品上线的安全底线",
+      "example": "The app has guardrails to block harmful content.",
+      "exampleZh": "这个应用有护栏机制来拦截有害内容。",
+      "memoryTip": "guard(守卫)+rail(栏杆),给 AI 装\"防护栏\"。",
+      "level": 3
+    },
+    {
+      "word": "regulation",
+      "phonetic": "/ˌreɡjuˈleɪʃn/",
+      "pos": "n.",
+      "originMeaning": "监管;规章;条例",
+      "aiMeaning": "监管:各国针对 AI 的法律法规,如欧盟 AI 法案",
+      "example": "New AI regulation requires companies to disclose AI-generated content.",
+      "exampleZh": "新的 AI 监管要求公司披露 AI 生成的内容。",
+      "memoryTip": "regulation=法律法规,AI 也要\"持证上岗\"。",
+      "level": 3
+    },
+    {
+      "word": "copyright",
+      "phonetic": "/ˈkɒpiraɪt/",
+      "pos": "n.",
+      "originMeaning": "版权;著作权",
+      "aiMeaning": "版权:AI 生成内容的版权归属、训练数据是否侵权,都是争议焦点",
+      "example": "Who owns the copyright of AI-generated art?",
+      "exampleZh": "AI 生成的艺术品版权归谁?",
+      "memoryTip": "copy(复制)+right(权利),AI 时代的版权问题更复杂。",
+      "level": 2
+    },
+    {
+      "word": "privacy",
+      "phonetic": "/ˈprɪvəsi/",
+      "pos": "n.",
+      "originMeaning": "隐私;私密",
+      "aiMeaning": "隐私:AI 处理个人数据时的隐私保护,别把敏感信息喂给 AI",
+      "example": "Don't share private information with public AI tools.",
+      "exampleZh": "不要把隐私信息发给公开的 AI 工具。",
+      "memoryTip": "privacy=隐私,跟 AI 说话也要\"捂好口袋\"。",
+      "level": 2
+    },
+    {
+      "word": "deepfake",
+      "phonetic": "/ˈdiːpfeɪk/",
+      "pos": "n.",
+      "originMeaning": "深度(deep)+ 伪造(fake)",
+      "aiMeaning": "深度伪造:AI 生成的逼真假视频/假音频,常用于换脸,是安全风险",
+      "example": "Deepfakes make it hard to trust what you see online.",
+      "exampleZh": "深度伪造让人很难再相信网上看到的东西。",
+      "memoryTip": "deepfake=\"假到以假乱真\"的视频,眼见不一定为实。",
+      "level": 2
+    },
+    {
+      "word": "robotics",
+      "phonetic": "/rəʊˈbɒtɪks/",
+      "pos": "n.",
+      "originMeaning": "机器人学;机器人技术",
+      "aiMeaning": "机器人:AI 与实体机器人结合,让机器能走、能抓、能干体力活",
+      "example": "AI-powered robotics is entering factories and homes.",
+      "exampleZh": "AI 驱动的机器人正在进入工厂和家庭。",
+      "memoryTip": "robotics=机器人,AI 从屏幕里\"走\"到现实世界。",
+      "level": 2
+    },
+    {
+      "word": "computer vision",
+      "phonetic": "/kəmˈpjuːtə ˈvɪʒn/",
+      "pos": "n. 短语",
+      "originMeaning": "计算机(computer)+ 视觉(vision)",
+      "aiMeaning": "计算机视觉:让机器\"看懂\"图像和视频的技术,人脸识别就是其一",
+      "example": "Computer vision powers face recognition and self-driving cars.",
+      "exampleZh": "计算机视觉驱动着人脸识别和自动驾驶。",
+      "memoryTip": "给电脑装上\"眼睛\",看懂世界的 AI 分支。",
+      "level": 3
+    },
+    {
+      "word": "speech recognition",
+      "phonetic": "/spiːtʃ ˌrekəɡˈnɪʃn/",
+      "pos": "n. 短语",
+      "originMeaning": "语音(speech)+ 识别(recognition)",
+      "aiMeaning": "语音识别:把语音转成文字的技术,语音助手的地基",
+      "example": "Speech recognition turns your voice into text instantly.",
+      "exampleZh": "语音识别把你的声音即时转成文字。",
+      "memoryTip": "让机器\"听懂人话\",语音输入全靠它。",
+      "level": 3
+    },
+    {
+      "word": "autonomous",
+      "phonetic": "/ɔːˈtɒnəməs/",
+      "pos": "adj.",
+      "originMeaning": "自主的;自治的",
+      "aiMeaning": "自主的:能自己决策运行的,如自动驾驶(autonomous driving)",
+      "example": "Autonomous vehicles rely on AI to make driving decisions.",
+      "exampleZh": "自动驾驶汽车靠 AI 做驾驶决策。",
+      "memoryTip": "autonomous=无人驾驶的那种\"自己会跑\"。",
+      "level": 2
+    },
+    {
+      "word": "benchmark",
+      "phonetic": "/ˈbentʃmɑːk/",
+      "pos": "n.",
+      "originMeaning": "基准;基准点;水准标",
+      "aiMeaning": "基准测试:衡量模型水平的标准考题集,各家模型用它对比排名",
+      "example": "The model tops most AI benchmarks.",
+      "exampleZh": "这个模型在大多数 AI 基准测试中排名第一。",
+      "memoryTip": "benchmark=AI 界的\"统一考试\"。",
+      "level": 3
+    },
+    {
+      "word": "state-of-the-art",
+      "phonetic": "/ˌsteɪt əv ði ˈɑːt/",
+      "pos": "n. / adj.",
+      "originMeaning": "最先进的;顶尖水平(缩写 SOTA)",
+      "aiMeaning": "最先进:某领域当前最好的水平,新闻里\"SOTA\"就是这个",
+      "example": "This model achieves state-of-the-art results on the benchmark.",
+      "exampleZh": "这个模型在基准测试上达到了最先进水平。",
+      "memoryTip": "SOTA=当前最强,AI 圈爱说\"刷到 SOTA\"。",
+      "level": 3
+    },
+    {
+      "word": "open source",
+      "phonetic": "/ˈəʊpən sɔːs/",
+      "pos": "adj.",
+      "originMeaning": "开放(open)+ 源代码(source)",
+      "aiMeaning": "开源:公开代码/权重,谁都能下载使用和修改的模型,与闭源相对",
+      "example": "Many great AI models are open source.",
+      "exampleZh": "许多优秀的 AI 模型都是开源的。",
+      "memoryTip": "open source=代码公开,大家都能用(如 Llama)。",
+      "level": 1
+    },
+    {
+      "word": "evaluation",
+      "phonetic": "/ɪˌvæljuˈeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "评估;评价;评测",
+      "aiMeaning": "评估:系统测试模型表现,决定模型好不好用、能不能上线",
+      "example": "Evaluation showed the model is accurate but slow.",
+      "exampleZh": "评估显示这个模型准确但较慢。",
+      "memoryTip": "evaluation=体检,模型上线前先全面\"体检\"。",
+      "level": 2
+    },
+    {
+      "word": "deployment",
+      "phonetic": "/dɪˈplɔɪmənt/",
+      "pos": "n.",
+      "originMeaning": "部署;展开;配置",
+      "aiMeaning": "部署:把训练好的模型上线运行,让用户能用上",
+      "example": "The deployment of the new model went smoothly.",
+      "exampleZh": "新模型的部署很顺利。",
+      "memoryTip": "deployment=正式\"上岗\",模型从实验室走进生产环境。",
+      "level": 3
+    },
+    {
+      "word": "scalability",
+      "phonetic": "/ˌskeɪləˈbɪləti/",
+      "pos": "n.",
+      "originMeaning": "可扩展性;可伸缩性",
+      "aiMeaning": "可扩展:系统能不能扛住用户暴涨,AI 服务的关键指标",
+      "example": "Scalability matters when millions of users arrive at once.",
+      "exampleZh": "当百万用户同时涌入时,可扩展性至关重要。",
+      "memoryTip": "scale=规模,scalability=人多了也扛得住。",
+      "level": 3
+    },
+    {
+      "word": "efficiency",
+      "phonetic": "/ɪˈfɪʃnsi/",
+      "pos": "n.",
+      "originMeaning": "效率;效能",
+      "aiMeaning": "效率:模型跑得快不快、耗电多少,是 AI 成本的核心",
+      "example": "Improving efficiency cuts the cost of every AI request.",
+      "exampleZh": "提升效率能降低每次 AI 请求的成本。",
+      "memoryTip": "efficiency=又省又快,AI 拼算力更拼效率。",
+      "level": 2
+    },
+    {
+      "word": "quantization",
+      "phonetic": "/ˌkwɒntɪzaɪˈzeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "量化(数学/物理术语)",
+      "aiMeaning": "量化:压缩模型体积和精度的技术,让大模型能在手机上跑",
+      "example": "Quantization shrinks the model to fit on a phone.",
+      "exampleZh": "量化把模型压缩到能装进手机。",
+      "memoryTip": "量化=给模型\"瘦身\",牺牲一点精度换体积。",
+      "level": 3
+    },
+    {
+      "word": "distillation",
+      "phonetic": "/ˌdɪstɪˈleɪʃn/",
+      "pos": "n.",
+      "originMeaning": "蒸馏;提炼",
+      "aiMeaning": "蒸馏:用大模型教小模型,把大模型的\"知识\"蒸馏给小模型,得到便宜又好用的小模型",
+      "example": "Distillation transfers knowledge from a large model to a small one.",
+      "exampleZh": "蒸馏把大模型的知识传授给小模型。",
+      "memoryTip": "像酿酒蒸馏——大模型\"酿\"出的精华装进小瓶子。",
+      "level": 3
+    },
+    {
+      "word": "responsible AI",
+      "phonetic": "/rɪˈspɒnsəbl ˌeɪ ˈaɪ/",
+      "pos": "n. 短语",
+      "originMeaning": "负责任(responsible)+ 人工智能",
+      "aiMeaning": "负责任 AI:安全、公平、透明、可控地开发和使用 AI 的理念",
+      "example": "Responsible AI means building systems people can trust.",
+      "exampleZh": "负责任 AI 意味着构建人们能信任的系统。",
+      "memoryTip": "responsible AI=让 AI \"靠谱\",行业共识的底线。",
+      "level": 3
+    }
+  ]
+}

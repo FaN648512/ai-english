@@ -1,0 +1,280 @@
+{
+  "topicId": "content",
+  "words": [
+    {
+      "word": "document",
+      "phonetic": "/ˈdɒkjumənt/",
+      "pos": "n.",
+      "originMeaning": "文档;文件;证件",
+      "aiMeaning": "文档:让 AI 处理/生成 Word、PDF 等文档,或从中提取信息",
+      "example": "Upload the document and let the AI summarize it.",
+      "exampleZh": "上传文档,让 AI 总结它。",
+      "memoryTip": "document=文档,办公场景的万能工具。",
+      "level": 1
+    },
+    {
+      "word": "report",
+      "phonetic": "/rɪˈpɔːt/",
+      "pos": "n. / v.",
+      "originMeaning": "报告;报道;汇报",
+      "aiMeaning": "报告:让 AI 写工作报告、数据分析报告,输入要点即可成文",
+      "example": "The AI generated a weekly report from our data.",
+      "exampleZh": "AI 根据数据生成了周报。",
+      "memoryTip": "report=报告,周报月报让 AI 代笔。",
+      "level": 1
+    },
+    {
+      "word": "email",
+      "phonetic": "/ˈiːmeɪl/",
+      "pos": "n. / v.",
+      "originMeaning": "电子邮件",
+      "aiMeaning": "邮件:让 AI 写邮件、回邮件,指定语气和要点",
+      "example": "Draft a polite email to postpone the meeting.",
+      "exampleZh": "起草一封礼貌的邮件,推迟会议。",
+      "memoryTip": "email=邮件,客套话让 AI 帮你写。",
+      "level": 1
+    },
+    {
+      "word": "notes",
+      "phonetic": "/nəʊts/",
+      "pos": "n.",
+      "originMeaning": "笔记;记录;便条",
+      "aiMeaning": "笔记:让 AI 整理会议纪要、课堂笔记,提取行动项",
+      "example": "The AI turned the recording into structured notes.",
+      "exampleZh": "AI 把录音整理成了结构化笔记。",
+      "memoryTip": "notes=笔记,开会时让 AI 当记录员。",
+      "level": 1
+    },
+    {
+      "word": "markdown",
+      "phonetic": "/ˈmɑːkdaʊn/",
+      "pos": "n.",
+      "originMeaning": "标记(Mark)+ 下降(down)的合成词",
+      "aiMeaning": "Markdown:轻量排版语法,用符号控制标题/加粗/列表,AI 输出文档的默认格式",
+      "example": "The AI answered in markdown with headers and lists.",
+      "exampleZh": "AI 用带标题和列表的 Markdown 回答。",
+      "memoryTip": "markdown=用符号排版,AI 写文档就靠它。",
+      "level": 1
+    },
+    {
+      "word": "table",
+      "phonetic": "/ˈteɪbl/",
+      "pos": "n.",
+      "originMeaning": "桌子;表格",
+      "aiMeaning": "表格:让 AI 把信息整理成表格,对比数据一目了然",
+      "example": "Compare the three plans in a table.",
+      "exampleZh": "用表格对比这三个方案。",
+      "memoryTip": "table=表格(也是\"桌子\"),数据上桌摆整齐。",
+      "level": 1
+    },
+    {
+      "word": "spreadsheet",
+      "phonetic": "/ˈspredʃiːt/",
+      "pos": "n.",
+      "originMeaning": "电子表格(Excel 类文件)",
+      "aiMeaning": "表格文件:让 AI 处理 Excel 数据、写公式、做透视表",
+      "example": "Ask the AI to clean up this spreadsheet.",
+      "exampleZh": "让 AI 清理这份电子表格。",
+      "memoryTip": "spread(铺开)+sheet(表),Excel 数据的\"大本营\"。",
+      "level": 1
+    },
+    {
+      "word": "chart",
+      "phonetic": "/tʃɑːt/",
+      "pos": "n.",
+      "originMeaning": "图表;海图",
+      "aiMeaning": "图表:让 AI 生成统计图(柱状/折线/饼图)或图表代码",
+      "example": "Create a bar chart from these numbers.",
+      "exampleZh": "用这些数字创建柱状图。",
+      "memoryTip": "chart=图表,数据可视化交给 AI。",
+      "level": 1
+    },
+    {
+      "word": "analysis",
+      "phonetic": "/əˈnæləsɪs/",
+      "pos": "n.",
+      "originMeaning": "分析;解析",
+      "aiMeaning": "分析:让 AI 分析数据/文本,给出结论和洞察",
+      "example": "The AI's analysis revealed a clear seasonal trend.",
+      "exampleZh": "AI 的分析揭示了明显的季节性趋势。",
+      "memoryTip": "analysis=分析,数据丢给 AI,结论它出。",
+      "level": 1
+    },
+    {
+      "word": "extract",
+      "phonetic": "/ɪkˈstrækt/",
+      "pos": "v.",
+      "originMeaning": "提取;抽取;提炼",
+      "aiMeaning": "提取:让 AI 从长文本中抽出关键信息,如姓名、日期、金额",
+      "example": "Extract all the phone numbers from this text.",
+      "exampleZh": "从这段文字中提取所有电话号码。",
+      "memoryTip": "extract=抽取,让 AI 当\"信息矿工\"。",
+      "level": 1
+    },
+    {
+      "word": "edit",
+      "phonetic": "/ˈedɪt/",
+      "pos": "v.",
+      "originMeaning": "编辑;剪辑;修改",
+      "aiMeaning": "编辑:让 AI 修改内容,调整措辞、删减、补充",
+      "example": "Edit this paragraph to make it clearer.",
+      "exampleZh": "编辑这段,让它更清楚。",
+      "memoryTip": "edit=改稿,AI 是你的随身编辑。",
+      "level": 1
+    },
+    {
+      "word": "proofread",
+      "phonetic": "/ˈpruːfriːd/",
+      "pos": "v.",
+      "originMeaning": "校对;审读",
+      "aiMeaning": "校对:让 AI 检查错别字、语法、标点问题",
+      "example": "Proofread my essay before I submit it.",
+      "exampleZh": "在我提交前校对一下我的文章。",
+      "memoryTip": "proof(验证)+read(读),让 AI 当\"文字质检员\"。",
+      "level": 2
+    },
+    {
+      "word": "grammar",
+      "phonetic": "/ˈɡræmə(r)/",
+      "pos": "n.",
+      "originMeaning": "语法;文法",
+      "aiMeaning": "语法:让 AI 纠正语法错误,写英文必备",
+      "example": "Fix the grammar in these sentences.",
+      "exampleZh": "修正这些句子的语法。",
+      "memoryTip": "grammar=语法,写英文找 AI 把关。",
+      "level": 1
+    },
+    {
+      "word": "spelling",
+      "phonetic": "/ˈspelɪŋ/",
+      "pos": "n.",
+      "originMeaning": "拼写",
+      "aiMeaning": "拼写:让 AI 检查单词拼写错误",
+      "example": "Check the spelling in this email.",
+      "exampleZh": "检查这封邮件的拼写。",
+      "memoryTip": "spelling=拼写,让 AI 当\"拼写警察\"。",
+      "level": 1
+    },
+    {
+      "word": "rewrite",
+      "phonetic": "/ˌriːˈraɪt/",
+      "pos": "v.",
+      "originMeaning": "重写;改写",
+      "aiMeaning": "重写:让 AI 换个说法重来,如\"用更简单的词重写\"",
+      "example": "Rewrite this in simpler English.",
+      "exampleZh": "用更简单的英语重写这段。",
+      "memoryTip": "re(重新)+write(写),写不好就重写。",
+      "level": 1
+    },
+    {
+      "word": "structure",
+      "phonetic": "/ˈstrʌktʃə(r)/",
+      "pos": "n. / v.",
+      "originMeaning": "结构;构造;组织",
+      "aiMeaning": "结构:让 AI 调整内容组织方式,如\"重新组织这段的逻辑\"",
+      "example": "Improve the structure of this report.",
+      "exampleZh": "改进这份报告的结构。",
+      "memoryTip": "structure=骨架,让 AI 帮你理清条理。",
+      "level": 1
+    },
+    {
+      "word": "template",
+      "phonetic": "/ˈtempleɪt/",
+      "pos": "n.",
+      "originMeaning": "模板;样板",
+      "aiMeaning": "模板:让 AI 按模板生成内容,或让它先给你一个模板",
+      "example": "Create a template for the weekly report.",
+      "exampleZh": "为周报创建一个模板。",
+      "memoryTip": "template=模板,套模板批量产出。",
+      "level": 1
+    },
+    {
+      "word": "checklist",
+      "phonetic": "/ˈtʃeklɪst/",
+      "pos": "n.",
+      "originMeaning": "核对清单;检查表",
+      "aiMeaning": "清单:让 AI 生成待办/检查清单,如发布前的核对项",
+      "example": "Make a checklist for launching the product.",
+      "exampleZh": "为产品上线做一份核对清单。",
+      "memoryTip": "check(核对)+list(清单),照着打勾不遗漏。",
+      "level": 1
+    },
+    {
+      "word": "action items",
+      "phonetic": "/ˈækʃn ˈaɪtəmz/",
+      "pos": "n. 短语",
+      "originMeaning": "行动项;待办事项",
+      "aiMeaning": "行动项:会议纪要里的\"谁、做什么、何时完成\",AI 能自动提取",
+      "example": "The AI listed the action items from our meeting.",
+      "exampleZh": "AI 列出了我们会议的待办行动项。",
+      "memoryTip": "action=行动,action items=要动手干的事。",
+      "level": 2
+    },
+    {
+      "word": "key points",
+      "phonetic": "/kiː pɔɪnts/",
+      "pos": "n. 短语",
+      "originMeaning": "要点;关键点",
+      "aiMeaning": "要点:让 AI 提炼核心信息,一句话总结一段话",
+      "example": "List the key points of this chapter.",
+      "exampleZh": "列出这一章的关键要点。",
+      "memoryTip": "key=关键,key points=划重点。",
+      "level": 1
+    },
+    {
+      "word": "citation",
+      "phonetic": "/saɪˈteɪʃn/",
+      "pos": "n.",
+      "originMeaning": "引用;引文;表彰",
+      "aiMeaning": "引用:内容出处标注。注意 AI 常编造引用,必须人工核实",
+      "example": "Always check the citations the AI provides.",
+      "exampleZh": "一定要核对 AI 提供的引用。",
+      "memoryTip": "citation=引用出处,AI 给的引用要\"打假\"。",
+      "level": 2
+    },
+    {
+      "word": "reference",
+      "phonetic": "/ˈrefrəns/",
+      "pos": "n.",
+      "originMeaning": "参考;参考文献;推荐信",
+      "aiMeaning": "参考:让 AI 基于参考材料回答,或让它整理参考文献",
+      "example": "Answer based on the reference document I uploaded.",
+      "exampleZh": "根据我上传的参考文档回答。",
+      "memoryTip": "reference=参考资料,让 AI\"查着书答\"。",
+      "level": 1
+    },
+    {
+      "word": "quote",
+      "phonetic": "/kwəʊt/",
+      "pos": "n. / v.",
+      "originMeaning": "引用;引语;报价",
+      "aiMeaning": "引用:让 AI 引用原文、找名言,注意别让它\"张冠李戴\"",
+      "example": "Quote a famous line from the article.",
+      "exampleZh": "引用文章里的一句名言。",
+      "memoryTip": "quote=原话引用,用引号标注的原句。",
+      "level": 1
+    },
+    {
+      "word": "paragraph",
+      "phonetic": "/ˈpærəɡrɑːf/",
+      "pos": "n.",
+      "originMeaning": "段落;段落符号",
+      "aiMeaning": "段落:让 AI 按段落输出,或调整分段",
+      "example": "Split this text into short paragraphs.",
+      "exampleZh": "把这段文字分成短段落。",
+      "memoryTip": "paragraph=段落,一段一段来,阅读更轻松。",
+      "level": 1
+    },
+    {
+      "word": "heading",
+      "phonetic": "/ˈhedɪŋ/",
+      "pos": "n.",
+      "originMeaning": "标题;小标题;航向",
+      "aiMeaning": "标题:让 AI 给内容加小标题,让文档层次分明",
+      "example": "Add headings to organize this document.",
+      "exampleZh": "加小标题来组织这份文档。",
+      "memoryTip": "heading=小标题,是文章的\"路牌\"。",
+      "level": 1
+    }
+  ]
+}

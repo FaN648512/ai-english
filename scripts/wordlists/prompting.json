@@ -1,0 +1,280 @@
+{
+  "topicId": "prompting",
+  "words": [
+    {
+      "word": "instruction",
+      "phonetic": "/ɪnˈstrʌkʃn/",
+      "pos": "n.",
+      "originMeaning": "指令;指示;用法说明",
+      "aiMeaning": "指令:prompt 里明确要求 AI 去做什么的那句话,越清楚越有效",
+      "example": "Give the AI a clear instruction at the start of your prompt.",
+      "exampleZh": "在提示词开头给 AI 一条清晰的指令。",
+      "memoryTip": "instruction=你给 AI 的\"命令\"。",
+      "level": 1
+    },
+    {
+      "word": "role",
+      "phonetic": "/rəʊl/",
+      "pos": "n.",
+      "originMeaning": "角色;作用",
+      "aiMeaning": "角色:给 AI 设定身份,如\"你是一位资深律师\",能显著改变回答质量",
+      "example": "Assign a role to the AI, like a professional editor.",
+      "exampleZh": "给 AI 设定一个角色,比如专业编辑。",
+      "memoryTip": "role-play 的角色扮演——让 AI 扮演专家。",
+      "level": 1
+    },
+    {
+      "word": "example",
+      "phonetic": "/ɪɡˈzɑːmpl/",
+      "pos": "n.",
+      "originMeaning": "例子;榜样",
+      "aiMeaning": "示例:给 AI 展示一个输入-输出样例,它就会模仿你的格式和风格",
+      "example": "Show the AI an example so it knows the format you want.",
+      "exampleZh": "给 AI 看一个示例,它就知道你要的格式了。",
+      "memoryTip": "example=样板,给 AI 一个\"参考答案\"它学得最快。",
+      "level": 1
+    },
+    {
+      "word": "detail",
+      "phonetic": "/ˈdiːteɪl/",
+      "pos": "n.",
+      "originMeaning": "细节;详情",
+      "aiMeaning": "细节:描述越具体细致,AI 的输出越贴合你的需求",
+      "example": "The more detail you provide, the better the result.",
+      "exampleZh": "你提供的细节越多,结果越好。",
+      "memoryTip": "detail=细节,跟 AI 说话别怕啰嗦。",
+      "level": 1
+    },
+    {
+      "word": "specific",
+      "phonetic": "/spəˈsɪfɪk/",
+      "pos": "adj.",
+      "originMeaning": "具体的;明确的",
+      "aiMeaning": "具体的:明确的要求比模糊的说法效果好,如\"300 字\"而非\"短一点\"",
+      "example": "Be specific: say 300 words, not 'make it short'.",
+      "exampleZh": "要说具体点:比如 300 字,而不是\"写短点\"。",
+      "memoryTip": "specific=具体明确,模糊提问只会得到模糊回答。",
+      "level": 1
+    },
+    {
+      "word": "concise",
+      "phonetic": "/kənˈsaɪs/",
+      "pos": "adj.",
+      "originMeaning": "简洁的;简明的",
+      "aiMeaning": "简洁的:让 AI 精简回答,去掉废话,适合要结论的场景",
+      "example": "Keep your answer concise — just the key facts.",
+      "exampleZh": "回答保持简洁——只要关键事实。",
+      "memoryTip": "concise=简短精炼,要求 AI\"别啰嗦\"就说这个词。",
+      "level": 1
+    },
+    {
+      "word": "format",
+      "phonetic": "/ˈfɔːmæt/",
+      "pos": "n. / v.",
+      "originMeaning": "格式;版式",
+      "aiMeaning": "格式:规定 AI 的输出结构,如列表、表格、JSON、Markdown",
+      "example": "Please present the answer in a table format.",
+      "exampleZh": "请用表格格式呈现答案。",
+      "memoryTip": "format=输出\"长什么样\",要求格式 AI 一定照办。",
+      "level": 1
+    },
+    {
+      "word": "tone",
+      "phonetic": "/təʊn/",
+      "pos": "n.",
+      "originMeaning": "语气;声调;音色",
+      "aiMeaning": "语气:要求 AI 用正式、轻松、幽默或严肃的语气说话",
+      "example": "Write this email in a friendly tone.",
+      "exampleZh": "用友好的语气写这封邮件。",
+      "memoryTip": "tone=说话的味道,正式还是随便,一句话的事。",
+      "level": 1
+    },
+    {
+      "word": "style",
+      "phonetic": "/staɪl/",
+      "pos": "n.",
+      "originMeaning": "风格;样式",
+      "aiMeaning": "风格:要求 AI 模仿某种文体风格,如新闻稿、朋友圈、武侠小说",
+      "example": "Rewrite this in the style of a news report.",
+      "exampleZh": "用新闻报道的风格重写这段内容。",
+      "memoryTip": "style=风格,让 AI\"换着花样说\"。",
+      "level": 1
+    },
+    {
+      "word": "clarify",
+      "phonetic": "/ˈklærəfaɪ/",
+      "pos": "v.",
+      "originMeaning": "澄清;阐明;把…说清楚",
+      "aiMeaning": "澄清:让 AI 把模糊的地方解释清楚,或反问确认你的意图",
+      "example": "Clarify what you mean by 'optimize'.",
+      "exampleZh": "请说清楚你说的\"优化\"是什么意思。",
+      "memoryTip": "clarify=把话说透,AI 含糊时让它\"说人话\"。",
+      "level": 1
+    },
+    {
+      "word": "revise",
+      "phonetic": "/rɪˈvaɪz/",
+      "pos": "v.",
+      "originMeaning": "修改;修订",
+      "aiMeaning": "修改:让 AI 调整内容,如\"把语气改正式点\"\"加上数据\"",
+      "example": "Revise the draft to make it more formal.",
+      "exampleZh": "修改草稿,让它更正式一些。",
+      "memoryTip": "revise=改一版,不满意就让它改。",
+      "level": 1
+    },
+    {
+      "word": "refine",
+      "phonetic": "/rɪˈfaɪn/",
+      "pos": "v.",
+      "originMeaning": "精炼;提纯;打磨",
+      "aiMeaning": "打磨:逐步优化结果,一轮一轮让 AI 改得更好",
+      "example": "Refine the article until every sentence flows well.",
+      "exampleZh": "反复打磨文章,直到每句话都流畅。",
+      "memoryTip": "refine=精雕细琢,好的输出都是\"磨\"出来的。",
+      "level": 2
+    },
+    {
+      "word": "summarize",
+      "phonetic": "/ˈsʌməraɪz/",
+      "pos": "v.",
+      "originMeaning": "总结;概括",
+      "aiMeaning": "总结:让 AI 把长文浓缩成要点,是使用频率最高的指令之一",
+      "example": "Summarize this meeting notes into 5 bullet points.",
+      "exampleZh": "把这份会议记录总结成 5 个要点。",
+      "memoryTip": "summarize=划重点,给 AI 长篇大论,要它三句话讲完。",
+      "level": 1
+    },
+    {
+      "word": "translate",
+      "phonetic": "/trænzˈleɪt/",
+      "pos": "v.",
+      "originMeaning": "翻译",
+      "aiMeaning": "翻译:让 AI 做语言转换,可指定风格,如\"翻译成地道的中文\"",
+      "example": "Translate this paragraph into natural Chinese.",
+      "exampleZh": "把这段翻译成地道的中文。",
+      "memoryTip": "translate=翻译,AI 是随身翻译官。",
+      "level": 1
+    },
+    {
+      "word": "explain",
+      "phonetic": "/ɪkˈspleɪn/",
+      "pos": "v.",
+      "originMeaning": "解释;说明",
+      "aiMeaning": "解释:让 AI 讲原理,可要求\"用大白话\"\"像教小孩一样\"",
+      "example": "Explain how transformers work in simple terms.",
+      "exampleZh": "用简单的话解释 Transformer 是怎么工作的。",
+      "memoryTip": "explain=讲明白,不懂就问\"解释给我听\"。",
+      "level": 1
+    },
+    {
+      "word": "feedback",
+      "phonetic": "/ˈfiːdbæk/",
+      "pos": "n.",
+      "originMeaning": "反馈;意见",
+      "aiMeaning": "反馈:对 AI 输出的评价和修正,告诉它哪里不对,它会立刻调整",
+      "example": "Give the AI feedback and it will fix the mistake.",
+      "exampleZh": "给 AI 反馈,它就会修正错误。",
+      "memoryTip": "feedback=你给 AI 的\"批改意见\",教学相长。",
+      "level": 1
+    },
+    {
+      "word": "follow-up",
+      "phonetic": "/ˈfɒləʊ ʌp/",
+      "pos": "n.",
+      "originMeaning": "后续;追问;跟进",
+      "aiMeaning": "追问:在对话里继续深入提问,把需求越聊越具体",
+      "example": "A good follow-up question digs deeper into the topic.",
+      "exampleZh": "好的追问能把话题聊得更深。",
+      "memoryTip": "follow-up=接着问,对话是\"挤牙膏\",越挤越细。",
+      "level": 1
+    },
+    {
+      "word": "step by step",
+      "phonetic": "/step baɪ step/",
+      "pos": "adv. 短语",
+      "originMeaning": "一步一步地;逐步",
+      "aiMeaning": "分步骤:要求 AI 把任务拆成步骤逐步执行,复杂任务更可靠",
+      "example": "Explain the installation process step by step.",
+      "exampleZh": "一步一步地讲解安装流程。",
+      "memoryTip": "step=台阶,让 AI 带你一级一级往上走。",
+      "level": 1
+    },
+    {
+      "word": "bullet points",
+      "phonetic": "/ˈbʊlɪt pɔɪnts/",
+      "pos": "n. 短语",
+      "originMeaning": "项目符号列表;要点列表",
+      "aiMeaning": "要点列表:要求 AI 用\"•\"分点输出,阅读效率最高",
+      "example": "List the main risks as bullet points.",
+      "exampleZh": "把主要风险用要点列表列出来。",
+      "memoryTip": "bullet=圆点,让 AI 输出\"带点\"的清单。",
+      "level": 1
+    },
+    {
+      "word": "system prompt",
+      "phonetic": "/ˈsɪstəm prɒmpt/",
+      "pos": "n.",
+      "originMeaning": "系统(system)+ 提示(prompt)",
+      "aiMeaning": "系统提示词:预先设定 AI 行为规则的那段隐藏指令,决定它扮演谁、怎么答",
+      "example": "The system prompt tells the AI its role and rules.",
+      "exampleZh": "系统提示词告诉 AI 它的角色和规则。",
+      "memoryTip": "system prompt=AI 的\"工作守则\",一进场先立规矩。",
+      "level": 2
+    },
+    {
+      "word": "persona",
+      "phonetic": "/pəˈsəʊnə/",
+      "pos": "n.",
+      "originMeaning": "人设;表面形象;人格面具",
+      "aiMeaning": "人设:给 AI 设定的性格和说话方式,如\"温柔的英语老师\"",
+      "example": "Give the AI a warm, patient persona for tutoring.",
+      "exampleZh": "给 AI 一个温暖耐心的\"人设\"来做辅导。",
+      "memoryTip": "persona=人设,给 AI 立人设,回答就有性格。",
+      "level": 2
+    },
+    {
+      "word": "few-shot",
+      "phonetic": "/fjuː ʃɒt/",
+      "pos": "n.",
+      "originMeaning": "少(few)+ 次(shot)",
+      "aiMeaning": "少样本学习:给 AI 两三个示例,它就能学会新任务的套路",
+      "example": "With few-shot examples, the model learns the format quickly.",
+      "exampleZh": "给几个示例,模型很快就学会了格式。",
+      "memoryTip": "few-shot=给几个\"样题\",AI 就会照葫芦画瓢。",
+      "level": 2
+    },
+    {
+      "word": "zero-shot",
+      "phonetic": "/ˈzɪərəʊ ʃɒt/",
+      "pos": "n.",
+      "originMeaning": "零(zero)+ 次(shot)",
+      "aiMeaning": "零样本学习:不给任何示例,直接让 AI 完成任务,靠它已有的知识",
+      "example": "The model can classify text zero-shot, without training.",
+      "exampleZh": "模型可以零样本分类文本,无需训练。",
+      "memoryTip": "zero-shot=一个例子都不给,AI 直接上。",
+      "level": 2
+    },
+    {
+      "word": "iteration",
+      "phonetic": "/ˌɪtəˈreɪʃn/",
+      "pos": "n.",
+      "originMeaning": "迭代;反复;循环",
+      "aiMeaning": "迭代:多轮修改逼近理想结果,AI 时代的\"打磨\"就是快速迭代",
+      "example": "After three iterations, the design was perfect.",
+      "exampleZh": "经过三轮迭代,设计终于完美了。",
+      "memoryTip": "iteration=改了一版又一版,越改越好。",
+      "level": 2
+    },
+    {
+      "word": "chain-of-thought",
+      "phonetic": "/tʃeɪn əv θɔːt/",
+      "pos": "n.",
+      "originMeaning": "链条(chain)+ 思维(thought)",
+      "aiMeaning": "思维链:让 AI 先一步步推理再给答案,复杂问题准确率显著提升",
+      "example": "Ask the AI to reason step by step — that's chain-of-thought.",
+      "exampleZh": "让 AI 一步步推理——这就是思维链。",
+      "memoryTip": "chain-of-thought=让 AI\"把思路写出来\",比直接给答案更靠谱。",
+      "level": 2
+    }
+  ]
+}

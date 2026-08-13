@@ -1,0 +1,280 @@
+{
+  "topicId": "agent-workflow",
+  "words": [
+    {
+      "word": "agent",
+      "phonetic": "/ˈeɪdʒənt/",
+      "pos": "n.",
+      "originMeaning": "代理人;经纪人;特工",
+      "aiMeaning": "智能体:能自己规划、调用工具、一步步完成任务闭环的 AI,是 AI 发展的新方向",
+      "example": "An AI agent can book flights and fill out forms for you.",
+      "exampleZh": "AI 智能体能帮你订机票、填表格。",
+      "memoryTip": "agent=\"代理人\",替你自己干活的 AI。",
+      "level": 2
+    },
+    {
+      "word": "workflow",
+      "phonetic": "/ˈwɜːkfləʊ/",
+      "pos": "n.",
+      "originMeaning": "工作流(work=工作, flow=流程)",
+      "aiMeaning": "工作流:一串自动执行的步骤,把 AI 任务串成流水线",
+      "example": "We built a workflow that turns voice notes into emails.",
+      "exampleZh": "我们搭了一个把语音转成邮件的工作流。",
+      "memoryTip": "workflow=把多个 AI 动作串成一条\"流水线\"。",
+      "level": 2
+    },
+    {
+      "word": "task",
+      "phonetic": "/tɑːsk/",
+      "pos": "n.",
+      "originMeaning": "任务;工作",
+      "aiMeaning": "任务:交给 AI 干的一件事,智能体会把大任务拆成小任务",
+      "example": "Break the big task into smaller subtasks.",
+      "exampleZh": "把大任务拆成更小的子任务。",
+      "memoryTip": "task=任务,把活交给 AI 时的单位。",
+      "level": 1
+    },
+    {
+      "word": "action",
+      "phonetic": "/ˈækʃn/",
+      "pos": "n.",
+      "originMeaning": "行动;动作;行为",
+      "aiMeaning": "动作:智能体执行的具体操作,如\"搜索网页\"\"发邮件\"都是 action",
+      "example": "Each action the agent takes is logged.",
+      "exampleZh": "智能体采取的每个动作都会被记录。",
+      "memoryTip": "action=动手做的那个动作,光说不练不是 agent。",
+      "level": 1
+    },
+    {
+      "word": "tool use",
+      "phonetic": "/tuːl juːz/",
+      "pos": "n. 短语",
+      "originMeaning": "工具(tool)+ 使用(use)",
+      "aiMeaning": "工具调用:智能体使用外部工具的能力(搜索、代码、日历),从\"聊天\"升级为\"干活\"的关键",
+      "example": "Tool use lets the agent check the real weather.",
+      "exampleZh": "工具调用让智能体能查真实天气。",
+      "memoryTip": "给 AI 配上\"手脚\"(工具),它才能真正办事。",
+      "level": 3
+    },
+    {
+      "word": "function calling",
+      "phonetic": "/ˈfʌŋkʃn ˈkɔːlɪŋ/",
+      "pos": "n. 短语",
+      "originMeaning": "函数(function)+ 调用(calling)",
+      "aiMeaning": "函数调用:AI 按固定格式调用你定义的 API 函数,是智能体接系统的标准方式",
+      "example": "Function calling lets the AI query your database safely.",
+      "exampleZh": "函数调用让 AI 安全地查询你的数据库。",
+      "memoryTip": "AI 学会\"打电话\"给程序,函数调用就是那通电话。",
+      "level": 3
+    },
+    {
+      "word": "planning",
+      "phonetic": "/ˈplænɪŋ/",
+      "pos": "n.",
+      "originMeaning": "规划;计划;筹划",
+      "aiMeaning": "规划:智能体接到任务先拆解步骤再执行,是它\"聪明\"的体现",
+      "example": "The agent does planning before taking any action.",
+      "exampleZh": "智能体在采取行动前先做规划。",
+      "memoryTip": "planning=先想好步骤,智能体不蛮干。",
+      "level": 2
+    },
+    {
+      "word": "memory",
+      "phonetic": "/ˈmeməri/",
+      "pos": "n.",
+      "originMeaning": "记忆;记忆力;内存",
+      "aiMeaning": "记忆:智能体保存的对话、偏好和事实,跨会话记得住你",
+      "example": "With memory, the agent remembers your preferences.",
+      "exampleZh": "有了记忆,智能体能记住你的偏好。",
+      "memoryTip": "memory=记忆,没有记忆的 AI 每次都是\"陌生人\"。",
+      "level": 2
+    },
+    {
+      "word": "autonomy",
+      "phonetic": "/ɔːˈtɒnəmi/",
+      "pos": "n.",
+      "originMeaning": "自主;自治;独立",
+      "aiMeaning": "自主性:智能体独立完成任务的程度,自主性越高越少需要人干预",
+      "example": "High autonomy means the agent works without supervision.",
+      "exampleZh": "高自主性意味着智能体无需监督就能工作。",
+      "memoryTip": "autonomy=自己干,不用你盯着。",
+      "level": 3
+    },
+    {
+      "word": "orchestration",
+      "phonetic": "/ˌɔːkɪˈstreɪʃn/",
+      "pos": "n.",
+      "originMeaning": "编排;管弦乐编曲",
+      "aiMeaning": "编排:调度多个 AI/工具协同工作的过程,像乐团的指挥",
+      "example": "Orchestration coordinates multiple agents working together.",
+      "exampleZh": "编排协调多个智能体协同工作。",
+      "memoryTip": "像指挥家(orchestra=管弦乐队),让每个\"乐手\"各司其职。",
+      "level": 3
+    },
+    {
+      "word": "multi-agent",
+      "phonetic": "/ˌmʌlti ˈeɪdʒənt/",
+      "pos": "n.",
+      "originMeaning": "多(multi)+ 智能体(agent)",
+      "aiMeaning": "多智能体:多个 AI 分工协作,一个当专家、一个当评审,互相配合",
+      "example": "A multi-agent system can have one agent write and another review.",
+      "exampleZh": "多智能体系统可以一个负责写、一个负责审。",
+      "memoryTip": "multi-agent=组个 AI 团队,各干各的活。",
+      "level": 3
+    },
+    {
+      "word": "pipeline",
+      "phonetic": "/ˈpaɪplaɪn/",
+      "pos": "n.",
+      "originMeaning": "管道;输油管",
+      "aiMeaning": "流水线:数据按步骤依次处理的链条,如\"清洗→切分→模型→输出\"",
+      "example": "The data goes through a pipeline before reaching the model.",
+      "exampleZh": "数据经过流水线处理后才会送到模型。",
+      "memoryTip": "pipeline=一根\"数据管道\",一步步往下流。",
+      "level": 3
+    },
+    {
+      "word": "loop",
+      "phonetic": "/luːp/",
+      "pos": "n.",
+      "originMeaning": "圈;环;循环",
+      "aiMeaning": "循环:智能体反复执行\"思考-行动-检查\"直到任务完成",
+      "example": "The agent runs in a loop until the job is done.",
+      "exampleZh": "智能体循环运行直到任务完成。",
+      "memoryTip": "loop=一圈圈转,不行就再来一圈。",
+      "level": 2
+    },
+    {
+      "word": "decision",
+      "phonetic": "/dɪˈsɪʒn/",
+      "pos": "n.",
+      "originMeaning": "决定;决策;判断",
+      "aiMeaning": "决策:智能体在多个选项中做选择,是它的核心能力之一",
+      "example": "The agent makes a decision based on the results.",
+      "exampleZh": "智能体根据结果做出决策。",
+      "memoryTip": "decision=拍板,会做决定的 AI 才是 agent。",
+      "level": 1
+    },
+    {
+      "word": "reasoning",
+      "phonetic": "/ˈriːzənɪŋ/",
+      "pos": "n.",
+      "originMeaning": "推理;论证;思考",
+      "aiMeaning": "推理:AI 的逻辑思考过程,新一代模型强调\"会推理\"而非只会背答案",
+      "example": "The new model shows strong reasoning on math problems.",
+      "exampleZh": "新模型在数学题上表现出很强的推理能力。",
+      "memoryTip": "reasoning=动脑子想,是 AI 从\"背答案\"到\"会思考\"的跨越。",
+      "level": 2
+    },
+    {
+      "word": "execute",
+      "phonetic": "/ˈeksɪkjuːt/",
+      "pos": "v.",
+      "originMeaning": "执行;实行;处决",
+      "aiMeaning": "执行:真正跑代码、做操作,智能体从\"建议\"到\"执行\"的关键一步",
+      "example": "The agent can execute code directly in a sandbox.",
+      "exampleZh": "智能体可以在沙箱里直接执行代码。",
+      "memoryTip": "execute=真的动手做,不是只给建议。",
+      "level": 2
+    },
+    {
+      "word": "delegate",
+      "phonetic": "/ˈdelɪɡeɪt/",
+      "pos": "v.",
+      "originMeaning": "委派;委托;授权",
+      "aiMeaning": "委派:把任务分派给子智能体或工具,主智能体当\"项目经理\"",
+      "example": "The main agent delegates research to a sub-agent.",
+      "exampleZh": "主智能体把调研任务委派给子智能体。",
+      "memoryTip": "delegate=派活,agent 也当\"领导\"。",
+      "level": 3
+    },
+    {
+      "word": "subtask",
+      "phonetic": "/ˈsʌbtɑːsk/",
+      "pos": "n.",
+      "originMeaning": "子(sub)+ 任务(task)",
+      "aiMeaning": "子任务:大任务拆出来的小步骤,逐个完成",
+      "example": "The task is divided into 5 subtasks.",
+      "exampleZh": "这个任务被拆成了 5 个子任务。",
+      "memoryTip": "subtask=小任务,大事化小逐个击破。",
+      "level": 3
+    },
+    {
+      "word": "progress",
+      "phonetic": "/ˈprəʊɡres/",
+      "pos": "n.",
+      "originMeaning": "进展;进步;前进",
+      "aiMeaning": "进度:任务进行的程度,智能体执行时会汇报 progress",
+      "example": "The agent reports its progress after each step.",
+      "exampleZh": "智能体每完成一步就汇报进度。",
+      "memoryTip": "progress=进展到哪了,让 AI 干活要\"盯着进度条\"。",
+      "level": 1
+    },
+    {
+      "word": "status",
+      "phonetic": "/ˈsteɪtəs/",
+      "pos": "n.",
+      "originMeaning": "状态;地位;情形",
+      "aiMeaning": "状态:任务当前情况,如 running(进行中)/ done(完成)/ failed(失败)",
+      "example": "Check the status of the background job.",
+      "exampleZh": "查看后台任务的状态。",
+      "memoryTip": "status=当前是啥状态,问 AI\"进行到哪了\"。",
+      "level": 1
+    },
+    {
+      "word": "retry",
+      "phonetic": "/ˌriːˈtraɪ/",
+      "pos": "v.",
+      "originMeaning": "重试;再试一次",
+      "aiMeaning": "重试:失败后自动再试,智能体对临时故障的常规操作",
+      "example": "The agent retries the request after a network error.",
+      "exampleZh": "网络错误后智能体会重试请求。",
+      "memoryTip": "re(再)+try(试),一次不行就再来一次。",
+      "level": 2
+    },
+    {
+      "word": "fallback",
+      "phonetic": "/ˈfɔːlbæk/",
+      "pos": "n.",
+      "originMeaning": "退路;后备方案;回落",
+      "aiMeaning": "兜底:主方案失败时的备选方案,让智能体不至于卡死",
+      "example": "If the API fails, the fallback returns cached data.",
+      "exampleZh": "如果接口失败,兜底方案返回缓存数据。",
+      "memoryTip": "fallback=plan B,主路不通走备胎。",
+      "level": 3
+    },
+    {
+      "word": "timeout",
+      "phonetic": "/ˈtaɪmaʊt/",
+      "pos": "n.",
+      "originMeaning": "超时(时间耗尽)",
+      "aiMeaning": "超时:等待超过设定时限,调用接口/执行任务常见,如\"请求超时\"",
+      "example": "The request timed out after 30 seconds.",
+      "exampleZh": "请求在 30 秒后超时了。",
+      "memoryTip": "time(时间)+out(用完),等太久就\"超时\"。",
+      "level": 2
+    },
+    {
+      "word": "quota",
+      "phonetic": "/ˈkwəʊtə/",
+      "pos": "n.",
+      "originMeaning": "配额;限额;指标",
+      "aiMeaning": "配额:API 使用额度限制,如\"本月调用次数用完\",用到限就报 quota exceeded",
+      "example": "We hit the API quota for this month.",
+      "exampleZh": "我们这个月的接口配额用完了。",
+      "memoryTip": "quota=额度,API 也是\"限量供应\"的。",
+      "level": 2
+    },
+    {
+      "word": "sandbox",
+      "phonetic": "/ˈsændbɒks/",
+      "pos": "n.",
+      "originMeaning": "沙坑;沙盒(儿童玩沙的池子)",
+      "aiMeaning": "沙箱:隔离的安全运行环境,让 AI 跑代码但碰不到真实系统",
+      "example": "The agent runs untrusted code inside a sandbox.",
+      "exampleZh": "智能体在沙箱里运行不可信的代码。",
+      "memoryTip": "让 AI 在\"沙坑\"里随便折腾,砸不到真东西。",
+      "level": 3
+    }
+  ]
+}

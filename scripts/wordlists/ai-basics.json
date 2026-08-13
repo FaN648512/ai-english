@@ -1,0 +1,280 @@
+{
+  "topicId": "ai-basics",
+  "words": [
+    {
+      "word": "AI",
+      "phonetic": "/ˌeɪ ˈaɪ/",
+      "pos": "n.",
+      "originMeaning": "人工智能的英文缩写(Artificial Intelligence)",
+      "aiMeaning": "人工智能:让机器模拟人类智能(听说读写、看图、思考)的技术总称,现在几乎成了\"智能助手\"的代名词",
+      "example": "AI can help you write, draw, and answer questions in seconds.",
+      "exampleZh": "AI 能在几秒内帮你写作、画图和回答问题。",
+      "memoryTip": "大街小巷都在说的 AI,就是让电脑变聪明的那门技术。",
+      "level": 1
+    },
+    {
+      "word": "model",
+      "phonetic": "/ˈmɒdl/",
+      "pos": "n.",
+      "originMeaning": "模特;模型;榜样",
+      "aiMeaning": "模型:训练出来的智能程序,如 GPT-4、文心一言就是一个\"大模型\"",
+      "example": "GPT-4 is a powerful language model made by OpenAI.",
+      "exampleZh": "GPT-4 是 OpenAI 开发的强大语言模型。",
+      "memoryTip": "平时\"模特\"也是 model——AI 的 model 是\"被训练出来的成品\"。",
+      "level": 1
+    },
+    {
+      "word": "data",
+      "phonetic": "/ˈdeɪtə/",
+      "pos": "n.",
+      "originMeaning": "数据;资料",
+      "aiMeaning": "数据:AI 学习和处理的原材料,文本、图片、数字都算",
+      "example": "The model was trained on massive amounts of data.",
+      "exampleZh": "这个模型是在海量数据上训练出来的。",
+      "memoryTip": "AI 是\"吃数据长大的\",数据就是它的粮食。",
+      "level": 1
+    },
+    {
+      "word": "prompt",
+      "phonetic": "/prɒmpt/",
+      "pos": "n. / v.",
+      "originMeaning": "提示;促使;催促",
+      "aiMeaning": "提示词:你发给 AI 的那段指令文字,决定它怎么回答",
+      "example": "A good prompt makes the AI give a better answer.",
+      "exampleZh": "好的提示词能让 AI 给出更好的回答。",
+      "memoryTip": "prompt 就是\"你跟 AI 说的话\"——说话水平=Prompt 水平。",
+      "level": 1
+    },
+    {
+      "word": "chatbot",
+      "phonetic": "/ˈtʃætbɒt/",
+      "pos": "n.",
+      "originMeaning": "聊天机器人(chat + bot)",
+      "aiMeaning": "聊天机器人:能与人对话的 AI 程序,如 ChatGPT、豆包",
+      "example": "The chatbot answered all my questions patiently.",
+      "exampleZh": "这个聊天机器人耐心地回答了我所有问题。",
+      "memoryTip": "chat(聊天)+ bot(机器人),合起来就是陪你聊天的机器人。",
+      "level": 1
+    },
+    {
+      "word": "assistant",
+      "phonetic": "/əˈsɪstənt/",
+      "pos": "n.",
+      "originMeaning": "助手;助理",
+      "aiMeaning": "AI 助手:帮你写东西、查资料、干活的人工智能",
+      "example": "My AI assistant helps me draft emails every morning.",
+      "exampleZh": "我的 AI 助手每天早上帮我起草邮件。",
+      "memoryTip": "英文里的 assistant 就是\"助理\",AI assistant=数字助理。",
+      "level": 1
+    },
+    {
+      "word": "conversation",
+      "phonetic": "/ˌkɒnvəˈseɪʃn/",
+      "pos": "n.",
+      "originMeaning": "谈话;会话",
+      "aiMeaning": "对话:你和 AI 一来一回的交流过程,AI 会记住对话上下文",
+      "example": "We had a long conversation about machine learning.",
+      "exampleZh": "我们进行了一场关于机器学习的长时间对话。",
+      "memoryTip": "conversation 就是\"聊天\",AI 的对话是带记忆的。",
+      "level": 1
+    },
+    {
+      "word": "response",
+      "phonetic": "/rɪˈspɒns/",
+      "pos": "n.",
+      "originMeaning": "回答;反应;响应",
+      "aiMeaning": "回复:AI 对你提示词的输出内容,即\"答案\"",
+      "example": "The AI's response was clear and well-structured.",
+      "exampleZh": "AI 的回复清晰且结构良好。",
+      "memoryTip": "你发 prompt,AI 给 response——一问一答。",
+      "level": 1
+    },
+    {
+      "word": "input",
+      "phonetic": "/ˈɪnpʊt/",
+      "pos": "n.",
+      "originMeaning": "输入;投入",
+      "aiMeaning": "输入:喂给 AI 的信息,可以是文字、图片、语音或文件",
+      "example": "You can give the model text or image as input.",
+      "exampleZh": "你可以把文字或图片作为输入交给模型。",
+      "memoryTip": "input=输进去的东西,你给 AI 的一切都叫 input。",
+      "level": 1
+    },
+    {
+      "word": "output",
+      "phonetic": "/ˈaʊtpʊt/",
+      "pos": "n.",
+      "originMeaning": "输出;产量",
+      "aiMeaning": "输出:AI 生成的结果,回答、图片、代码都是 output",
+      "example": "The output of the AI is a 500-word article.",
+      "exampleZh": "AI 的输出是一篇 500 字的文章。",
+      "memoryTip": "output=送出来的东西,AI 给你的答案都叫 output。",
+      "level": 1
+    },
+    {
+      "word": "generate",
+      "phonetic": "/ˈdʒenəreɪt/",
+      "pos": "v.",
+      "originMeaning": "产生;发电;引起",
+      "aiMeaning": "生成:AI 根据输入创作出全新内容(文字/图片/代码),这就是\"生成式 AI\"的由来",
+      "example": "The AI can generate realistic images from a sentence.",
+      "exampleZh": "AI 能根据一句话生成逼真的图片。",
+      "memoryTip": "发电厂 generate 电,AI generate 内容——都是\"造出来\"。",
+      "level": 1
+    },
+    {
+      "word": "app",
+      "phonetic": "/æp/",
+      "pos": "n.",
+      "originMeaning": "应用程序的缩写(application)",
+      "aiMeaning": "应用:手机上用 AI 的软件,如 ChatGPT App、豆包 App",
+      "example": "I downloaded the AI chat app on my phone.",
+      "exampleZh": "我在手机上安装了 AI 聊天应用。",
+      "memoryTip": "app 就是\"软件\",装个 app 就能用上 AI。",
+      "level": 1
+    },
+    {
+      "word": "artificial intelligence",
+      "phonetic": "/ˌɑːtɪˈfɪʃl ɪnˈtelɪdʒəns/",
+      "pos": "n.",
+      "originMeaning": "人工的(artificial)+ 智能(intelligence)",
+      "aiMeaning": "人工智能:AI 的全称,让机器具备人类智能的科学与技术",
+      "example": "Artificial intelligence is changing every industry.",
+      "exampleZh": "人工智能正在改变每一个行业。",
+      "memoryTip": "AI 的全名:人工(artificial)智能(intelligence)。",
+      "level": 1
+    },
+    {
+      "word": "machine learning",
+      "phonetic": "/məˈʃiːn ˈlɜːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "机器(machine)+ 学习(learning)",
+      "aiMeaning": "机器学习:让程序从数据中自动学会规律,而不是靠人写死规则",
+      "example": "Machine learning powers spam filters and recommendations.",
+      "exampleZh": "机器学习驱动着垃圾邮件过滤和推荐系统。",
+      "memoryTip": "让机器自己\"学习\"规律,而不是你一步步教它。",
+      "level": 1
+    },
+    {
+      "word": "deep learning",
+      "phonetic": "/diːp ˈlɜːnɪŋ/",
+      "pos": "n.",
+      "originMeaning": "深度(deep)+ 学习(learning)",
+      "aiMeaning": "深度学习:用多层神经网络做的机器学习,当前大模型的核心技术",
+      "example": "Deep learning made modern chatbots possible.",
+      "exampleZh": "深度学习让现代聊天机器人成为可能。",
+      "memoryTip": "machine learning 的分支,层数\"深\"所以叫 deep。",
+      "level": 1
+    },
+    {
+      "word": "neural network",
+      "phonetic": "/ˈnjʊərəl ˈnetwɜːk/",
+      "pos": "n.",
+      "originMeaning": "神经元(neural)+ 网络(network)",
+      "aiMeaning": "神经网络:模仿大脑神经元连接方式设计的计算模型,深度学习的骨架",
+      "example": "A neural network learns by adjusting its connections.",
+      "exampleZh": "神经网络通过调整连接来学习。",
+      "memoryTip": "像大脑神经元那样连成网,AI 就是靠它\"思考\"的。",
+      "level": 1
+    },
+    {
+      "word": "algorithm",
+      "phonetic": "/ˈælɡərɪðəm/",
+      "pos": "n.",
+      "originMeaning": "算法",
+      "aiMeaning": "算法:解决问题的一套步骤和规则,AI 的一切都由算法驱动",
+      "example": "The algorithm decides which content you see first.",
+      "exampleZh": "算法决定你先看到哪条内容。",
+      "memoryTip": "算法=做事的\"菜谱\",AI 按菜谱干活。",
+      "level": 1
+    },
+    {
+      "word": "LLM",
+      "phonetic": "/ˌel el ˈem/",
+      "pos": "n.",
+      "originMeaning": "Large Language Model 的缩写",
+      "aiMeaning": "大语言模型:能理解并生成人类语言的大模型,GPT、Claude、文心都是 LLM",
+      "example": "LLMs can write code, translate, and even chat with you.",
+      "exampleZh": "大语言模型能写代码、翻译,甚至跟你聊天。",
+      "memoryTip": "LLM=大语言模型,你日常用的 AI 对话基本都靠它。",
+      "level": 1
+    },
+    {
+      "word": "GPT",
+      "phonetic": "/ˌdʒiː piː ˈtiː/",
+      "pos": "n.",
+      "originMeaning": "Generative Pre-trained Transformer 的缩写",
+      "aiMeaning": "GPT:生成式预训练 Transformer,OpenAI 的明星模型系列(GPT-4 等)",
+      "example": "ChatGPT is the most famous GPT-based product.",
+      "exampleZh": "ChatGPT 是最著名的基于 GPT 的产品。",
+      "memoryTip": "听到 GPT 就想到 ChatGPT——目前 AI 对话的门面。",
+      "level": 1
+    },
+    {
+      "word": "token",
+      "phonetic": "/ˈtəʊkən/",
+      "pos": "n.",
+      "originMeaning": "代币;象征;代金券",
+      "aiMeaning": "词元:AI 处理文本的最小单位,中文约 1 字≈1 token,API 按 token 计费",
+      "example": "This sentence costs about 20 tokens to process.",
+      "exampleZh": "处理这句话大约消耗 20 个词元。",
+      "memoryTip": "日常是\"代币\",AI 里每个词元都是计费筹码。",
+      "level": 1
+    },
+    {
+      "word": "context",
+      "phonetic": "/ˈkɒntekst/",
+      "pos": "n.",
+      "originMeaning": "上下文;语境;背景",
+      "aiMeaning": "上下文:对话中 AI 能看到的所有历史信息,受\"上下文窗口\"限制",
+      "example": "The AI remembers the whole context of our chat.",
+      "exampleZh": "AI 能记住我们整个对话的上下文。",
+      "memoryTip": "context=前因后果,AI 记住你前面说的话才能聊得连贯。",
+      "level": 1
+    },
+    {
+      "word": "hallucination",
+      "phonetic": "/həˌluːsɪˈneɪʃn/",
+      "pos": "n.",
+      "originMeaning": "幻觉;幻象",
+      "aiMeaning": "AI 幻觉:模型一本正经地编造错误信息,看起来合理其实不对",
+      "example": "The AI hallucinated a fake research paper citation.",
+      "exampleZh": "AI 凭空编造了一篇不存在的论文引用。",
+      "memoryTip": "AI 也会\"产生幻觉\"——编得跟真的一样,所以要核对事实。",
+      "level": 1
+    },
+    {
+      "word": "parameter",
+      "phonetic": "/pəˈræmɪtə(r)/",
+      "pos": "n.",
+      "originMeaning": "参数;变量;界限",
+      "aiMeaning": "参数:模型内部可学习的数值,新闻里\"700 亿参数\"指的就是它,越大一般越聪明",
+      "example": "This model has 70 billion parameters.",
+      "exampleZh": "这个模型有 700 亿个参数。",
+      "memoryTip": "\"多少亿参数\"= 模型脑容量有多大。",
+      "level": 1
+    },
+    {
+      "word": "automation",
+      "phonetic": "/ˌɔːtəˈmeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "自动化",
+      "aiMeaning": "自动化:让 AI 或程序自动完成重复性工作,不用人一步步操作",
+      "example": "Automation saves us hours of repetitive typing.",
+      "exampleZh": "自动化省去了我们数小时的重复输入。",
+      "memoryTip": "auto=自动,automation=把重复的活交给机器。",
+      "level": 1
+    },
+    {
+      "word": "AGI",
+      "phonetic": "/ˌeɪ dʒiː ˈaɪ/",
+      "pos": "n.",
+      "originMeaning": "Artificial General Intelligence 的缩写",
+      "aiMeaning": "通用人工智能:能和人类一样胜任各种智力工作的 AI,目前尚未实现,是终极目标",
+      "example": "Many experts debate when AGI will become a reality.",
+      "exampleZh": "许多专家在争论通用人工智能何时成为现实。",
+      "memoryTip": "AGI=什么都能干的 AI;现在的 AI 是\"偏科生\",AGI 是\"全才\"。",
+      "level": 1
+    }
+  ]
+}

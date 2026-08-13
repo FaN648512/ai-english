@@ -1,0 +1,280 @@
+{
+  "topicId": "creation",
+  "words": [
+    {
+      "word": "creation",
+      "phonetic": "/kriˈeɪʃn/",
+      "pos": "n.",
+      "originMeaning": "创造;创作;作品",
+      "aiMeaning": "创作:AI 生成的内容,文字、图片、视频都算 AI 的\"创作\"",
+      "example": "This painting is an AI creation.",
+      "exampleZh": "这幅画是 AI 的创作。",
+      "memoryTip": "create=创造,creation=AI 造出来的东西。",
+      "level": 1
+    },
+    {
+      "word": "draft",
+      "phonetic": "/drɑːft/",
+      "pos": "n. / v.",
+      "originMeaning": "草稿;草案;起草",
+      "aiMeaning": "草稿:AI 先产出初稿,你再修改,这就是\"AI 打底、人润色\"的工作流",
+      "example": "The AI wrote the first draft in 10 seconds.",
+      "exampleZh": "AI 用 10 秒写完了初稿。",
+      "memoryTip": "draft=打草稿,AI 是\"草稿机\",人是\"定稿人\"。",
+      "level": 1
+    },
+    {
+      "word": "outline",
+      "phonetic": "/ˈaʊtlaɪn/",
+      "pos": "n.",
+      "originMeaning": "大纲;轮廓;概要",
+      "aiMeaning": "大纲:让 AI 先列文章/方案的骨架,确认后再展开写",
+      "example": "First, ask the AI for an outline before writing the full article.",
+      "exampleZh": "先让 AI 列大纲,再写全文。",
+      "memoryTip": "outline=骨架,先搭架子再填肉。",
+      "level": 1
+    },
+    {
+      "word": "story",
+      "phonetic": "/ˈstɔːri/",
+      "pos": "n.",
+      "originMeaning": "故事;小说;经历",
+      "aiMeaning": "故事:让 AI 编故事、写剧本,可指定人物、情节和结局",
+      "example": "The AI wrote a bedtime story for my kid.",
+      "exampleZh": "AI 给我的孩子写了一个睡前故事。",
+      "memoryTip": "story=故事,AI 是最会编故事的作家。",
+      "level": 1
+    },
+    {
+      "word": "article",
+      "phonetic": "/ˈɑːtɪkl/",
+      "pos": "n.",
+      "originMeaning": "文章;论文;物品",
+      "aiMeaning": "文章:让 AI 写公众号推文、博客、报道等",
+      "example": "She asked the AI to write an article about AI trends.",
+      "exampleZh": "她让 AI 写了一篇关于 AI 趋势的文章。",
+      "memoryTip": "article=文章,工作群里最常见的 AI 用法。",
+      "level": 1
+    },
+    {
+      "word": "essay",
+      "phonetic": "/ˈeseɪ/",
+      "pos": "n.",
+      "originMeaning": "散文;论说文;小论文",
+      "aiMeaning": "短文:让 AI 写议论文、散文等,学生党的高频需求",
+      "example": "The AI helped me outline my essay.",
+      "exampleZh": "AI 帮我列了论文提纲。",
+      "memoryTip": "essay=作文,让 AI 帮你搭思路。",
+      "level": 1
+    },
+    {
+      "word": "image",
+      "phonetic": "/ˈɪmɪdʒ/",
+      "pos": "n.",
+      "originMeaning": "图像;形象;印象",
+      "aiMeaning": "图像:AI 生成的图片,用一句话描述就能出图(文生图)",
+      "example": "The AI generated a beautiful image from my description.",
+      "exampleZh": "AI 根据我的描述生成了一张漂亮的图片。",
+      "memoryTip": "image=图片,对 AI 说\"画一个…\"就是生成 image。",
+      "level": 1
+    },
+    {
+      "word": "design",
+      "phonetic": "/dɪˈzaɪn/",
+      "pos": "n. / v.",
+      "originMeaning": "设计;图案;构思",
+      "aiMeaning": "设计:让 AI 做设计方案、界面、海报,或优化你的设计",
+      "example": "The AI suggested three design options for the poster.",
+      "exampleZh": "AI 为海报提供了三个设计方案。",
+      "memoryTip": "design=设计,给 AI 一句话,还你几个方案。",
+      "level": 1
+    },
+    {
+      "word": "logo",
+      "phonetic": "/ˈləʊɡəʊ/",
+      "pos": "n.",
+      "originMeaning": "标志;徽标",
+      "aiMeaning": "Logo:让 AI 生成品牌标志,创业和做自媒体常用",
+      "example": "We used AI to create our startup's logo.",
+      "exampleZh": "我们用 AI 制作了公司的 Logo。",
+      "memoryTip": "logo=商标图案,AI 几秒钟出好几个版本。",
+      "level": 1
+    },
+    {
+      "word": "art",
+      "phonetic": "/ɑːt/",
+      "pos": "n.",
+      "originMeaning": "艺术;美术",
+      "aiMeaning": "艺术:AI 生成的绘画作品,风格可以是油画、水彩、赛博朋克等",
+      "example": "The AI can imitate any art style you describe.",
+      "exampleZh": "AI 能模仿你描述的任何艺术风格。",
+      "memoryTip": "art=艺术,让 AI 当画师,风格随便点。",
+      "level": 1
+    },
+    {
+      "word": "illustration",
+      "phonetic": "/ˌɪləˈstreɪʃn/",
+      "pos": "n.",
+      "originMeaning": "插图;图解;说明",
+      "aiMeaning": "插图:让 AI 给文章配图、做插画",
+      "example": "The blog post needs an illustration for the cover.",
+      "exampleZh": "这篇博客需要一张封面插图。",
+      "memoryTip": "illustration=配图,让 AI 给内容配插画。",
+      "level": 1
+    },
+    {
+      "word": "poster",
+      "phonetic": "/ˈpəʊstə(r)/",
+      "pos": "n.",
+      "originMeaning": "海报;招贴",
+      "aiMeaning": "海报:让 AI 生成宣传海报,指定主题和风格即可",
+      "example": "The AI made a concert poster in minutes.",
+      "exampleZh": "AI 几分钟就做好了一张演唱会海报。",
+      "memoryTip": "poster=海报,活动宣传靠 AI 出图。",
+      "level": 1
+    },
+    {
+      "word": "video",
+      "phonetic": "/ˈvɪdiəʊ/",
+      "pos": "n.",
+      "originMeaning": "视频;录像",
+      "aiMeaning": "视频:让 AI 生成短视频、动画(文生视频),新兴的 AI 能力",
+      "example": "AI video tools can turn text into short clips.",
+      "exampleZh": "AI 视频工具能把文字变成短视频。",
+      "memoryTip": "video=视频,AI 从\"出图\"进化到\"出片\"。",
+      "level": 1
+    },
+    {
+      "word": "voice",
+      "phonetic": "/vɔɪs/",
+      "pos": "n.",
+      "originMeaning": "声音;嗓音;发言权",
+      "aiMeaning": "声音:AI 语音合成/克隆,用文字生成配音,甚至模仿你的声音",
+      "example": "The AI voice reads the article aloud naturally.",
+      "exampleZh": "AI 声音自然地朗读这篇文章。",
+      "memoryTip": "voice=声音,让 AI 开口说话、配音。",
+      "level": 1
+    },
+    {
+      "word": "music",
+      "phonetic": "/ˈmjuːzɪk/",
+      "pos": "n.",
+      "originMeaning": "音乐",
+      "aiMeaning": "音乐:让 AI 作曲、生成背景音乐,指定风格和情绪",
+      "example": "The AI composed a cheerful background track.",
+      "exampleZh": "AI 创作了一首欢快的背景音乐。",
+      "memoryTip": "music=音乐,AI 也是作曲家。",
+      "level": 1
+    },
+    {
+      "word": "poem",
+      "phonetic": "/ˈpəʊɪm/",
+      "pos": "n.",
+      "originMeaning": "诗;诗歌",
+      "aiMeaning": "诗歌:让 AI 写诗,可指定风格(古风/现代)和主题",
+      "example": "Write a poem about autumn rain.",
+      "exampleZh": "写一首关于秋雨的诗。",
+      "memoryTip": "poem=诗,浪漫的 AI 用法。",
+      "level": 1
+    },
+    {
+      "word": "headline",
+      "phonetic": "/ˈhedlaɪn/",
+      "pos": "n.",
+      "originMeaning": "大字标题;头条",
+      "aiMeaning": "标题:让 AI 起标题,可一次给 10 个备选,挑最吸引人的",
+      "example": "Give me 10 headline options for this article.",
+      "exampleZh": "为这篇文章给我 10 个标题选项。",
+      "memoryTip": "headline=标题,取标题是 AI 的拿手好戏。",
+      "level": 1
+    },
+    {
+      "word": "caption",
+      "phonetic": "/ˈkæpʃn/",
+      "pos": "n.",
+      "originMeaning": "说明文字;字幕;配文",
+      "aiMeaning": "配文:让 AI 给图片配文案,如朋友圈、小红书、电商描述",
+      "example": "Write a catchy caption for this photo.",
+      "exampleZh": "为这张照片写一条吸引人的配文。",
+      "memoryTip": "caption=配文,发图的文案让 AI 代劳。",
+      "level": 1
+    },
+    {
+      "word": "brainstorm",
+      "phonetic": "/ˈbreɪnstɔːm/",
+      "pos": "v.",
+      "originMeaning": "头脑风暴;集思广益",
+      "aiMeaning": "头脑风暴:让 AI 帮你想点子、出创意,一次给一大批候选",
+      "example": "Let's brainstorm 20 names for the new product.",
+      "exampleZh": "咱们头脑风暴 20 个新产品的名字。",
+      "memoryTip": "brain(大脑)+storm(风暴),让 AI 跟你一起\"脑暴\"。",
+      "level": 1
+    },
+    {
+      "word": "idea",
+      "phonetic": "/aɪˈdɪə/",
+      "pos": "n.",
+      "originMeaning": "想法;主意;概念",
+      "aiMeaning": "点子:AI 给出的创意,是头脑风暴的产物",
+      "example": "The AI gave me a fresh idea for the campaign.",
+      "exampleZh": "AI 为这次活动给了我一个新点子。",
+      "memoryTip": "idea=主意,灵感枯竭就找 AI 要。",
+      "level": 1
+    },
+    {
+      "word": "enhance",
+      "phonetic": "/ɪnˈhɑːns/",
+      "pos": "v.",
+      "originMeaning": "增强;提高;改善",
+      "aiMeaning": "增强:让 AI 提升效果,如增强画质、增强文案表现力",
+      "example": "Enhance the image resolution with AI.",
+      "exampleZh": "用 AI 增强图片分辨率。",
+      "memoryTip": "enhance=变更好,让 AI\"再给力一点\"。",
+      "level": 1
+    },
+    {
+      "word": "realistic",
+      "phonetic": "/ˌrɪəˈlɪstɪk/",
+      "pos": "adj.",
+      "originMeaning": "逼真的;现实的;实际的",
+      "aiMeaning": "逼真的:描述生成效果\"像真的一样\",AI 出图出视频的核心卖点",
+      "example": "The AI-generated face looks incredibly realistic.",
+      "exampleZh": "AI 生成的脸看起来极其逼真。",
+      "memoryTip": "realistic=以假乱真,AI 作品越来越\"真\"。",
+      "level": 1
+    },
+    {
+      "word": "creativity",
+      "phonetic": "/ˌkriːeɪˈtɪvəti/",
+      "pos": "n.",
+      "originMeaning": "创造力;创造性",
+      "aiMeaning": "创造力:AI 的创意能力,或你与 AI 协作时的创造力",
+      "example": "AI amplifies human creativity instead of replacing it.",
+      "exampleZh": "AI 放大人类的创造力,而不是取代它。",
+      "memoryTip": "creativity=创造力,AI 是创意的放大器。",
+      "level": 2
+    },
+    {
+      "word": "avatar",
+      "phonetic": "/ˈævətɑː(r)/",
+      "pos": "n.",
+      "originMeaning": "头像;虚拟形象",
+      "aiMeaning": "头像:AI 生成的个人形象,可做社交头像、虚拟主播",
+      "example": "She uses an AI avatar for her social media.",
+      "exampleZh": "她用 AI 头像作为社交媒体形象。",
+      "memoryTip": "avatar=虚拟分身,数字世界的\"你\"。",
+      "level": 2
+    },
+    {
+      "word": "portrait",
+      "phonetic": "/ˈpɔːtreɪt/",
+      "pos": "n.",
+      "originMeaning": "肖像;画像;人像",
+      "aiMeaning": "人像:AI 生成的人像照片,可做写真、证件照风格",
+      "example": "The AI turned my photo into an oil painting portrait.",
+      "exampleZh": "AI 把我的照片变成了油画肖像。",
+      "memoryTip": "portrait=人像,自拍变名画,AI 一键搞定。",
+      "level": 2
+    }
+  ]
+}
