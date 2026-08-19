@@ -1,55 +1,62 @@
 <template>
-  <view class="page">
+  <view class="page page-anim">
     <!-- 自定义导航 -->
     <view class="nav" :style="{ paddingTop: statusBarHeight + 'px' }">
       <view class="nav-inner">
-        <view class="nav-title">AI 英语卡</view>
-        <view class="nav-right" @tap="goSearch">
-          <text class="nav-search-icon">🔍</text>
+        <view class="brand">
+          <view class="brand-mark"></view>
+          <view class="brand-name mono">AI·EN</view>
         </view>
+        <view class="nav-search mono" hover-class="press" @tap="goSearch">SEARCH</view>
       </view>
     </view>
 
-    <view class="page-wrap">
-      <!-- 今日复习 -->
-      <view class="card today-card">
-        <view class="today-left">
-          <view class="today-num">{{ dueCount }}</view>
-          <view class="today-label">今日待复习</view>
-          <view class="today-streak">🔥 连续学习 {{ stats.streak || 0 }} 天</view>
+    <view class="page-wrap home">
+      <!-- 今日复习:海报式首屏 -->
+      <view class="today si si-1">
+        <view class="today-kicker mono">TODAY'S REVIEW</view>
+        <view class="today-num">{{ dueCount }}</view>
+        <view class="today-label">今日待复习</view>
+        <view class="today-streak mono">
+          STREAK · {{ stats.streak || 0 }} DAYS
         </view>
-        <view class="today-right">
-          <button class="btn-primary today-btn" @tap="goReview">开始复习</button>
-        </view>
+        <button class="btn-primary today-btn" @tap="goReview">开始复习</button>
       </view>
 
-      <!-- 功能入口 -->
+      <!-- 功能入口:极简四格 -->
       <view class="entry-grid">
         <view
-          v-for="e in entries"
+          v-for="(e, i) in entries"
           :key="e.key"
-          class="entry"
-          @tap="e.action"
+          class="entry si"
+          :class="'si-' + (i + 1)"
+          hover-class="press"
+          @tap="goEntry(e.key)"
         >
-          <view class="entry-icon">{{ e.icon }}</view>
+          <view class="entry-en mono">{{ e.en }}</view>
           <view class="entry-name">{{ e.name }}</view>
         </view>
       </view>
 
-      <!-- 主题分类 -->
-      <view class="section-title">按主题学习</view>
-      <scroll-view scroll-x class="topic-scroll" show-scrollbar="false">
+      <!-- 主题分类:换行网格,全部可见 -->
+      <view class="section-kicker">TOPICS · 8</view>
+      <view class="topic-grid">
         <view
-          v-for="t in topics"
+          v-for="(t, i) in topics"
           :key="t.id"
-          class="topic-item"
+          class="topic-item si"
+          :class="'si-' + ((i % 8) + 1)"
+          hover-class="press"
           @tap="goTopic(t.id)"
         >
-          <view class="topic-icon">{{ t.icon }}</view>
+          <view class="topic-head-row">
+            <view class="topic-icon">{{ t.icon }}</view>
+            <view class="topic-count mono">{{ t.learned }}/{{ t.wordCount }}</view>
+          </view>
           <view class="topic-name">{{ t.name }}</view>
-          <view class="topic-count">{{ t.wordCount }} 词</view>
+          <view class="topic-en mono">{{ t.nameEn }}</view>
         </view>
-      </scroll-view>
+      </view>
     </view>
   </view>
 </template>
@@ -67,10 +74,10 @@ export default {
       stats: {},
       topics: [],
       entries: [
-        { key: "review", icon: "🎴", name: "复习", action: "goReview" },
-        { key: "quiz", icon: "✏️", name: "自测", action: "goQuiz" },
-        { key: "progress", icon: "📈", name: "进度", action: "goProgress" },
-        { key: "search", icon: "🔍", name: "搜索", action: "goSearch" },
+        { key: "review", en: "REVIEW", name: "复习" },
+        { key: "quiz", en: "QUIZ", name: "自测" },
+        { key: "progress", en: "PROGRESS", name: "进度" },
+        { key: "search", en: "LIBRARY", name: "词库" },
       ],
     };
   },
@@ -89,10 +96,24 @@ export default {
       this.dueCount = wordsData.words.filter((w) => isDue(review[w.id], now))
         .length;
       this.stats = getStats();
-      this.topics = wordsData.topics.map((t) => ({
-        ...t,
-        wordCount: wordsData.words.filter((w) => w.topicId === t.id).length,
-      }));
+      this.topics = wordsData.topics.map((t) => {
+        const words = wordsData.words.filter((w) => w.topicId === t.id);
+        return {
+          ...t,
+          wordCount: words.length,
+          learned: words.filter((w) => (review[w.id]?.reviews || 0) > 0)
+            .length,
+        };
+      });
+    },
+    goEntry(key) {
+      const map = {
+        review: "/pages/review/review",
+        quiz: "/pages/quiz/quiz",
+        progress: "/pages/progress/progress",
+        search: "/pages/search/search",
+      };
+      if (map[key]) uni.navigateTo({ url: map[key] });
     },
     goReview() {
       uni.navigateTo({ url: "/pages/review/review" });
@@ -116,11 +137,17 @@ export default {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
+  background: radial-gradient(
+      120% 60% at 50% -10%,
+      rgba(60, 224, 255, 0.1) 0%,
+      rgba(6, 8, 14, 0) 60%
+    ),
+    #06080e;
 }
 
 /* 导航 */
 .nav {
-  background: #0f1420;
+  background: rgba(6, 8, 14, 0.8);
 }
 .nav-inner {
   height: 88rpx;
@@ -129,105 +156,137 @@ export default {
   justify-content: space-between;
   padding: 0 32rpx;
 }
-.nav-title {
-  font-size: 36rpx;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 2rpx;
-}
-.nav-search-icon {
-  font-size: 36rpx;
-}
-
-/* 今日复习卡 */
-.today-card {
+.brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #1a2a4a 0%, #14202e 100%);
-  border: 1rpx solid rgba(53, 196, 240, 0.25);
+  gap: 14rpx;
 }
-.today-num {
-  font-size: 88rpx;
-  font-weight: 800;
-  color: #35c4f0;
-  line-height: 1.1;
+.brand-mark {
+  width: 18rpx;
+  height: 18rpx;
+  background: #3ce0ff;
+  box-shadow: 0 0 12rpx rgba(60, 224, 255, 0.8);
 }
-.today-label {
-  font-size: 26rpx;
-  color: #8b96ab;
-  margin-top: 4rpx;
+.brand-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2rpx;
 }
-.today-streak {
-  font-size: 24rpx;
-  color: #f0ad4e;
-  margin-top: 12rpx;
-}
-.today-btn {
-  min-width: 220rpx;
+.nav-search {
+  font-size: 20rpx;
+  letter-spacing: 3rpx;
+  color: #6b7688;
+  padding: 10rpx 18rpx;
+  border: 1rpx solid rgba(148, 163, 184, 0.16);
+  border-radius: 8rpx;
 }
 
-/* 功能入口 */
+/* 今日复习海报 */
+.today {
+  padding: 40rpx 8rpx 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1rpx solid rgba(148, 163, 184, 0.1);
+  margin-bottom: 40rpx;
+}
+.today-kicker {
+  font-size: 20rpx;
+  letter-spacing: 5rpx;
+  color: #3ce0ff;
+  margin-bottom: 24rpx;
+}
+.today-num {
+  font-size: 200rpx;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  text-shadow: 0 0 60rpx rgba(60, 224, 255, 0.35);
+}
+.today-label {
+  font-size: 28rpx;
+  color: #8b96ab;
+  margin-top: 12rpx;
+}
+.today-streak {
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+  color: #f5b04c;
+  margin-top: 20rpx;
+}
+.today-btn {
+  margin-top: 40rpx;
+  width: 320rpx;
+}
+
+/* 功能入口:细线四格 */
 .entry-grid {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 32rpx;
+  margin-bottom: 48rpx;
 }
 .entry {
   flex: 1;
-  background: #1a2233;
-  border-radius: 20rpx;
-  padding: 24rpx 8rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 16rpx;
+  align-items: flex-start;
+  padding: 20rpx 6rpx;
+  border-left: 1rpx solid rgba(148, 163, 184, 0.14);
+  padding-left: 22rpx;
 }
-.entry:last-child {
-  margin-right: 0;
+.entry:first-child {
+  padding-left: 6rpx;
+  border-left: none;
 }
-.entry-icon {
-  font-size: 44rpx;
-  margin-bottom: 8rpx;
+.entry-en {
+  font-size: 22rpx;
+  letter-spacing: 1rpx;
+  color: #3ce0ff;
+  margin-bottom: 10rpx;
 }
 .entry-name {
-  font-size: 24rpx;
-  color: #e8ecf4;
+  font-size: 26rpx;
+  color: #e8eef7;
 }
 
-/* 主题 */
-.section-title {
-  font-size: 30rpx;
-  font-weight: 700;
-  color: #e8ecf4;
-  margin-bottom: 20rpx;
-}
-.topic-scroll {
-  white-space: nowrap;
+/* 主题网格:双列换行,无需横滑 */
+.topic-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
 }
 .topic-item {
-  display: inline-flex;
-  flex-direction: column;
+  width: calc(50% - 8rpx);
+  background: linear-gradient(180deg, #0e1420 0%, #0b1019 100%);
+  border: 1rpx solid rgba(148, 163, 184, 0.12);
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+.topic-head-row {
+  display: flex;
   align-items: center;
-  width: 200rpx;
-  margin-right: 20rpx;
-  background: #1a2233;
-  border-radius: 24rpx;
-  padding: 28rpx 16rpx;
-  border: 1rpx solid #2a3450;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
 }
 .topic-icon {
-  font-size: 56rpx;
-  margin-bottom: 12rpx;
+  font-size: 36rpx;
+  opacity: 0.9;
+}
+.topic-count {
+  font-size: 18rpx;
+  color: #5b6472;
 }
 .topic-name {
   font-size: 26rpx;
   font-weight: 600;
-  color: #e8ecf4;
+  color: #e8eef7;
 }
-.topic-count {
-  font-size: 22rpx;
-  color: #8b96ab;
+.topic-en {
+  font-size: 18rpx;
+  letter-spacing: 1rpx;
+  color: #3ce0ff;
+  opacity: 0.75;
   margin-top: 6rpx;
 }
 </style>

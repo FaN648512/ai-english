@@ -21,3 +21,11 @@ dist
 *.sw?
 dist.*
 dist
+
+# 微信小程序产物(复制到根目录用于导入开发者工具,不提交)
+app.js
+app.json
+app.wxss
+project.config.json
+pages/
+*.zip

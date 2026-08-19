@@ -18,38 +18,43 @@
     {
       "path": "pages/review/review",
       "style": {
-        "navigationBarTitleText": "复习"
+        "navigationBarTitleText": "复习",
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/quiz/quiz",
       "style": {
-        "navigationBarTitleText": "自测"
+        "navigationBarTitleText": "自测",
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/progress/progress",
       "style": {
-        "navigationBarTitleText": "学习进度"
+        "navigationBarTitleText": "学习进度",
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/search/search",
       "style": {
-        "navigationBarTitleText": "搜索"
+        "navigationBarTitleText": "词库",
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/topic/topic",
       "style": {
-        "navigationBarTitleText": "主题词表"
+        "navigationBarTitleText": "主题词表",
+        "navigationStyle": "custom"
       }
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "AI 英语卡",
-    "navigationBarBackgroundColor": "#0f1420",
-    "backgroundColor": "#0f1420"
+    "navigationBarBackgroundColor": "#06080e",
+    "backgroundColor": "#06080e"
   }
 }

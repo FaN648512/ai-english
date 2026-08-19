@@ -1,70 +1,92 @@
 <template>
-  <view class="page-wrap review-page">
-    <!-- 进行中 -->
-    <block v-if="!finished">
-      <!-- 进度条 -->
-      <view class="review-head">
-        <view class="review-progress-text">
-          {{ currentIndex + 1 }} / {{ queue.length }}
-        </view>
-        <view class="review-progress-bar">
-          <view
-            class="review-progress-inner"
-            :style="{ width: progressPercent + '%' }"
-          ></view>
-        </view>
-      </view>
+  <view class="page page-anim">
+    <NavBar title="复习" en="REVIEW" />
 
-      <!-- 闪卡 -->
-      <view class="card flash-card" @tap="flip">
-        <WordCard :word="currentWord" :mode="flipped ? 'back' : 'front'" />
-      </view>
-
-      <!-- 评分按钮(翻到背面后显示) -->
-      <view v-if="flipped" class="rate-row">
-        <button class="rate-btn rate-again" @tap="rate('again')">没记住</button>
-        <button class="rate-btn rate-hard" @tap="rate('hard')">困难</button>
-        <button class="rate-btn rate-good" @tap="rate('good')">良好</button>
-        <button class="rate-btn rate-easy" @tap="rate('easy')">简单</button>
-      </view>
-      <view v-else class="flip-hint">👆 点击卡片查看释义</view>
-    </block>
-
-    <!-- 结束态 -->
-    <view v-else class="done-wrap">
-      <view class="card done-card">
-        <view class="done-icon">🎉</view>
-        <view class="done-title">本轮完成</view>
-        <view class="done-stats">
-          <view class="done-stat">
-            <view class="done-num">{{ queue.length }}</view>
-            <view class="done-label">复习</view>
+    <view class="page-wrap review-page">
+      <!-- 进行中 -->
+      <block v-if="!finished">
+        <!-- 进度 + 会话统计 -->
+        <view class="review-head si si-1">
+          <view class="review-meta">
+            <view class="review-progress-text mono">
+              {{ currentIndex + 1 }} / {{ queue.length }}
+            </view>
+            <view class="review-session mono">
+              <text class="rs-ok">✓ {{ sessionCorrect }}</text>
+              <text class="rs-bad">✗ {{ sessionAgain }}</text>
+            </view>
           </view>
-          <view class="done-stat">
-            <view class="done-num done-correct">{{ sessionCorrect }}</view>
-            <view class="done-label">答对</view>
-          </view>
-          <view class="done-stat">
-            <view class="done-num done-again">{{ sessionAgain }}</view>
-            <view class="done-label">遗忘</view>
+          <view class="review-progress-bar">
+            <view
+              class="review-progress-inner"
+              :style="{ width: progressPercent + '%' }"
+            ></view>
           </view>
         </view>
-        <view class="done-actions">
-          <button class="btn-primary done-btn" @tap="restart">再来一轮</button>
-          <button class="done-btn-ghost" @tap="goHome">返回首页</button>
+
+        <!-- 闪卡 -->
+        <view class="card flash-card" hover-class="press" @tap="flip">
+          <WordCard
+            :key="currentWord.id"
+            :word="currentWord"
+            :mode="flipped ? 'back' : 'front'"
+          />
+        </view>
+
+        <!-- 评分按钮(翻到背面后显示) -->
+        <view v-if="flipped" class="rate-row">
+          <button class="rate-btn rate-again si si-1" @tap="rate('again')">
+            没记住
+          </button>
+          <button class="rate-btn rate-hard si si-2" @tap="rate('hard')">
+            困难
+          </button>
+          <button class="rate-btn rate-good si si-3" @tap="rate('good')">
+            良好
+          </button>
+          <button class="rate-btn rate-easy si si-4" @tap="rate('easy')">
+            简单
+          </button>
+        </view>
+        <view v-else class="flip-hint">点击卡片查看释义</view>
+      </block>
+
+      <!-- 结束态 -->
+      <view v-else class="done-wrap">
+        <view class="card done-card pi">
+          <view class="done-icon">●</view>
+          <view class="done-title mono">{{ queue.length }} DONE</view>
+          <view class="done-stats">
+            <view class="done-stat">
+              <view class="done-num mono">{{ queue.length }}</view>
+              <view class="done-label">复习</view>
+            </view>
+            <view class="done-stat">
+              <view class="done-num done-correct mono">{{ sessionCorrect }}</view>
+              <view class="done-label">答对</view>
+            </view>
+            <view class="done-stat">
+              <view class="done-num done-again mono">{{ sessionAgain }}</view>
+              <view class="done-label">遗忘</view>
+            </view>
+          </view>
+          <view class="done-actions">
+            <button class="btn-primary done-btn" @tap="restart">再来一轮</button>
+            <button class="done-btn-ghost" @tap="goHome">返回首页</button>
+          </view>
         </view>
       </view>
-    </view>
 
-    <!-- 空队列:今日无待复习 -->
-    <view v-if="!loading && !finished && queue.length === 0" class="done-wrap">
-      <view class="card done-card">
-        <view class="done-icon">🌱</view>
-        <view class="done-title">今日待复习已清空</view>
-        <view class="done-sub">可以学点新词,或者去自测巩固一下</view>
-        <view class="done-actions">
-          <button class="btn-primary done-btn" @tap="goBrowse">浏览词库</button>
-          <button class="done-btn-ghost" @tap="goQuiz">去自测</button>
+      <!-- 空队列:今日无待复习 -->
+      <view v-if="!loading && !finished && queue.length === 0" class="done-wrap">
+        <view class="card done-card pi">
+          <view class="done-icon">○</view>
+          <view class="done-title mono">ALL CLEAR</view>
+          <view class="done-sub">今日待复习已清空 · 学点新词或自测巩固</view>
+          <view class="done-actions">
+            <button class="btn-primary done-btn" @tap="goBrowse">浏览词库</button>
+            <button class="done-btn-ghost" @tap="goQuiz">去自测</button>
+          </view>
         </view>
       </view>
     </view>
@@ -72,6 +94,7 @@
 </template>
 
 <script>
+import NavBar from "@/components/NavBar.vue";
 import WordCard from "@/components/WordCard.vue";
 import wordsData from "@/data/words.js";
 import {
@@ -96,7 +119,7 @@ function yesterdayStr() {
 }
 
 export default {
-  components: { WordCard },
+  components: { NavBar, WordCard },
   data() {
     return {
       loading: true,
@@ -188,7 +211,9 @@ export default {
       this.buildQueue();
     },
     goHome() {
-      uni.navigateBack();
+      const pages = getCurrentPages();
+      if (pages.length > 1) uni.navigateBack();
+      else uni.reLaunch({ url: "/pages/index/index" });
     },
     goBrowse() {
       uni.redirectTo({ url: "/pages/search/search" });
@@ -201,80 +226,112 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page {
+  min-height: 100vh;
+}
 .review-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  padding: 24rpx 28rpx 36rpx;
 }
 
 .review-head {
   margin-bottom: 24rpx;
 }
+.review-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14rpx;
+}
 .review-progress-text {
-  font-size: 26rpx;
-  color: #8b96ab;
-  text-align: center;
-  margin-bottom: 12rpx;
+  font-size: 22rpx;
+  letter-spacing: 2rpx;
+  color: #5b6472;
+}
+.review-session {
+  display: flex;
+  gap: 20rpx;
+  font-size: 22rpx;
+  letter-spacing: 1rpx;
+}
+.rs-ok {
+  color: #34d399;
+}
+.rs-bad {
+  color: #fb7085;
 }
 .review-progress-bar {
-  height: 12rpx;
-  background: #222c40;
+  height: 6rpx;
+  background: rgba(148, 163, 184, 0.12);
   border-radius: 999rpx;
   overflow: hidden;
 }
 .review-progress-inner {
   height: 100%;
-  background: linear-gradient(90deg, #35c4f0, #5b8cff);
+  background: #3ce0ff;
+  box-shadow: 0 0 12rpx rgba(60, 224, 255, 0.6);
   border-radius: 999rpx;
   transition: width 0.3s;
 }
 
 .flash-card {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 640rpx;
+  min-height: 540rpx;
+  margin-top: 24rpx;
+  /* 让卡片边框只保留内层 WordCard 一层,去掉外层 .card 的边框/背景 */
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .flip-hint {
   text-align: center;
-  color: #5a6478;
-  font-size: 24rpx;
-  padding: 20rpx 0;
+  color: #3a4254;
+  font-size: 23rpx;
+  margin-top: 44rpx;
+  padding: 6rpx 0 20rpx;
 }
 
+/* 四档评分 */
 .rate-row {
   display: flex;
   gap: 14rpx;
-  margin-top: 24rpx;
+  margin-top: 44rpx;
 }
 .rate-btn {
   flex: 1;
-  border-radius: 16rpx;
-  font-size: 26rpx;
-  color: #fff;
+  border-radius: 12rpx;
+  font-size: 25rpx;
   padding: 18rpx 0;
-  border: none;
+  border: 1rpx solid transparent;
+  background: rgba(148, 163, 184, 0.06);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.rate-btn:active {
+  transform: scale(0.96);
 }
 .rate-btn::after {
   border: none;
 }
 .rate-again {
-  background: #4a3540;
-  color: #ff8f9d;
+  color: #fb7085;
+  border-color: rgba(251, 112, 133, 0.35);
 }
 .rate-hard {
-  background: #3a404d;
-  color: #f0ad4e;
+  color: #f5b04c;
+  border-color: rgba(245, 176, 76, 0.35);
 }
 .rate-good {
-  background: rgba(53, 196, 240, 0.2);
-  color: #35c4f0;
+  color: #3ce0ff;
+  border-color: rgba(60, 224, 255, 0.35);
 }
 .rate-easy {
-  background: rgba(76, 217, 100, 0.2);
-  color: #4cd964;
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.35);
 }
 
 /* 结束态 */
@@ -282,7 +339,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 70vh;
 }
 .done-card {
   width: 100%;
@@ -290,13 +347,16 @@ export default {
   padding: 60rpx 40rpx;
 }
 .done-icon {
-  font-size: 96rpx;
-  margin-bottom: 20rpx;
+  font-size: 40rpx;
+  color: #3ce0ff;
+  margin-bottom: 24rpx;
+  text-shadow: 0 0 20rpx rgba(60, 224, 255, 0.7);
 }
 .done-title {
   font-size: 40rpx;
   font-weight: 700;
   color: #fff;
+  letter-spacing: 2rpx;
   margin-bottom: 12rpx;
 }
 .done-sub {
@@ -307,7 +367,7 @@ export default {
 .done-stats {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 40rpx;
+  margin-bottom: 44rpx;
 }
 .done-stat {
   display: flex;
@@ -317,13 +377,13 @@ export default {
 .done-num {
   font-size: 56rpx;
   font-weight: 800;
-  color: #35c4f0;
+  color: #3ce0ff;
 }
 .done-correct {
-  color: #4cd964;
+  color: #34d399;
 }
 .done-again {
-  color: #ff8f9d;
+  color: #fb7085;
 }
 .done-label {
   font-size: 24rpx;
@@ -340,7 +400,7 @@ export default {
 }
 .done-btn-ghost {
   background: transparent;
-  color: #8b96ab;
+  color: #6b7688;
   font-size: 28rpx;
   border: none;
   padding: 16rpx 0;

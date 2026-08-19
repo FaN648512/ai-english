@@ -1,45 +1,49 @@
 /* uView Plus 主题变量 */
 @import 'uview-plus/theme.scss';
 
-/* ===== 品牌主题色 ===== */
-$brand-primary: #35c4f0;
-$brand-secondary: #5b8cff;
-$brand-bg: #0f1420;
-$brand-card: #1a2233;
-$brand-text: #e8ecf4;
+/* ===== 设计系统:极客感 AI 学习工具 =====
+   近黑冷静画布 + 单一电光青强调色 + 等宽英文(code 感) */
+$brand-primary: #3ce0ff;      /* 电光青 */
+$brand-glow: rgba(60, 224, 255, 0.35);
+$brand-bg: #06080e;           /* 近黑 */
+$brand-bg-2: #0a0f1a;         /* 深蓝黑 */
+$brand-surface: #0f1420;      /* 表面 */
+$brand-line: rgba(148, 163, 184, 0.14);   /* 极细分隔线 */
+$brand-text: #e8eef7;
 $brand-text-sub: #8b96ab;
+$brand-text-dim: #4a5568;
 
 /* 行为相关颜色 */
 $uni-color-primary: $brand-primary;
-$uni-color-success: #4cd964;
-$uni-color-warning: #f0ad4e;
-$uni-color-error: #ff6b6b;
+$uni-color-success: #34d399;
+$uni-color-warning: #f5b04c;
+$uni-color-error: #fb7085;
 
 /* 文字基本颜色 */
 $uni-text-color: $brand-text;
 $uni-text-color-inverse: #fff;
 $uni-text-color-grey: $brand-text-sub;
-$uni-text-color-placeholder: #5a6478;
-$uni-text-color-disable: #3a4254;
+$uni-text-color-placeholder: $brand-text-dim;
+$uni-text-color-disable: #2a3242;
 
 /* 背景颜色 */
 $uni-bg-color: $brand-bg;
-$uni-bg-color-grey: #161d2c;
-$uni-bg-color-hover: #202a40;
-$uni-bg-color-mask: rgba(0, 0, 0, 0.5);
+$uni-bg-color-grey: $brand-surface;
+$uni-bg-color-hover: #161d2c;
+$uni-bg-color-mask: rgba(0, 0, 0, 0.6);
 
 /* 边框颜色 */
-$uni-border-color: #2a3450;
+$uni-border-color: $brand-line;
 
 /* 尺寸变量 */
 $uni-font-size-sm: 12px;
 $uni-font-size-base: 14px;
 $uni-font-size-lg: 16px;
 
-/* 圆角 */
+/* 圆角(克制,去敦厚感) */
 $uni-border-radius-sm: 4px;
 $uni-border-radius-base: 8px;
-$uni-border-radius-lg: 16px;
+$uni-border-radius-lg: 14px;
 $uni-border-radius-circle: 50%;
 
 /* 间距 */
