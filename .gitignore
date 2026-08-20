@@ -29,3 +29,7 @@ app.wxss
 project.config.json
 pages/
 *.zip
+
+# 发行版打包产物(上传到 GitHub Releases,不提交)
+release/
+build-*.log

@@ -1,6 +1,6 @@
 {
   "name": "ai-english-miniapp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "学AI必备英语 - 闪卡式 AI 术语学习小程序 (uni-app Vue3)",
   "scripts": {
     "dev:h5": "uni",
