@@ -183,11 +183,3 @@ python scripts/generate_words.py validate
 3. 提交改动：`git commit -m "feat: xxx"`
 4. 推送到分支：`git push origin feature/xxx`
 5. 提交 Pull Request
-
-## 📄 许可证
-
-本项目采用 [MIT](LICENSE) 开源协议。
-
-## 🙏 致谢
-
-感谢 [uni-app](https://uniapp.dcloud.net.cn/)、[Vue 3](https://vuejs.org/)、[uView Plus](https://uiadmin.net/uview-plus/) 以及所有贡献者。
