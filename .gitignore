@@ -33,3 +33,6 @@ pages/
 # 发行版打包产物(上传到 GitHub Releases,不提交)
 release/
 build-*.log
+
+# GitHub Token 文件(切勿提交)
+token.txt

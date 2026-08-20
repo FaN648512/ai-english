@@ -19,6 +19,10 @@ function getToken() {
     const m = url.match(/https:\/\/([^@]+)@github\.com/);
     if (m && m[1].includes(":")) return m[1].split(":")[1];
   } catch {}
+  try {
+    const t = readFileSync("token.txt", "utf8").trim();
+    if (t) return t;
+  } catch {}
   return null;
 }
 
