@@ -24,8 +24,9 @@
           </view>
         </view>
 
-        <!-- 闪卡 -->
-        <view class="card flash-card" hover-class="press" @tap="flip">
+        <!-- 闪卡:无 hover-class — 任何按压 transform/opacity 反馈都会与翻面合成层冲突,
+           翻面交叉溶解本身就是点击反馈 -->
+        <view class="card flash-card" @tap="flip">
           <WordCard
             :key="currentWord.id"
             :word="currentWord"
@@ -33,22 +34,24 @@
           />
         </view>
 
-        <!-- 评分按钮(翻到背面后显示) -->
-        <view v-if="flipped" class="rate-row">
-          <button class="rate-btn rate-again si si-1" @tap="rate('again')">
-            没记住
-          </button>
-          <button class="rate-btn rate-hard si si-2" @tap="rate('hard')">
-            困难
-          </button>
-          <button class="rate-btn rate-good si si-3" @tap="rate('good')">
-            良好
-          </button>
-          <button class="rate-btn rate-easy si si-4" @tap="rate('easy')">
-            简单
-          </button>
+        <!-- 评分区:flip-hint 与 rate-row 常驻叠层,仅切 opacity/visibility,零节点插入零重排 -->
+        <view class="rate-zone" :class="flipped ? 'show-rate' : 'show-hint'">
+          <view class="flash-hint">点击卡片查看释义</view>
+          <view class="rate-row">
+            <button class="rate-btn rate-again si si-1" @tap="rate('again')">
+              没记住
+            </button>
+            <button class="rate-btn rate-hard si si-2" @tap="rate('hard')">
+              困难
+            </button>
+            <button class="rate-btn rate-good si si-3" @tap="rate('good')">
+              良好
+            </button>
+            <button class="rate-btn rate-easy si si-4" @tap="rate('easy')">
+              简单
+            </button>
+          </view>
         </view>
-        <view v-else class="flip-hint">点击卡片查看释义</view>
       </block>
 
       <!-- 结束态 -->
@@ -288,19 +291,36 @@ export default {
   padding: 0;
 }
 
-.flip-hint {
+/* 评分区:flip-hint 与 rate-row 同格叠层常驻,显隐只切 opacity(不用 visibility,
+   避免 hidden↔visible 触发层重栅格化造成的起止"模糊→清晰"跳变) */
+.rate-zone {
+  position: relative;
+  display: grid;
+  margin-top: 44rpx;
+}
+.flash-hint {
+  grid-area: 1 / 1;
   text-align: center;
   color: #3a4254;
   font-size: 23rpx;
-  margin-top: 44rpx;
-  padding: 6rpx 0 20rpx;
+  padding: 14rpx 0 20rpx;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 }
-
-/* 四档评分 */
 .rate-row {
+  grid-area: 1 / 1;
   display: flex;
   gap: 14rpx;
-  margin-top: 44rpx;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.show-rate .rate-row {
+  opacity: 1;
+  pointer-events: auto;
+}
+.show-rate .flash-hint {
+  opacity: 0;
 }
 .rate-btn {
   flex: 1;

@@ -1,5 +1,12 @@
 <template>
-  <view class="wc" :class="{ 'wc-flash': mode !== 'detail' }">
+  <view
+    class="wc"
+    :class="{
+      'wc-flash': mode !== 'detail',
+      'show-back': mode === 'back',
+      'show-front': mode === 'front',
+    }"
+  >
     <!-- ===== 详情模式(搜索/列表用,单面) ===== -->
     <view v-if="mode === 'detail'" class="wc-detail">
       <view class="wc-detail-head">
@@ -29,45 +36,43 @@
       </view>
     </view>
 
-    <!-- ===== 闪卡模式:单面板,front/back 二选一,切换时淡入上移(非翻转) =====
-         同屏只渲染一面,无叠层、无双栏类名冲突;容器 min-height 恒定,下方零位移 -->
-    <view v-else class="wc-body">
-      <block v-if="mode === 'back'">
-        <view class="wc-face wc-back wc-anim" :key="'back'">
-          <view class="wc-inner">
-            <view class="wc-word-sm mono">{{ word.word }}</view>
-            <view class="wc-dual">
-              <view class="wc-panel wc-origin">
-                <view class="wc-panel-kicker mono">ORIGIN</view>
-                <view class="wc-panel-body">{{ word.originMeaning }}</view>
-              </view>
-              <view class="wc-panel wc-ai">
-                <view class="wc-panel-kicker mono">AI CONTEXT</view>
-                <view class="wc-panel-body">{{ word.aiMeaning }}</view>
-              </view>
+    <!-- ===== 闪卡模式:双面常驻叠层 + transition 过渡(非翻转,无节点销毁重建) =====
+         关键:两面永久渲染于 grid 同格,翻面仅切换 show-front/show-back 类,
+         依赖 opacity/transform/visibility 的 CSS transition 双向过渡;
+         全程零 DOM 挂载、零布局重排,仅走合成器,头尾无重绘卡顿 -->
+    <view v-else class="wc-faces">
+      <view class="wc-face wc-front">
+        <view class="wc-inner">
+          <view class="wc-tags mono">{{ topicEn }} · L{{ word.level }}</view>
+          <view class="wc-pos">{{ word.pos }}</view>
+          <view class="wc-word mono">{{ word.word }}</view>
+          <view class="wc-phonetic mono">{{ word.phonetic }}</view>
+          <view class="wc-hint">点击查看释义</view>
+        </view>
+      </view>
+      <view class="wc-face wc-back">
+        <view class="wc-inner">
+          <view class="wc-word-sm mono">{{ word.word }}</view>
+          <view class="wc-dual">
+            <view class="wc-panel wc-origin">
+              <view class="wc-panel-kicker mono">ORIGIN</view>
+              <view class="wc-panel-body">{{ word.originMeaning }}</view>
             </view>
-            <view class="wc-example">
-              <view class="wc-example-en mono">{{ word.example }}</view>
-              <view class="wc-example-zh">{{ word.exampleZh }}</view>
-            </view>
-            <view class="wc-tip">
-              <text class="wc-tip-label">MEMO</text>
-              <text class="wc-tip-text">{{ word.memoryTip }}</text>
+            <view class="wc-panel wc-ai">
+              <view class="wc-panel-kicker mono">AI CONTEXT</view>
+              <view class="wc-panel-body">{{ word.aiMeaning }}</view>
             </view>
           </view>
-        </view>
-      </block>
-      <block v-else>
-        <view class="wc-face wc-front wc-anim" :key="'front'">
-          <view class="wc-inner">
-            <view class="wc-tags mono">{{ topicEn }} · L{{ word.level }}</view>
-            <view class="wc-pos">{{ word.pos }}</view>
-            <view class="wc-word mono">{{ word.word }}</view>
-            <view class="wc-phonetic mono">{{ word.phonetic }}</view>
-            <view class="wc-hint">点击查看释义</view>
+          <view class="wc-example">
+            <view class="wc-example-en mono">{{ word.example }}</view>
+            <view class="wc-example-zh">{{ word.exampleZh }}</view>
+          </view>
+          <view class="wc-tip">
+            <text class="wc-tip-label">MEMO</text>
+            <text class="wc-tip-text">{{ word.memoryTip }}</text>
           </view>
         </view>
-      </block>
+      </view>
     </view>
   </view>
 </template>
@@ -99,16 +104,6 @@ export default {
     opacity: 1;
   }
 }
-@keyframes wcSwap {
-  from {
-    opacity: 0;
-    transform: translateY(16rpx);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .wc {
   width: 100%;
@@ -117,9 +112,11 @@ export default {
   animation: wcFadeIn 0.24s ease both;
 }
 
-/* 闪卡:单面板;min-height 恒定保证翻面/切词时下方内容零位移 */
-.wc-body {
-  width: 100%;
+/* 闪卡:双面常驻叠层;过渡仅走 opacity/transform/visibility(合成器),零渲染帧掉落。
+   容器高度由 .wc-inner min-height 撑起,单面超长时 grid 取最高面,下方零位移 */
+.wc-faces {
+  position: relative;
+  display: grid;
   min-height: 540rpx;
   border-radius: 26rpx;
   background: #0b101b;
@@ -127,8 +124,16 @@ export default {
   box-shadow: 0 16rpx 44rpx rgba(0, 0, 0, 0.25);
 }
 .wc-face {
+  grid-area: 1 / 1;
   width: 100%;
   display: flex;
+  opacity: 0;
+  /* 纯 alpha 交叉淡入:transform 恒为 translateZ(0)、不参与动画。
+     两面纹理仅栅格化一次且层常驻,翻面只做合成器透明度混合 —
+     无重栅格化、无文本抗锯齿模式切换,从构造上杜绝起止"模糊→清晰"跳变 */
+  transform: translateZ(0);
+  pointer-events: none;
+  transition: opacity 0.32s ease;
 }
 .wc-front {
   align-items: center;
@@ -137,8 +142,11 @@ export default {
 .wc-back {
   align-items: flex-start;
 }
-.wc-anim {
-  animation: wcSwap 0.32s ease both;
+.show-front .wc-front,
+.show-back .wc-back {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
 }
 
 .wc-inner {
