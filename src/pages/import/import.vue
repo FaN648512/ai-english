@@ -190,7 +190,7 @@
             </view>
           </view>
           <view
-            class="btn-primary imp-btn"
+            class="btn-primary imp-btn imp-btn-review"
             :class="{ 'btn-disabled': !dueCount }"
             @tap="reviewAll"
             >开始复习</view
@@ -271,9 +271,64 @@
         <view class="mask-close" @tap="detailWord = null">✕</view>
         <view class="mask-scroll">
           <WordCard :word="detailWord" mode="detail" />
-          <button class="del-btn" @tap="confirmDelete(detailWord)"
-            >删除该词</button
-          >
+          <view class="detail-btns">
+            <button class="edit-btn mono" @tap="openEdit(detailWord)"
+              >EDIT · 编辑该词</button
+            >
+            <button class="del-btn" @tap="confirmDelete(detailWord)"
+              >删除该词</button
+            >
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 编辑弹层 -->
+    <view v-if="editMode && editWord" class="mask" @tap="closeEdit">
+      <view class="mask-card" @tap.stop>
+        <view class="mask-close" @tap="closeEdit">✕</view>
+        <view class="mask-scroll">
+          <view class="section-kicker">EDIT · 编辑词条</view>
+          <view class="edit-field">
+            <text class="edit-label mono">WORD</text>
+            <input class="edit-input mono" v-model="editForm.word" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label mono">PHON</text>
+            <input class="edit-input mono" v-model="editForm.phonetic" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label mono">POS</text>
+            <input class="edit-input mono" v-model="editForm.pos" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label">主义</text>
+            <input class="edit-input" v-model="editForm.originMeaning" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label">副义</text>
+            <input class="edit-input" v-model="editForm.aiMeaning" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label mono">EX</text>
+            <input class="edit-input mono" v-model="editForm.example" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label">例句译</text>
+            <input class="edit-input" v-model="editForm.exampleZh" />
+          </view>
+          <view class="edit-field">
+            <text class="edit-label">MEMO</text>
+            <textarea
+              class="edit-input edit-area"
+              v-model="editForm.memoryTip"
+              :maxlength="-1"
+            />
+          </view>
+          <view class="edit-actions">
+            <view class="ghost-btn" @tap="closeEdit">取消</view>
+            <view class="btn-primary edit-save" @tap="saveEdit">保存</view>
+          </view>
         </view>
       </view>
     </view>
@@ -291,6 +346,7 @@ import {
   getUserDueCount,
   removeUserWords,
   translateText,
+  updateUserWord,
 } from "@/utils/userWords.js";
 
 export default {
@@ -310,6 +366,9 @@ export default {
       // 词库
       libKeyword: "",
       detailWord: null,
+      editMode: false,
+      editWord: null,
+      editForm: {},
       // 快速翻译
       qtInput: "",
       qtLoading: false,
@@ -479,6 +538,47 @@ export default {
           uni.showToast({ title: "已删除", icon: "none" });
         },
       });
+    },
+
+    /* ---- 编辑词条 ---- */
+    openEdit(u) {
+      this.editWord = u;
+      this.editForm = {
+        word: u.word,
+        phonetic: u.phonetic || "",
+        pos: u.pos || "",
+        originMeaning: u.originMeaning || "",
+        aiMeaning: u.aiMeaning || "",
+        example: u.example || "",
+        exampleZh: u.exampleZh || "",
+        memoryTip: u.memoryTip || "",
+      };
+      this.editMode = true;
+    },
+    closeEdit() {
+      this.editMode = false;
+      this.editWord = null;
+    },
+    saveEdit() {
+      if (!this.editWord) return;
+      if (!String(this.editForm.word || "").trim()) {
+        uni.showToast({ title: "单词不能为空", icon: "none" });
+        return;
+      }
+      updateUserWord(this.editWord.id, {
+        word: this.editForm.word,
+        phonetic: this.editForm.phonetic,
+        pos: this.editForm.pos,
+        originMeaning: this.editForm.originMeaning,
+        aiMeaning: this.editForm.aiMeaning,
+        example: this.editForm.example,
+        exampleZh: this.editForm.exampleZh,
+        memoryTip: this.editForm.memoryTip,
+      });
+      this.detailWord = null;
+      this.closeEdit();
+      this.refreshGroups();
+      uni.showToast({ title: "已保存", icon: "none" });
     },
 
     /* ---- 快速翻译 ---- */
@@ -770,6 +870,7 @@ export default {
 
 /* 文字导入 */
 .imp-textarea {
+  box-sizing: border-box;
   width: 100%;
   min-height: 220rpx;
   background: #0a0e16;
@@ -790,6 +891,13 @@ export default {
 }
 .imp-btn {
   margin: 0;
+}
+/* 汇总页"开始复习":缩小约 20% */
+.imp-btn-review {
+  font-size: 22rpx;
+  padding: 13rpx 0;
+  width: 78%;
+  margin: 0 auto;
 }
 
 /* 确认列表 */
@@ -1077,15 +1185,74 @@ export default {
   z-index: 1;
 }
 .del-btn {
-  margin: 28rpx 0 0;
+  margin: 0;
   background: rgba(251, 112, 133, 0.08);
   color: #fb7085;
   border: 1rpx solid rgba(251, 112, 133, 0.35);
   border-radius: 14rpx;
-  font-size: 28rpx;
-  padding: 18rpx 0;
+  font-size: 26rpx;
+  padding: 16rpx 0;
 }
+.edit-btn {
+  margin: 0;
+  background: rgba(60, 224, 255, 0.08);
+  color: #3ce0ff;
+  border: 1rpx solid rgba(60, 224, 255, 0.35);
+  border-radius: 14rpx;
+  font-size: 26rpx;
+  padding: 16rpx 0;
+}
+.detail-btns {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 28rpx;
+}
+.detail-btns button {
+  flex: 1;
+}
+.edit-btn::after,
 .del-btn::after {
   border: none;
+}
+
+/* 编辑表单 */
+.edit-field {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  margin-bottom: 20rpx;
+}
+.edit-label {
+  width: 130rpx;
+  flex-shrink: 0;
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+  color: #5b6472;
+}
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  background: #0a0e16;
+  border: 1rpx solid rgba(148, 163, 184, 0.14);
+  border-radius: 10rpx;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+  color: #ffffff;
+}
+.edit-area {
+  min-height: 120rpx;
+}
+.edit-actions {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 28rpx;
+}
+.edit-actions .ghost-btn {
+  flex: 1;
+  text-align: center;
+}
+.edit-save {
+  flex: 1;
+  margin: 0;
 }
 </style>

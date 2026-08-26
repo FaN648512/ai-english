@@ -255,10 +255,10 @@ export default {
   margin-top: 12rpx;
 }
 .today-btn {
-  margin-top: 32rpx;
-  width: 92%;
-  font-size: 27rpx;
-  padding: 17rpx 0;
+  margin: 32rpx auto 0;
+  width: 78%;
+  font-size: 22rpx;
+  padding: 14rpx 0;
 }
 .btn-disabled {
   opacity: 0.35;

@@ -348,7 +348,7 @@ function ensureSlashes(p) {
 }
 
 /** 合并四方来源:用户释义 > 本地词库 > 在线词典 > 翻译兜底 */
-function buildEnriched(word, meaning, local, online, fallback) {
+function buildEnriched(word, meaning, local, online, fallback, exZhTrans) {
   const phonetic = local
     ? local.phonetic
     : online
@@ -368,8 +368,18 @@ function buildEnriched(word, meaning, local, online, fallback) {
       ? online.defs.join("; ")
       : "";
   const example = local ? local.example : online ? online.example || "" : "";
-  const exampleZh = local ? local.exampleZh : "";
-  const memoryTip = local ? local.memoryTip : "";
+  // 例句中文:本地词库固有;在线词用翻译例句生成
+  const exampleZh = local
+    ? local.exampleZh
+    : online
+      ? exZhTrans || ""
+      : "";
+  // 记忆提示:本地词库固有;在线/翻译兜底词基于主释义生成一句助记
+  const memoryTip = local
+    ? local.memoryTip
+    : originMeaning
+      ? "助记 · " + originMeaning
+      : "";
   const source = local
     ? "local"
     : online
@@ -381,26 +391,56 @@ function buildEnriched(word, meaning, local, online, fallback) {
 }
 
 /**
- * 逐词富化(本地即时,在线串行防限流);就地写入 items 并回调进度
+ * 逐词富化(分批并行,批次内并发防限流);就地写入 items 并回调进度
  * 查询链:本地词库 → 在线词典×3 → 翻译兜底(Google→MyMemory)
+ * 在线词额外翻译例句为中文,并生成 memo 助记
  * 全部失败时 source=none 且无主释义,调用方应阻止该词入库
  */
 export async function enrichItems(items, onProgress) {
-  for (let i = 0; i < items.length; i++) {
-    const it = items[i];
+  const CONCURRENCY = 6;
+  let done = 0;
+  const process = async (it) => {
     const local = localLookup(it.word);
     let online = null;
     let fallback = null;
+    let exZh = null;
     if (!local) {
       online = await fetchOnlineWord(it.word);
-      if (!online) fallback = await fetchTranslateFallback(it.word);
+      if (online) {
+        // 在线命中:翻译英文例句为中文,补足富字段
+        if (online.example) exZh = await fetchGoogleTranslate(online.example, "en", "zh-CN");
+      } else {
+        fallback = await fetchTranslateFallback(it.word);
+      }
     }
     Object.assign(
       it,
-      buildEnriched(it.word, it.meaning, local, online, fallback)
+      buildEnriched(it.word, it.meaning, local, online, fallback, exZh)
     );
     if (!it.meaning && it.originMeaning) it.meaning = it.originMeaning;
-    if (onProgress) onProgress(i + 1);
+    done += 1;
+    if (onProgress) onProgress(done);
+  };
+  for (let i = 0; i < items.length; i += CONCURRENCY) {
+    await Promise.all(items.slice(i, i + CONCURRENCY).map(process));
   }
   return items;
+}
+
+/** 编辑已入库的用户词(patch 只更新给定字段);返回是否成功 */
+export function updateUserWord(id, patch) {
+  const data = read();
+  const u = data.words.find((x) => x.id === id);
+  if (!u) return false;
+  const p = patch || {};
+  if (p.word !== undefined) u.word = String(p.word).trim();
+  if (p.phonetic !== undefined) u.phonetic = p.phonetic || "";
+  if (p.pos !== undefined) u.pos = p.pos || "";
+  if (p.originMeaning !== undefined) u.originMeaning = p.originMeaning || "";
+  if (p.aiMeaning !== undefined) u.aiMeaning = p.aiMeaning || "";
+  if (p.example !== undefined) u.example = p.example || "";
+  if (p.exampleZh !== undefined) u.exampleZh = p.exampleZh || "";
+  if (p.memoryTip !== undefined) u.memoryTip = p.memoryTip || "";
+  write(data);
+  return true;
 }
