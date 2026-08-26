@@ -17,6 +17,12 @@
           @tap="switchGroups"
           >GROUPS · 词组</view
         >
+        <view
+          class="imp-tab"
+          :class="{ active: tab === 'library' }"
+          @tap="switchLibrary"
+          >LIBRARY · 词库</view
+        >
       </view>
 
       <!-- ===== 导入 tab ===== -->
@@ -108,14 +114,11 @@
                     : p.aiMeaning
                 }}</text
               >
-              <text class="row-sub-src mono">{{
-                p.source === "local"
-                  ? "词库"
-                  : p.source === "online"
-                    ? "在线"
-                    : ""
-              }}</text>
+              <text class="row-sub-src mono">{{ sourceLabel(p) }}</text>
             </view>
+            <view v-if="isFailed(p)" class="row-fail mono"
+              >未查到释义 · 可手动填写释义后加入</view
+            >
           </view>
           <view class="imp-actions">
             <view class="ghost-btn" @tap="resetPending">清空重填</view>
@@ -127,7 +130,7 @@
       </block>
 
       <!-- ===== 词组 tab ===== -->
-      <block v-else>
+      <block v-else-if="tab === 'groups'">
         <!-- 汇总 -->
         <view class="card si si-1">
           <view class="section-kicker">SUMMARY</view>
@@ -179,22 +182,77 @@
           >
         </view>
       </block>
+
+      <!-- ===== 词库 tab ===== -->
+      <block v-else-if="tab === 'library'">
+        <!-- 搜索框 -->
+        <view class="search-bar si si-1">
+          <text class="search-icon">⌕</text>
+          <input
+            class="search-input mono"
+            v-model="libKeyword"
+            placeholder="搜索单词 / 释义"
+            placeholder-class="search-placeholder"
+          />
+          <text v-if="libKeyword" class="search-clear" @tap="libKeyword = ''"
+            >✕</text
+          >
+        </view>
+
+        <view class="result-count mono">
+          {{ libFiltered.length }} WORDS
+        </view>
+        <view
+          v-for="u in libFiltered"
+          :key="u.id"
+          class="result-row"
+          hover-class="press"
+          @tap="detailWord = u"
+        >
+          <view class="result-main">
+            <view class="result-word mono">
+              {{ u.word }}
+              <text class="result-pos mono">{{ u.pos }}</text>
+            </view>
+            <view class="result-ai">{{ u.originMeaning }}</view>
+          </view>
+          <text class="result-arrow">›</text>
+        </view>
+        <view v-if="libFiltered.length === 0" class="empty">
+          {{ libKeyword ? "没有匹配的词,换个关键词试试" : "词库还是空的,去「导入」添加吧" }}
+        </view>
+      </block>
+    </view>
+
+    <!-- 详情弹层 -->
+    <view v-if="detailWord" class="mask" @tap="detailWord = null">
+      <view class="mask-card" @tap.stop>
+        <view class="mask-close" @tap="detailWord = null">✕</view>
+        <view class="mask-scroll">
+          <WordCard :word="detailWord" mode="detail" />
+          <button class="del-btn" @tap="confirmDelete(detailWord)"
+            >删除该词</button
+          >
+        </view>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import WordCard from "@/components/WordCard.vue";
 import {
   parseWordText,
   enrichItems,
   addUserWords,
   getUserGroups,
   getUserDueCount,
+  removeUserWords,
 } from "@/utils/userWords.js";
 
 export default {
-  components: { NavBar },
+  components: { NavBar, WordCard },
   data() {
     return {
       tab: "import",
@@ -207,6 +265,9 @@ export default {
       // 词组
       groups: [],
       dueCount: 0,
+      // 词库
+      libKeyword: "",
+      detailWord: null,
       // OCR(H5)
       ocrState: "idle",
       ocrLabel: "准备中",
@@ -220,9 +281,22 @@ export default {
     learnedCount() {
       return this.groups.reduce((s, g) => s + g.learned, 0);
     },
+    libFiltered() {
+      const all = [];
+      this.groups.forEach((g) => g.words.forEach((w) => all.push(w)));
+      const kw = this.libKeyword.trim().toLowerCase();
+      if (!kw) return all;
+      const kwRaw = this.libKeyword.trim();
+      return all.filter(
+        (w) =>
+          w.word.toLowerCase().includes(kw) ||
+          (w.originMeaning || "").includes(kwRaw) ||
+          (w.aiMeaning || "").toLowerCase().includes(kw)
+      );
+    },
   },
   onLoad(options) {
-    if (options && options.tab === "groups") this.tab = "groups";
+    if (options && options.tab) this.tab = options.tab;
     this.refreshGroups();
   },
   onShow() {
@@ -236,6 +310,10 @@ export default {
     },
     switchGroups() {
       this.tab = "groups";
+      this.refreshGroups();
+    },
+    switchLibrary() {
+      this.tab = "library";
       this.refreshGroups();
     },
     groupPreview(g) {
@@ -292,21 +370,67 @@ export default {
     },
     savePending() {
       if (this.busy || this.enriching) return;
-      const valid = this.pending.filter(
-        (p) => String(p.word || "").trim() && String(p.word || "").trim().length
+      const all = this.pending.filter(
+        (p) => String(p.word || "").trim().length
       );
+      // 无释义(用户没给 + 查询全部失败)的词不允许入库
+      const valid = all.filter((p) => String(p.meaning || "").trim().length);
+      const skipped = all.length - valid.length;
       if (!valid.length) {
-        uni.showToast({ title: "没有可加入的单词", icon: "none" });
+        uni.showToast({
+          title: "全部未查到释义 · 请手动填写释义后再加入",
+          icon: "none",
+          duration: 2500,
+        });
         return;
       }
       const res = addUserWords(valid);
       let title = "已加入 " + res.added + " 词 · 共 " + res.groups + " 组";
-      if (res.skipped > 0) title += " · 跳过重复 " + res.skipped;
+      if (skipped > 0) title += " · 跳过无释义 " + skipped;
+      if (res.skipped - skipped > 0)
+        title += " · 跳过重复 " + (res.skipped - skipped);
       uni.showToast({ title, icon: "none", duration: 2500 });
-      this.pending = [];
-      this.rawText = "";
+      // 从待确认列表移除已入库的词,保留无释义的供手动补填
+      const validWords = new Set(valid.map((p) => p.word.toLowerCase()));
+      this.pending = this.pending.filter(
+        (p) => !validWords.has(String(p.word || "").trim().toLowerCase())
+      );
+      if (!this.pending.length) this.rawText = "";
       this.refreshGroups();
-      this.tab = "groups";
+      if (!this.pending.length) this.tab = "groups";
+    },
+    /** 查询来源标签 */
+    sourceLabel(p) {
+      return p.source === "local"
+        ? "词库"
+        : p.source === "online"
+          ? "在线"
+          : p.source === "fallback"
+            ? "翻译"
+            : "";
+    },
+    /** 该词查询完全失败:无用户释义且无任何查到的释义 */
+    isFailed(p) {
+      return (
+        !String(p.meaning || "").trim() &&
+        !String(p.originMeaning || "").trim() &&
+        !this.enriching
+      );
+    },
+    /** 删除词条(带确认) */
+    confirmDelete(u) {
+      uni.showModal({
+        title: "删除单词",
+        content: "确定从「我的单词」删除「" + u.word + "」吗?",
+        confirmColor: "#fb7085",
+        success: (r) => {
+          if (!r.confirm) return;
+          removeUserWords(u.id);
+          this.detailWord = null;
+          this.refreshGroups();
+          uni.showToast({ title: "已删除", icon: "none" });
+        },
+      });
     },
 
     /* ---- 拍照 OCR(仅 H5) ---- */
@@ -567,6 +691,12 @@ export default {
   color: #3a4254;
   flex-shrink: 0;
 }
+.row-fail {
+  margin: 8rpx 0 0 234rpx;
+  font-size: 20rpx;
+  letter-spacing: 1rpx;
+  color: #fb7085;
+}
 .imp-actions {
   display: flex;
   gap: 16rpx;
@@ -664,5 +794,129 @@ export default {
   font-size: 19rpx;
   color: #3a4254;
   letter-spacing: 1rpx;
+}
+
+/* ===== 词库 tab(与内置词库一致) ===== */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(14, 20, 32, 0.6);
+  border: 1rpx solid rgba(148, 163, 184, 0.14);
+  border-radius: 12rpx;
+  padding: 18rpx 28rpx;
+  margin-bottom: 24rpx;
+}
+.search-icon {
+  font-size: 34rpx;
+  color: #3ce0ff;
+  margin-right: 18rpx;
+}
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #e8eef7;
+}
+.search-placeholder {
+  color: #4a5568;
+}
+.search-clear {
+  font-size: 28rpx;
+  color: #4a5568;
+  padding: 8rpx;
+}
+.result-count {
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+  color: #5b6472;
+  margin-bottom: 12rpx;
+}
+.result-row {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 8rpx;
+  border-bottom: 1rpx solid rgba(148, 163, 184, 0.1);
+}
+.result-main {
+  flex: 1;
+}
+.result-word {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #fff;
+}
+.result-pos {
+  font-size: 20rpx;
+  color: #5b6472;
+  font-weight: 400;
+  margin-left: 12rpx;
+}
+.result-ai {
+  font-size: 24rpx;
+  color: #6b7688;
+  margin-top: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.result-arrow {
+  font-size: 40rpx;
+  color: #2a3242;
+  margin-left: 12rpx;
+}
+.empty {
+  text-align: center;
+  color: #4a5568;
+  font-size: 26rpx;
+  padding: 60rpx 0;
+}
+
+/* 详情弹层 */
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.mask-card {
+  width: 90%;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0e1420 0%, #0b1019 100%);
+  border: 1rpx solid rgba(148, 163, 184, 0.14);
+  border-radius: 20rpx;
+  padding: 40rpx 32rpx 32rpx;
+  position: relative;
+}
+.mask-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mask-close {
+  position: absolute;
+  top: 20rpx;
+  right: 24rpx;
+  font-size: 30rpx;
+  color: #5b6472;
+  z-index: 1;
+}
+.del-btn {
+  margin: 28rpx 0 0;
+  background: rgba(251, 112, 133, 0.08);
+  color: #fb7085;
+  border: 1rpx solid rgba(251, 112, 133, 0.35);
+  border-radius: 14rpx;
+  font-size: 28rpx;
+  padding: 18rpx 0;
+}
+.del-btn::after {
+  border: none;
 }
 </style>

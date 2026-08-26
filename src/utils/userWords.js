@@ -92,6 +92,21 @@ export function updateUserSrs(id, state) {
   }
 }
 
+/** 删除单词(单个或数组),删除后按剩余顺序整体重排分组;返回删除数 */
+export function removeUserWords(ids) {
+  const data = read();
+  const idSet = new Set(Array.isArray(ids) ? ids : [ids]);
+  const before = data.words.length;
+  data.words = data.words.filter((u) => !idSet.has(u.id));
+  const removed = before - data.words.length;
+  // 剩余词按现有顺序整体重切组,保证每组仍是固定 10 词
+  data.words.forEach((u, i) => {
+    u.group = Math.floor(i / GROUP_SIZE);
+  });
+  write(data);
+  return removed;
+}
+
 /**
  * 批量加入词库(已富化字段),自动按 10 词切组
  * @param {Array} items enrichItems 产物
@@ -190,44 +205,103 @@ function localLookup(word) {
   );
 }
 
-/** 在线词典(dictionaryapi.dev,免费无 Key);失败返回 null 不抛错 */
-export function fetchOnlineWord(word) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** 单次请求(fail 不抛错,resolve null) */
+function reqOnce(url) {
+  return new Promise((resolve) => {
+    uni.request({ url, timeout: 8000, success: resolve, fail: () => resolve(null) });
+  });
+}
+
+/**
+ * 在线词典(dictionaryapi.dev,免费无 Key),带重试
+ * @returns { phonetic, defs, example, pos } | null
+ */
+export async function fetchOnlineWord(word) {
   const url =
     "https://api.dictionaryapi.dev/api/v2/entries/en/" +
     encodeURIComponent(word);
-  return new Promise((resolve) => {
-    uni.request({
-      url,
-      timeout: 8000,
-      success: (res) => {
-        if (
-          res.statusCode === 200 &&
-          Array.isArray(res.data) &&
-          res.data.length
-        ) {
-          const entry = res.data[0];
-          const phonetic =
-            (entry.phonetics || []).map((p) => p.text).find((t) => !!t) ||
-            entry.phonetic ||
-            "";
-          const defs = [];
-          let example = "";
-          let pos = "";
-          (entry.meanings || []).forEach((m) => {
-            if (!pos && m.partOfSpeech) pos = m.partOfSpeech;
-            (m.definitions || []).forEach((d) => {
-              if (defs.length < 3 && d.definition) defs.push(d.definition);
-              if (!example && d.example) example = d.example;
-            });
-          });
-          resolve({ phonetic, defs, example, pos });
-        } else {
-          resolve(null);
-        }
-      },
-      fail: () => resolve(null),
-    });
-  });
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const res = await reqOnce(url);
+    if (
+      res &&
+      res.statusCode === 200 &&
+      Array.isArray(res.data) &&
+      res.data.length
+    ) {
+      const entry = res.data[0];
+      const phonetic =
+        (entry.phonetics || []).map((p) => p.text).find((t) => !!t) ||
+        entry.phonetic ||
+        "";
+      const defs = [];
+      let example = "";
+      let pos = "";
+      (entry.meanings || []).forEach((m) => {
+        if (!pos && m.partOfSpeech) pos = m.partOfSpeech;
+        (m.definitions || []).forEach((d) => {
+          if (defs.length < 3 && d.definition) defs.push(d.definition);
+          if (!example && d.example) example = d.example;
+        });
+      });
+      return { phonetic, defs, example, pos };
+    }
+    if (attempt < 2) await sleep(400);
+  }
+  return null;
+}
+
+/** Google 非官方翻译接口(免 Key,CORS 开放),返回中文译文或 null */
+async function fetchGoogleTranslate(word) {
+  const url =
+    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=" +
+    encodeURIComponent(word);
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const res = await reqOnce(url);
+    if (res && res.statusCode === 200 && Array.isArray(res.data) && Array.isArray(res.data[0])) {
+      const text = res.data[0]
+        .map((seg) => (seg && seg[0]) || "")
+        .join("")
+        .trim();
+      if (text) return text;
+    }
+    if (attempt < 1) await sleep(300);
+  }
+  return null;
+}
+
+/** MyMemory 翻译兜底(免 Key,限额宽松),返回中文译文或 null */
+async function fetchMyMemoryTranslate(word) {
+  const url =
+    "https://api.mymemory.translated.net/get?q=" +
+    encodeURIComponent(word) +
+    "&langpair=en|zh-CN";
+  const res = await reqOnce(url);
+  if (
+    res &&
+    res.statusCode === 200 &&
+    res.data &&
+    res.data.responseData &&
+    res.data.responseData.translatedText
+  ) {
+    const text = String(res.data.responseData.translatedText).trim();
+    // 接口偶发返回英文原句/错误文案,过滤掉
+    if (text && text.toUpperCase() !== word.toUpperCase()) return text;
+  }
+  return null;
+}
+
+/**
+ * 翻译兜底链:Google → MyMemory
+ * @returns { trans } | null
+ */
+async function fetchTranslateFallback(word) {
+  const google = await fetchGoogleTranslate(word);
+  if (google) return { trans: google };
+  const mymemory = await fetchMyMemoryTranslate(word);
+  if (mymemory) return { trans: mymemory };
+  return null;
 }
 
 const POS_MAP = {
@@ -245,17 +319,20 @@ function ensureSlashes(p) {
   return p.startsWith("/") ? p : "/" + p + "/";
 }
 
-/** 合并三方来源:用户释义 > 本地词库 > 在线词典 */
-function buildEnriched(word, meaning, local, online) {
+/** 合并四方来源:用户释义 > 本地词库 > 在线词典 > 翻译兜底 */
+function buildEnriched(word, meaning, local, online, fallback) {
   const phonetic = local
     ? local.phonetic
     : online
       ? ensureSlashes(online.phonetic)
       : "";
   const pos = local ? local.pos : online ? POS_MAP[online.pos] || "" : "";
-  // 主释义:用户给的优先
+  // 主释义:用户给的优先,其后词典英文定义,最后翻译兜底中文
   const originMeaning =
-    meaning || (local ? local.originMeaning : "") || (online?.defs?.[0] ?? "");
+    meaning ||
+    (local ? local.originMeaning : "") ||
+    (online?.defs?.[0] ?? "") ||
+    (fallback?.trans ?? "");
   // 副义 + memo:本地词库直接给中文富数据;否则在线英文释义兜底
   const aiMeaning = local
     ? local.aiMeaning
@@ -265,20 +342,35 @@ function buildEnriched(word, meaning, local, online) {
   const example = local ? local.example : online ? online.example || "" : "";
   const exampleZh = local ? local.exampleZh : "";
   const memoryTip = local ? local.memoryTip : "";
-  const source = local ? "local" : online ? "online" : "none";
+  const source = local
+    ? "local"
+    : online
+      ? "online"
+      : fallback
+        ? "fallback"
+        : "none";
   return { phonetic, pos, originMeaning, aiMeaning, example, exampleZh, memoryTip, source };
 }
 
 /**
  * 逐词富化(本地即时,在线串行防限流);就地写入 items 并回调进度
- * meaning 为空时用查到的主释义自动回填,用户仍可编辑
+ * 查询链:本地词库 → 在线词典×3 → 翻译兜底(Google→MyMemory)
+ * 全部失败时 source=none 且无主释义,调用方应阻止该词入库
  */
 export async function enrichItems(items, onProgress) {
   for (let i = 0; i < items.length; i++) {
     const it = items[i];
     const local = localLookup(it.word);
-    const online = local ? null : await fetchOnlineWord(it.word);
-    Object.assign(it, buildEnriched(it.word, it.meaning, local, online));
+    let online = null;
+    let fallback = null;
+    if (!local) {
+      online = await fetchOnlineWord(it.word);
+      if (!online) fallback = await fetchTranslateFallback(it.word);
+    }
+    Object.assign(
+      it,
+      buildEnriched(it.word, it.meaning, local, online, fallback)
+    );
     if (!it.meaning && it.originMeaning) it.meaning = it.originMeaning;
     if (onProgress) onProgress(i + 1);
   }

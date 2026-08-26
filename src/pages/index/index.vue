@@ -12,35 +12,37 @@
     </view>
 
     <view class="page-wrap home">
-      <!-- 今日复习:海报式首屏 -->
+      <!-- 今日复习 + 我的单词:并排双列海报,样式以 TODAY'S REVIEW 为准 -->
       <view class="today si si-1">
-        <view class="today-kicker mono">TODAY'S REVIEW</view>
-        <view class="today-num">{{ dueCount }}</view>
-        <view class="today-label">今日待复习</view>
-        <view class="today-streak mono">
-          STREAK · {{ stats.streak || 0 }} DAYS
+        <view class="today-col">
+          <view class="today-kicker mono">TODAY'S REVIEW</view>
+          <view class="today-num">{{ dueCount }}</view>
+          <view class="today-label">今日待复习</view>
+          <button class="btn-primary today-btn" @tap="goReview"
+            >开始复习</button
+          >
+          <view class="today-link mono" hover-class="press" @tap="goSearch"
+            >LIBRARY · 浏览词库 ›</view
+          >
         </view>
-        <button class="btn-primary today-btn" @tap="goReview">开始复习</button>
-      </view>
-
-      <!-- 我的单词:与"开始复习"平级,单独显示今日待复习数 -->
-      <view class="mine si si-2">
-        <view class="mine-left" hover-class="press" @tap="goImport">
-          <view class="mine-kicker mono">MY WORDS</view>
-          <view class="mine-num mono">{{ userDueCount }}</view>
-          <view class="mine-label">今日待复习</view>
-        </view>
-        <view class="mine-right">
+        <view class="today-divider"></view>
+        <view class="today-col">
+          <view class="today-kicker mono">MY WORDS</view>
+          <view class="today-num">{{ userDueCount }}</view>
+          <view class="today-label">今日待复习</view>
           <button
-            class="btn-primary mine-btn"
+            class="btn-primary today-btn"
             :class="{ 'btn-disabled': !userDueCount }"
             @tap="goUserReview"
             >开始复习</button
           >
-          <view class="mine-manage mono" hover-class="press" @tap="goImport"
+          <view class="today-link mono" hover-class="press" @tap="goImport"
             >IMPORT · 导入单词 ›</view
           >
         </view>
+      </view>
+      <view class="today-streak mono">
+        STREAK · {{ stats.streak || 0 }} DAYS
       </view>
 
       <!-- 功能入口:极简四格 -->
@@ -215,95 +217,66 @@ export default {
   border-radius: 8rpx;
 }
 
-/* 今日复习海报 */
+/* 今日复习 + 我的单词:并排双列海报 */
 .today {
-  padding: 40rpx 8rpx 48rpx;
+  padding: 40rpx 0 36rpx;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1rpx solid rgba(148, 163, 184, 0.1);
+}
+.today-col {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1rpx solid rgba(148, 163, 184, 0.1);
-  margin-bottom: 40rpx;
+  min-width: 0;
+}
+.today-divider {
+  width: 1rpx;
+  background: rgba(148, 163, 184, 0.12);
 }
 .today-kicker {
   font-size: 20rpx;
-  letter-spacing: 5rpx;
+  letter-spacing: 4rpx;
   color: #3ce0ff;
-  margin-bottom: 24rpx;
+  margin-bottom: 22rpx;
 }
 .today-num {
-  font-size: 200rpx;
+  font-size: 132rpx;
   font-weight: 800;
   line-height: 1;
   color: #ffffff;
   font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-  text-shadow: 0 0 60rpx rgba(60, 224, 255, 0.35);
+  text-shadow: 0 0 50rpx rgba(60, 224, 255, 0.35);
 }
 .today-label {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #8b96ab;
   margin-top: 12rpx;
+}
+.today-btn {
+  margin-top: 32rpx;
+  width: 92%;
+  font-size: 27rpx;
+  padding: 17rpx 0;
+}
+.btn-disabled {
+  opacity: 0.35;
+}
+.today-link {
+  margin-top: 20rpx;
+  font-size: 19rpx;
+  letter-spacing: 2rpx;
+  color: #5b6472;
 }
 .today-streak {
   font-size: 20rpx;
   letter-spacing: 2rpx;
   color: #f5b04c;
-  margin-top: 20rpx;
-}
-.today-btn {
-  margin-top: 40rpx;
-  width: 320rpx;
-}
-
-/* 我的单词入口卡:与今日复习平级 */
-.mine {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(180deg, #0e1420 0%, #0b1019 100%);
-  border: 1rpx solid rgba(148, 163, 184, 0.12);
-  border-radius: 20rpx;
-  padding: 32rpx;
-  margin-bottom: 44rpx;
-}
-.mine-left {
-  display: flex;
-  flex-direction: column;
-}
-.mine-kicker {
-  font-size: 20rpx;
-  letter-spacing: 5rpx;
-  color: #3ce0ff;
-  margin-bottom: 14rpx;
-}
-.mine-num {
-  font-size: 76rpx;
-  font-weight: 800;
-  line-height: 1;
-  color: #ffffff;
-  text-shadow: 0 0 30rpx rgba(60, 224, 255, 0.3);
-}
-.mine-label {
-  font-size: 24rpx;
-  color: #8b96ab;
-  margin-top: 10rpx;
-}
-.mine-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18rpx;
-}
-.mine-btn {
-  width: 240rpx;
-  margin: 0;
-}
-.btn-disabled {
-  opacity: 0.35;
-}
-.mine-manage {
-  font-size: 20rpx;
-  letter-spacing: 2rpx;
-  color: #6b7688;
+  text-align: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(148, 163, 184, 0.1);
+  margin-bottom: 40rpx;
 }
 
 /* 功能入口:细线四格 */
