@@ -1,6 +1,6 @@
 <template>
   <view class="page page-anim">
-    <NavBar title="复习" en="REVIEW" />
+    <NavBar :title="source === 'user' ? '我的单词' : '复习'" :en="source === 'user' ? 'MY WORDS' : 'REVIEW'" />
 
     <view class="page-wrap review-page">
       <!-- 进行中 -->
@@ -75,7 +75,9 @@
           </view>
           <view class="done-actions">
             <button class="btn-primary done-btn" @tap="restart">再来一轮</button>
-            <button class="done-btn-ghost" @tap="goHome">返回首页</button>
+            <button class="done-btn-ghost" @tap="goHome">{{
+              source === "user" ? "返回词组" : "返回首页"
+            }}</button>
           </view>
         </view>
       </view>
@@ -85,10 +87,26 @@
         <view class="card done-card pi">
           <view class="done-icon">○</view>
           <view class="done-title mono">ALL CLEAR</view>
-          <view class="done-sub">今日待复习已清空 · 学点新词或自测巩固</view>
+          <view class="done-sub" v-if="source === 'user'"
+            >我的单词今日待复习已清空 · 继续导入新词吧</view
+          >
+          <view class="done-sub" v-else
+            >今日待复习已清空 · 学点新词或自测巩固</view
+          >
           <view class="done-actions">
-            <button class="btn-primary done-btn" @tap="goBrowse">浏览词库</button>
-            <button class="done-btn-ghost" @tap="goQuiz">去自测</button>
+            <button
+              v-if="source === 'user'"
+              class="btn-primary done-btn"
+              @tap="goImport"
+              >去导入单词</button
+            >
+            <button v-else class="btn-primary done-btn" @tap="goBrowse"
+              >浏览词库</button
+            >
+            <button v-if="source === 'user'" class="done-btn-ghost" @tap="goHome"
+              >返回</button
+            >
+            <button v-else class="done-btn-ghost" @tap="goQuiz">去自测</button>
           </view>
         </view>
       </view>
@@ -107,6 +125,11 @@ import {
   saveStats,
 } from "@/utils/storage.js";
 import { reviewStep, isDue, RATINGS } from "@/utils/srs.js";
+import {
+  getDueUserWords,
+  toCardWord,
+  updateUserSrs,
+} from "@/utils/userWords.js";
 
 function todayStr() {
   const d = new Date();
@@ -133,6 +156,8 @@ export default {
       sessionCorrect: 0,
       sessionAgain: 0,
       reviewState: {},
+      source: "default", // default=内置词库 | user=我的单词
+      groupFilter: null, // user 源按组复习
     };
   },
   computed: {
@@ -144,11 +169,34 @@ export default {
       return Math.round((this.currentIndex / this.queue.length) * 100);
     },
   },
-  onLoad() {
+  onLoad(options) {
+    if (options && options.source === "user") this.source = "user";
+    if (
+      options &&
+      options.group !== undefined &&
+      options.group !== "" &&
+      !isNaN(Number(options.group))
+    ) {
+      this.groupFilter = Number(options.group);
+    }
     this.buildQueue();
   },
   methods: {
     buildQueue() {
+      if (this.source === "user") {
+        const now = Date.now();
+        let due = getDueUserWords(now);
+        if (this.groupFilter !== null) {
+          due = due.filter((u) => u.group === this.groupFilter);
+        }
+        due.sort(
+          (a, b) => (b.srs?.lapses || 0) - (a.srs?.lapses || 0)
+        );
+        this.queue = due.slice(0, 50).map(toCardWord);
+        this.currentIndex = 0;
+        this.loading = false;
+        return;
+      }
       this.reviewState = getReviewState();
       const now = Date.now();
       // 到期词(新词 due=0 也视为到期)优先;超过 50 张先取最紧急的
@@ -171,9 +219,14 @@ export default {
     rate(rating) {
       const word = this.currentWord;
       if (!word) return;
-      const newState = reviewStep(this.reviewState[word.id], rating);
-      this.reviewState[word.id] = newState;
-      saveReviewState(this.reviewState);
+      if (this.source === "user") {
+        // 我的单词:复习状态存在词条自身
+        updateUserSrs(word.id, reviewStep(word.srs, rating));
+      } else {
+        const newState = reviewStep(this.reviewState[word.id], rating);
+        this.reviewState[word.id] = newState;
+        saveReviewState(this.reviewState);
+      }
 
       // 统计
       const stats = getStats();
@@ -223,6 +276,9 @@ export default {
     },
     goQuiz() {
       uni.redirectTo({ url: "/pages/quiz/quiz" });
+    },
+    goImport() {
+      uni.redirectTo({ url: "/pages/import/import?tab=import" });
     },
   },
 };

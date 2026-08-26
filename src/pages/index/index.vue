@@ -23,6 +23,26 @@
         <button class="btn-primary today-btn" @tap="goReview">开始复习</button>
       </view>
 
+      <!-- 我的单词:与"开始复习"平级,单独显示今日待复习数 -->
+      <view class="mine si si-2">
+        <view class="mine-left" hover-class="press" @tap="goImport">
+          <view class="mine-kicker mono">MY WORDS</view>
+          <view class="mine-num mono">{{ userDueCount }}</view>
+          <view class="mine-label">今日待复习</view>
+        </view>
+        <view class="mine-right">
+          <button
+            class="btn-primary mine-btn"
+            :class="{ 'btn-disabled': !userDueCount }"
+            @tap="goUserReview"
+            >开始复习</button
+          >
+          <view class="mine-manage mono" hover-class="press" @tap="goImport"
+            >IMPORT · 导入单词 ›</view
+          >
+        </view>
+      </view>
+
       <!-- 功能入口:极简四格 -->
       <view class="entry-grid">
         <view
@@ -65,12 +85,14 @@
 import wordsData from "@/data/words.js";
 import { getReviewState, getStats } from "@/utils/storage.js";
 import { isDue } from "@/utils/srs.js";
+import { getUserDueCount } from "@/utils/userWords.js";
 
 export default {
   data() {
     return {
       statusBarHeight: 20,
       dueCount: 0,
+      userDueCount: 0,
       stats: {},
       topics: [],
       entries: [
@@ -95,6 +117,7 @@ export default {
       const now = Date.now();
       this.dueCount = wordsData.words.filter((w) => isDue(review[w.id], now))
         .length;
+      this.userDueCount = getUserDueCount(now);
       this.stats = getStats();
       this.topics = wordsData.topics.map((t) => {
         const words = wordsData.words.filter((w) => w.topicId === t.id);
@@ -117,6 +140,16 @@ export default {
     },
     goReview() {
       uni.navigateTo({ url: "/pages/review/review" });
+    },
+    goUserReview() {
+      if (!this.userDueCount) {
+        uni.navigateTo({ url: "/pages/import/import?tab=import" });
+        return;
+      }
+      uni.navigateTo({ url: "/pages/review/review?source=user" });
+    },
+    goImport() {
+      uni.navigateTo({ url: "/pages/import/import" });
     },
     goQuiz() {
       uni.navigateTo({ url: "/pages/quiz/quiz" });
@@ -219,6 +252,58 @@ export default {
 .today-btn {
   margin-top: 40rpx;
   width: 320rpx;
+}
+
+/* 我的单词入口卡:与今日复习平级 */
+.mine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #0e1420 0%, #0b1019 100%);
+  border: 1rpx solid rgba(148, 163, 184, 0.12);
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin-bottom: 44rpx;
+}
+.mine-left {
+  display: flex;
+  flex-direction: column;
+}
+.mine-kicker {
+  font-size: 20rpx;
+  letter-spacing: 5rpx;
+  color: #3ce0ff;
+  margin-bottom: 14rpx;
+}
+.mine-num {
+  font-size: 76rpx;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 0 30rpx rgba(60, 224, 255, 0.3);
+}
+.mine-label {
+  font-size: 24rpx;
+  color: #8b96ab;
+  margin-top: 10rpx;
+}
+.mine-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18rpx;
+}
+.mine-btn {
+  width: 240rpx;
+  margin: 0;
+}
+.btn-disabled {
+  opacity: 0.35;
+}
+.mine-manage {
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+  color: #6b7688;
 }
 
 /* 功能入口:细线四格 */

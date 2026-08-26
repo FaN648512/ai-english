@@ -26,11 +26,11 @@
           <view class="wc-panel-body">{{ word.aiMeaning }}</view>
         </view>
       </view>
-      <view class="wc-example">
+      <view class="wc-example" v-if="word.example">
         <view class="wc-example-en mono">{{ word.example }}</view>
         <view class="wc-example-zh">{{ word.exampleZh }}</view>
       </view>
-      <view class="wc-tip">
+      <view class="wc-tip" v-if="word.memoryTip">
         <text class="wc-tip-label">MEMO</text>
         <text class="wc-tip-text">{{ word.memoryTip }}</text>
       </view>
@@ -43,7 +43,7 @@
     <view v-else class="wc-faces">
       <view class="wc-face wc-front">
         <view class="wc-inner">
-          <view class="wc-tags mono">{{ topicEn }} · L{{ word.level }}</view>
+          <view class="wc-tags mono">{{ topicEn }} · {{ levelTag }}</view>
           <view class="wc-pos">{{ word.pos }}</view>
           <view class="wc-word mono">{{ word.word }}</view>
           <view class="wc-phonetic mono">{{ word.phonetic }}</view>
@@ -63,11 +63,11 @@
               <view class="wc-panel-body">{{ word.aiMeaning }}</view>
             </view>
           </view>
-          <view class="wc-example">
+          <view class="wc-example" v-if="word.example">
             <view class="wc-example-en mono">{{ word.example }}</view>
             <view class="wc-example-zh">{{ word.exampleZh }}</view>
           </view>
-          <view class="wc-tip">
+          <view class="wc-tip" v-if="word.memoryTip">
             <text class="wc-tip-label">MEMO</text>
             <text class="wc-tip-text">{{ word.memoryTip }}</text>
           </view>
@@ -88,8 +88,14 @@ export default {
   },
   computed: {
     topicEn() {
+      if (this.word.topicId === "user") return "MY WORDS";
       const t = wordsData.topics.find((x) => x.id === this.word.topicId);
       return t ? t.nameEn.toUpperCase() : "";
+    },
+    levelTag() {
+      if (this.word.topicId === "user")
+        return "G" + ((this.word.group ?? 0) + 1);
+      return "L" + this.word.level;
     },
   },
 };
