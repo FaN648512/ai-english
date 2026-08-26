@@ -27,6 +27,47 @@
 
       <!-- ===== 导入 tab ===== -->
       <block v-if="tab === 'import'">
+        <!-- 快速翻译:输入单词/短语/中文,直接翻译,一键入库 -->
+        <view class="card si si-2">
+          <view class="section-kicker">TRANSLATE · 快速翻译</view>
+          <view class="qt-row">
+            <input
+              v-model="qtInput"
+              class="qt-input mono"
+              placeholder="输入单词 / 短语 / 中文"
+              placeholder-class="imp-placeholder"
+              confirm-type="search"
+              @confirm="quickTranslate"
+            />
+            <view
+              class="qt-btn mono"
+              :class="{ busy: qtLoading }"
+              hover-class="press"
+              @tap="quickTranslate"
+              >{{ qtLoading ? "…" : "译" }}</view
+            >
+          </view>
+          <view v-if="qtLoading" class="qt-status mono">翻译中…</view>
+          <view v-else-if="qtResult" class="qt-result">
+            <view class="qt-out">{{ qtResult.text }}</view>
+            <view class="qt-src mono"
+              >{{
+                qtResult.dir === "en2zh" ? "EN → ZH" : "ZH → EN"
+              }}
+              · {{ qtResult.source }}</view
+            >
+            <view class="qt-actions">
+              <view class="ghost-btn" @tap="resetQt">清空</view>
+              <view class="btn-primary qt-add" @tap="addTranslated"
+                >加入词库</view
+              >
+            </view>
+          </view>
+          <view v-else-if="qtFailed" class="qt-fail mono"
+            >翻译失败,请稍后重试</view
+          >
+        </view>
+
         <!-- 拍照导入(仅 H5,小程序端请用文字导入) -->
         <!-- #ifdef H5 -->
         <view class="card si si-2">
@@ -249,6 +290,7 @@ import {
   getUserGroups,
   getUserDueCount,
   removeUserWords,
+  translateText,
 } from "@/utils/userWords.js";
 
 export default {
@@ -268,6 +310,12 @@ export default {
       // 词库
       libKeyword: "",
       detailWord: null,
+      // 快速翻译
+      qtInput: "",
+      qtLoading: false,
+      qtResult: null,
+      qtFailed: false,
+      qtAdding: false,
       // OCR(H5)
       ocrState: "idle",
       ocrLabel: "准备中",
@@ -433,6 +481,59 @@ export default {
       });
     },
 
+    /* ---- 快速翻译 ---- */
+    async quickTranslate() {
+      const text = String(this.qtInput || "").trim();
+      if (!text || this.qtLoading) return;
+      this.qtLoading = true;
+      this.qtResult = null;
+      this.qtFailed = false;
+      const r = await translateText(text);
+      this.qtLoading = false;
+      if (r) this.qtResult = r;
+      else this.qtFailed = true;
+    },
+    /** 翻译结果一键入库:英文侧为词条,中文侧为用户释义 */
+    async addTranslated() {
+      if (!this.qtResult || this.qtAdding) return;
+      const input = String(this.qtInput || "").trim();
+      const r = this.qtResult;
+      const word = r.dir === "en2zh" ? input : r.text;
+      const meaning = r.dir === "en2zh" ? r.text : input;
+      if (!/^[A-Za-z][A-Za-z'\- ]{0,39}$/.test(word)) {
+        uni.showToast({ title: "仅支持英文单词/短语入库", icon: "none" });
+        return;
+      }
+      this.qtAdding = true;
+      uni.showLoading({ title: "加入中…", mask: true });
+      try {
+        const items = [{ word, meaning }];
+        await enrichItems(items);
+        const res = addUserWords(items);
+        uni.hideLoading();
+        if (res.added) {
+          uni.showToast({
+            title: "已加入 · 共 " + res.groups + " 组",
+            icon: "none",
+          });
+          this.resetQt();
+          this.refreshGroups();
+        } else {
+          uni.showToast({ title: "该词已在词库", icon: "none" });
+        }
+      } catch (e) {
+        uni.hideLoading();
+        uni.showToast({ title: "加入失败,请重试", icon: "none" });
+      } finally {
+        this.qtAdding = false;
+      }
+    },
+    resetQt() {
+      this.qtInput = "";
+      this.qtResult = null;
+      this.qtFailed = false;
+    },
+
     /* ---- 拍照 OCR(仅 H5) ---- */
     // #ifdef H5
     choosePhoto() {
@@ -548,6 +649,74 @@ export default {
   color: #3ce0ff;
   border-color: rgba(60, 224, 255, 0.4);
   background: rgba(60, 224, 255, 0.06);
+}
+
+/* 快速翻译 */
+.qt-row {
+  display: flex;
+  gap: 14rpx;
+}
+.qt-input {
+  flex: 1;
+  min-width: 0;
+  background: #0a0e16;
+  border: 1rpx solid rgba(148, 163, 184, 0.14);
+  border-radius: 12rpx;
+  padding: 18rpx 24rpx;
+  font-size: 27rpx;
+  color: #ffffff;
+}
+.qt-btn {
+  width: 92rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(60, 224, 255, 0.08);
+  border: 1rpx solid rgba(60, 224, 255, 0.35);
+  border-radius: 12rpx;
+  color: #3ce0ff;
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+}
+.qt-btn.busy {
+  opacity: 0.5;
+}
+.qt-status {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #3ce0ff;
+  letter-spacing: 1rpx;
+}
+.qt-fail {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #fb7085;
+  letter-spacing: 1rpx;
+}
+.qt-result {
+  margin-top: 24rpx;
+}
+.qt-out {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #ffffff;
+  word-break: break-all;
+  line-height: 1.4;
+}
+.qt-src {
+  margin: 12rpx 0 22rpx;
+  font-size: 19rpx;
+  letter-spacing: 2rpx;
+  color: #5b6472;
+}
+.qt-actions {
+  display: flex;
+  gap: 16rpx;
+}
+.qt-add {
+  flex: 2;
+  margin: 0;
 }
 
 /* 拍照区 */

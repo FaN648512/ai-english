@@ -252,31 +252,36 @@ export async function fetchOnlineWord(word) {
   return null;
 }
 
-/** Google 非官方翻译接口(免 Key,CORS 开放),返回中文译文或 null */
-async function fetchGoogleTranslate(word) {
+/** Google 非官方翻译接口(免 Key,CORS 开放),返回译文或 null */
+async function fetchGoogleTranslate(text, sl = "en", tl = "zh-CN") {
   const url =
-    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=" +
-    encodeURIComponent(word);
+    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" +
+    sl +
+    "&tl=" +
+    tl +
+    "&dt=t&q=" +
+    encodeURIComponent(text);
   for (let attempt = 0; attempt < 2; attempt++) {
     const res = await reqOnce(url);
     if (res && res.statusCode === 200 && Array.isArray(res.data) && Array.isArray(res.data[0])) {
-      const text = res.data[0]
+      const out = res.data[0]
         .map((seg) => (seg && seg[0]) || "")
         .join("")
         .trim();
-      if (text) return text;
+      if (out) return out;
     }
     if (attempt < 1) await sleep(300);
   }
   return null;
 }
 
-/** MyMemory 翻译兜底(免 Key,限额宽松),返回中文译文或 null */
-async function fetchMyMemoryTranslate(word) {
+/** MyMemory 翻译兜底(免 Key,限额宽松),返回译文或 null */
+async function fetchMyMemoryTranslate(text, langpair = "en|zh-CN") {
   const url =
     "https://api.mymemory.translated.net/get?q=" +
-    encodeURIComponent(word) +
-    "&langpair=en|zh-CN";
+    encodeURIComponent(text) +
+    "&langpair=" +
+    langpair;
   const res = await reqOnce(url);
   if (
     res &&
@@ -285,9 +290,9 @@ async function fetchMyMemoryTranslate(word) {
     res.data.responseData &&
     res.data.responseData.translatedText
   ) {
-    const text = String(res.data.responseData.translatedText).trim();
-    // 接口偶发返回英文原句/错误文案,过滤掉
-    if (text && text.toUpperCase() !== word.toUpperCase()) return text;
+    const out = String(res.data.responseData.translatedText).trim();
+    // 接口偶发返回原文/错误文案,过滤掉
+    if (out && out.toUpperCase() !== text.toUpperCase()) return out;
   }
   return null;
 }
@@ -301,6 +306,29 @@ async function fetchTranslateFallback(word) {
   if (google) return { trans: google };
   const mymemory = await fetchMyMemoryTranslate(word);
   if (mymemory) return { trans: mymemory };
+  return null;
+}
+
+/**
+ * 快速翻译(供"快速翻译"输入框直接调用):中英自动互译
+ * 查询链:Google(带重试) → MyMemory
+ * @returns { text, dir: 'en2zh'|'zh2en', source: 'GOOGLE'|'MYMEMORY' } | null
+ */
+export async function translateText(input) {
+  const text = String(input || "").trim();
+  if (!text) return null;
+  const isZh = /[\u4e00-\u9fa5]/.test(text);
+  const sl = isZh ? "zh-CN" : "en";
+  const tl = isZh ? "en" : "zh-CN";
+  const dir = isZh ? "zh2en" : "en2zh";
+
+  const google = await fetchGoogleTranslate(text, sl, tl);
+  if (google && google.toUpperCase() !== text.toUpperCase()) {
+    return { text: google, dir, source: "GOOGLE" };
+  }
+  const pair = isZh ? "zh-CN|en" : "en|zh-CN";
+  const mymemory = await fetchMyMemoryTranslate(text, pair);
+  if (mymemory) return { text: mymemory, dir, source: "MYMEMORY" };
   return null;
 }
 
