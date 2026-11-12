@@ -13,12 +13,23 @@ function moveFieldToEnd(line) {
   return rest ? `${pos} ${rest}（${field}）` : `${pos}（${field}）`;
 }
 
+/** 译名（词性后的第一个短语）加粗，与后面的解释区分：`n. **主函数**，程序运行的入口` */
+function boldTranslation(line) {
+  const matched = line.match(/^((?:n|v|adj|adv|prep|conj|phr|abbr)\.\s+)(.+)$/i);
+  if (!matched) return line;
+  const [, pos, body] = matched;
+  const cut = body.search(/[，,；;、。（(]/);
+  if (cut < 0) return `${pos}**${body}**`;
+  const lead = body.slice(0, cut).trim();
+  return lead ? `${pos}**${lead}**${body.slice(cut)}` : line;
+}
+
 /** 释义行：自定义释义优先，其次 AI 义项，最后提示补充 */
 function meaningLines(word) {
   if (word.customMeaning && word.customMeaning.trim()) {
     return word.customMeaning
       .split(/\n+/)
-      .map((line) => moveFieldToEnd(line.trim()))
+      .map((line) => boldTranslation(moveFieldToEnd(line.trim())))
       .filter(Boolean);
   }
   if (Array.isArray(word.entries) && word.entries.length) {

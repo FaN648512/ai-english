@@ -11,6 +11,28 @@ function formatDate(iso) {
   return `${m} 月 ${d} 日 · ${week}`;
 }
 
+const POS_RE = /^(n\.|v\.|adj\.|adv\.|prep\.|conj\.|phr\.|abbr\.)\s*/i;
+
+/** 领域标签放到行尾：`n.（编程）主函数` → `n. 主函数（编程）` */
+function moveFieldToEnd(line) {
+  const matched = line.match(/^([a-zA-Z]+\.)\s*（([^）]+)）\s*(.*)$/);
+  if (!matched) return line;
+  const [, pos, field, rest] = matched;
+  return rest ? `${pos} ${rest}（${field}）` : `${pos}（${field}）`;
+}
+
+/** 拆成「词性 + 加粗译名 + 解释」，与 Feishu 卡片的排版保持一致 */
+function splitMeaning(line) {
+  const posMatch = line.match(POS_RE) || [''];
+  const body = line.slice(posMatch[0].length);
+  const cut = body.search(/[，,；;、。（(]/);
+  return {
+    pos: posMatch[0].trim(),
+    lead: cut < 0 ? body : body.slice(0, cut).trim(),
+    rest: cut < 0 ? '' : body.slice(cut),
+  };
+}
+
 function meaningLines(word) {
   const raw = (word.customMeaning || '').trim();
   if (raw) {
@@ -18,12 +40,13 @@ function meaningLines(word) {
       .split('\n')
       .map((line) => line.trim())
       .filter(Boolean)
-      .map((line) => ({ line, pos: (line.match(/^(n\.|v\.|adj\.|adv\.|prep\.|conj\.|phr\.|abbr\.)\s*/i) || [''])[0].trim() }));
+      .map((line) => splitMeaning(moveFieldToEnd(line)));
   }
   if (Array.isArray(word.entries) && word.entries.length) {
     return word.entries.map((e) => ({
-      line: e.meaning || '',
       pos: [e.pos, e.domain ? `（${e.domain}）` : ''].join('') || '',
+      lead: '',
+      rest: e.meaning || '',
     }));
   }
   return [];
@@ -34,7 +57,7 @@ function card(word, index) {
   const posClass = (pos) => (pos ? `<span class="pos">${esc(pos)}</span>` : '');
   const list = meanings.length
     ? `<ul class="meanings">${meanings
-        .map((m) => `<li>${posClass(m.pos)}<span>${esc(m.line.replace(/^(n\.|v\.|adj\.|adv\.|prep\.|conj\.|phr\.|abbr\.)\s*/i, ''))}</span></li>`)
+        .map((m) => `<li>${posClass(m.pos)}${m.lead ? `<strong>${esc(m.lead)}</strong>` : ''}<span>${esc(m.rest)}</span></li>`)
         .join('')}</ul>`
     : '<p class="missing">释义暂缺，可在管理页补充</p>';
 
