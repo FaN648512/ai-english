@@ -1,9 +1,9 @@
 {
   "meta": {
-    "currentRound": 1,
-    "lastPushAt": "2026-11-12T05:25:14.838Z",
+    "currentRound": 2,
+    "lastPushAt": "2026-11-12T06:18:21.091Z",
     "lastPushDate": "2026-11-12",
-    "totalPushes": 1,
+    "totalPushes": 2,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -23,9 +23,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 1,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-12T05:25:14.838Z",
+      "lastRound": 2,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-12T06:18:21.091Z",
       "source": "upload"
     },
     {
@@ -40,9 +40,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 1,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-12T05:25:14.838Z",
+      "lastRound": 2,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-12T06:18:21.091Z",
       "source": "upload"
     },
     {
@@ -57,9 +57,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 1,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-12T05:25:14.838Z",
+      "lastRound": 2,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-12T06:18:21.091Z",
       "source": "upload"
     },
     {
@@ -108,9 +108,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 2,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T06:18:21.091Z",
       "source": "upload"
     },
     {
@@ -125,9 +125,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 2,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T06:18:21.091Z",
       "source": "upload"
     }
   ],
