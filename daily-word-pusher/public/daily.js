@@ -25,12 +25,11 @@ function moveFieldToEnd(line) {
 function splitMeaning(line) {
   const posMatch = line.match(POS_RE) || [''];
   const body = line.slice(posMatch[0].length);
+  const pos = posMatch[0].trim();
+  const colon = body.search(/[：:]/);
+  if (colon > 0) return { pos, lead: body.slice(0, colon).trim(), rest: body.slice(colon) };
   const cut = body.search(/[，,；;、。：:（(]/);
-  return {
-    pos: posMatch[0].trim(),
-    lead: cut < 0 ? body : body.slice(0, cut).trim(),
-    rest: cut < 0 ? '' : body.slice(cut),
-  };
+  return { pos, lead: cut < 0 ? body : body.slice(0, cut).trim(), rest: cut < 0 ? '' : body.slice(cut) };
 }
 
 function meaningLines(word) {

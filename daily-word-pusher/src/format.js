@@ -18,6 +18,9 @@ function boldTranslation(line) {
   const matched = line.match(/^((?:n|v|adj|adv|prep|conj|phr|abbr)\.\s+)(.+)$/i);
   if (!matched) return line;
   const [, pos, body] = matched;
+  // 有冒号时，冒号前就是译名（可含「；」「、」等多个近义词）
+  const colon = body.search(/[：:]/);
+  if (colon > 0) return `${pos}**${body.slice(0, colon).trim()}**${body.slice(colon)}`;
   const cut = body.search(/[，,；;、。：:（(]/);
   if (cut < 0) return `${pos}**${body}**`;
   const lead = body.slice(0, cut).trim();
