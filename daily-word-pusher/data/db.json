@@ -1,9 +1,9 @@
 {
   "meta": {
     "currentRound": 1,
-    "lastPushAt": null,
-    "lastPushDate": null,
-    "totalPushes": 0,
+    "lastPushAt": "2026-11-12T05:25:14.838Z",
+    "lastPushDate": "2026-11-12",
+    "totalPushes": 1,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -23,9 +23,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 1,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T05:25:14.838Z",
       "source": "upload"
     },
     {
@@ -40,9 +40,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 1,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T05:25:14.838Z",
       "source": "upload"
     },
     {
@@ -57,9 +57,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 1,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T05:25:14.838Z",
       "source": "upload"
     },
     {
@@ -74,9 +74,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 1,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T05:25:14.838Z",
       "source": "upload"
     },
     {
@@ -91,9 +91,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 1,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-12T05:25:14.838Z",
       "source": "upload"
     },
     {
@@ -130,5 +130,6 @@
       "lastPushedAt": null,
       "source": "upload"
     }
-  ]
+  ],
+  "history": []
 }
