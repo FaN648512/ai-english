@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: daily-word-pusher
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
+      - key: FEISHU_WEBHOOK_URL
+        sync: false
+      - key: FEISHU_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: PUSHPLUS_TOKEN
+        sync: false
+      - key: WECOM_WEBHOOK_URL
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: WORDS_PER_PUSH
+        value: "5"
+      - key: PUSH_CRON
+        value: "0 8 * * *"
+      - key: PUSH_TIMEZONE
+        value: "Asia/Shanghai"
+    disk:
+      name: word-data
+      mountPath: /app/data
+      sizeGB: 1

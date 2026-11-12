@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f2ea" />
+  <title>每日单词</title>
+  <link rel="stylesheet" href="/daily.css?v=1" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <p class="eyebrow">每日单词</p>
+      <h1 id="date">今天</h1>
+      <p class="meta" id="meta"></p>
+      <p class="hint">轻点单词卡片，翻开中文释义</p>
+    </header>
+
+    <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+    <p class="count" id="count">正在加载…</p>
+
+    <section class="cards" id="cards"></section>
+
+    <footer class="foot">
+      <span>明天同一时间，再来 5 个新词</span>
+      <a href="/" class="admin">管理词库</a>
+    </footer>
+  </main>
+
+  <div class="empty" id="empty" hidden>
+    <p class="empty-title">链接已失效</p>
+    <p class="empty-text">这条推送的单词页不存在，或已被新的推送替换。</p>
+    <a class="empty-link" href="/">进入管理页</a>
+  </div>
+
+  <script src="/daily.js?v=1"></script>
+</body>
+</html>

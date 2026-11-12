@@ -1,0 +1,19 @@
+{
+  "name": "daily-word-pusher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "每日英语单词推送（企业微信 + DeepSeek 释义 + Web 词库管理）",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node tests/queue.test.js"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "node-cron": "^3.0.3"
+  }
+}

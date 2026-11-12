@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>每日单词 · 词库管理</title>
+  <link rel="stylesheet" href="/styles.css?v=3" />
+</head>
+<body>
+  <div id="login" class="login hidden">
+    <form class="login-card" id="loginForm">
+      <h1>每日单词</h1>
+      <p class="muted">请输入管理密码进入词库</p>
+      <input id="password" type="password" placeholder="管理密码" autocomplete="current-password" required />
+      <button class="primary" type="submit">进入</button>
+      <p id="loginError" class="error"></p>
+    </form>
+  </div>
+
+  <main id="app" class="app hidden">
+    <header class="topbar">
+      <div class="brand">
+        <h1>每日单词</h1>
+        <span class="brand-sub">企业微信 · DeepSeek 释义</span>
+      </div>
+      <div class="topbar-right">
+        <span id="channelState" class="chip"></span>
+        <button id="logoutBtn" class="ghost small">退出</button>
+      </div>
+    </header>
+
+    <section id="stats" class="stats"></section>
+
+    <div class="layout">
+      <div class="col-left">
+        <section class="card">
+          <h2>上传单词</h2>
+          <p class="hint">每行一个，也可用逗号 / 分号分隔；自动去重并生成领域释义。</p>
+          <textarea id="wordInput" rows="7" placeholder="API&#10;embedding&#10;latency&#10;throughput"></textarea>
+          <div class="row file-row">
+            <label class="file-btn">选择文件
+              <input id="fileInput" type="file" accept=".txt,.csv,.text,text/plain" hidden />
+            </label>
+            <span id="fileName" class="muted"></span>
+          </div>
+          <button id="addBtn" class="primary block">添加并翻译</button>
+        </section>
+
+        <section class="card">
+          <h2>推送设置</h2>
+          <div class="push-settings">
+            <label class="setting-field">每天
+              <input id="pushTime" type="time" value="08:00" />
+            </label>
+            <label class="setting-field">推送
+              <input id="wordsPerPushInput" type="number" min="1" max="15" step="1" value="5" />
+              个词
+            </label>
+            <button id="saveSettings" class="secondary small">保存设置</button>
+          </div>
+          <p class="hint" id="scheduleHint">加载中…</p>
+          <div class="row">
+            <button id="previewBtn" class="secondary">预览本轮</button>
+            <button id="pushBtn" class="primary">立即推送到微信</button>
+          </div>
+          <p id="pushResult" class="hint"></p>
+        </section>
+      </div>
+
+      <section class="card col-right">
+        <div class="list-head">
+          <h2>词库</h2>
+          <div class="list-tools">
+            <input id="search" type="search" placeholder="搜索单词" />
+            <select id="filter">
+              <option value="all">全部</option>
+              <option value="pending">待推送</option>
+              <option value="pushed">已推送</option>
+              <option value="untranslated">释义待补全</option>
+            </select>
+            <button id="retryAll" class="secondary small">补全失败释义</button>
+          </div>
+        </div>
+        <div id="wordList" class="word-list"></div>
+        <p id="emptyHint" class="empty hidden">还没有单词，先在上方上传。</p>
+      </section>
+    </div>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>本轮推送预览</h2>
+        <button id="closeModal" class="ghost small">关闭</button>
+      </div>
+      <p id="modalHint" class="hint"></p>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="/app.js?v=4"></script>
+</body>
+</html>

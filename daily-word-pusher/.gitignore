@@ -1,0 +1,8 @@
+node_modules/
+# 词库需要随仓库提交，GitHub Actions 才能接着上一轮继续推
+data/*
+!data/db.json
+.local-data/
+.env
+*.log
+.DS_Store
