@@ -25,7 +25,7 @@ function moveFieldToEnd(line) {
 function splitMeaning(line) {
   const posMatch = line.match(POS_RE) || [''];
   const body = line.slice(posMatch[0].length);
-  const cut = body.search(/[，,；;、。（(]/);
+  const cut = body.search(/[，,；;、。：:（(]/);
   return {
     pos: posMatch[0].trim(),
     lead: cut < 0 ? body : body.slice(0, cut).trim(),

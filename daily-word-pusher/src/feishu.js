@@ -32,7 +32,7 @@ function buildCard({ title, words, link }) {
     element_id: `word_${i + 1}`,
     expanded: false,
     header: {
-      title: { tag: 'markdown', content: wordHeading(word, i + 1) },
+      title: { tag: 'markdown', content: wordHeading(word, i + 1), text_size: 'heading-3' },
       vertical_align: 'center',
       icon: { tag: 'standard_icon', token: 'down-small-ccm_outlined', size: '16px 16px' },
       icon_position: 'right',

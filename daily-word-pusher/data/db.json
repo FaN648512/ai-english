@@ -1,9 +1,9 @@
 {
   "meta": {
-    "currentRound": 2,
-    "lastPushAt": "2026-11-12T06:18:21.091Z",
+    "currentRound": 3,
+    "lastPushAt": "2026-11-12T06:21:18.384Z",
     "lastPushDate": "2026-11-12",
-    "totalPushes": 2,
+    "totalPushes": 3,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -23,9 +23,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 2,
-      "pushCount": 2,
-      "lastPushedAt": "2026-11-12T06:18:21.091Z",
+      "lastRound": 3,
+      "pushCount": 3,
+      "lastPushedAt": "2026-11-12T06:21:18.384Z",
       "source": "upload"
     },
     {
@@ -40,9 +40,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 2,
-      "pushCount": 2,
-      "lastPushedAt": "2026-11-12T06:18:21.091Z",
+      "lastRound": 3,
+      "pushCount": 3,
+      "lastPushedAt": "2026-11-12T06:21:18.384Z",
       "source": "upload"
     },
     {
@@ -57,9 +57,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 2,
-      "pushCount": 2,
-      "lastPushedAt": "2026-11-12T06:18:21.091Z",
+      "lastRound": 3,
+      "pushCount": 3,
+      "lastPushedAt": "2026-11-12T06:21:18.384Z",
       "source": "upload"
     },
     {
@@ -74,9 +74,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 1,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-12T05:25:14.838Z",
+      "lastRound": 3,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-12T06:21:18.384Z",
       "source": "upload"
     },
     {
@@ -91,9 +91,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",
-      "lastRound": 1,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-12T05:25:14.838Z",
+      "lastRound": 3,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-12T06:21:18.384Z",
       "source": "upload"
     },
     {
@@ -115,13 +115,13 @@
     },
     {
       "id": "bc129d13-4e09-4158-8242-d4fa813f33c3",
-      "word": "README",
+      "word": "readme",
       "key": "readme",
       "phonetic": "",
       "entries": [],
       "example": "",
       "exampleZh": "",
-      "customMeaning": "n.（编程）仓库根目录的项目说明文档（README.md），介绍安装、用法与约定",
+      "customMeaning": "n.（编程）自述文件：仓库根目录的项目说明文档（README.md），介绍安装、用法与约定",
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-02T08:53:28.570Z",

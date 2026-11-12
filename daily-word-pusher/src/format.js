@@ -18,7 +18,7 @@ function boldTranslation(line) {
   const matched = line.match(/^((?:n|v|adj|adv|prep|conj|phr|abbr)\.\s+)(.+)$/i);
   if (!matched) return line;
   const [, pos, body] = matched;
-  const cut = body.search(/[，,；;、。（(]/);
+  const cut = body.search(/[，,；;、。：:（(]/);
   if (cut < 0) return `${pos}**${body}**`;
   const lead = body.slice(0, cut).trim();
   return lead ? `${pos}**${lead}**${body.slice(cut)}` : line;
