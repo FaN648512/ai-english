@@ -1,9 +1,9 @@
 {
   "meta": {
     "currentRound": 3,
-    "lastPushAt": "2026-11-14T04:20:13.317Z",
-    "lastPushDate": "2026-11-14",
-    "totalPushes": 5,
+    "lastPushAt": "2026-11-15T04:03:56.208Z",
+    "lastPushDate": "2026-11-15",
+    "totalPushes": 6,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -312,9 +312,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-15T04:03:56.208Z",
       "source": "upload"
     },
     {
@@ -329,9 +329,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-15T04:03:56.208Z",
       "source": "upload"
     },
     {
@@ -346,9 +346,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-15T04:03:56.208Z",
       "source": "upload"
     },
     {
@@ -363,9 +363,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-15T04:03:56.208Z",
       "source": "upload"
     },
     {
@@ -380,9 +380,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-15T04:03:56.208Z",
       "source": "upload"
     },
     {
