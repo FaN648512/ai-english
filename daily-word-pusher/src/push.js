@@ -5,6 +5,7 @@ const translate = require('./translate');
 const wecom = require('./wecom');
 const pushplus = require('./pushplus');
 const feishu = require('./feishu');
+const holidays = require('./holidays');
 const { wordHeading, meaningLines } = require('./format');
 
 function dateLabel(tz) {
@@ -111,8 +112,14 @@ async function runPush({ auto = false } = {}) {
       return { ok: false, reason: 'empty_library', message: '词库为空，请先上传单词' };
     }
 
-    if (auto && store.stats().lastPushDate === store.todayInTz(config.pushTimezone)) {
-      return { ok: false, reason: 'already_pushed', message: '今天已自动推送过，跳过本次' };
+    if (auto) {
+      const today = store.todayInTz(config.pushTimezone);
+      if (holidays.isRestDay(today)) {
+        return { ok: false, reason: 'rest_day', message: `${today} 是法定休息日，跳过推送` };
+      }
+      if (store.stats().lastPushDate === today) {
+        return { ok: false, reason: 'already_pushed', message: '今天已自动推送过，跳过本次' };
+      }
     }
 
     await ensureTranslations(words);
