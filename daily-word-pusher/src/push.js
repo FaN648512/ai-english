@@ -117,6 +117,12 @@ async function runPush({ auto = false } = {}) {
       if (holidays.isRestDay(today)) {
         return { ok: false, reason: 'rest_day', message: `${today} 是法定休息日，跳过推送` };
       }
+      const hour = Number(
+        new Intl.DateTimeFormat('en-GB', { timeZone: config.pushTimezone, hour: '2-digit', hour12: false }).format(new Date())
+      );
+      if (hour < 7 || hour >= 10) {
+        return { ok: false, reason: 'outside_window', message: `当前 ${hour} 点，不在 07:00-10:00 推送窗口内，跳过` };
+      }
       if (store.stats().lastPushDate === today) {
         return { ok: false, reason: 'already_pushed', message: '今天已自动推送过，跳过本次' };
       }
