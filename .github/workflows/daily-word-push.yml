@@ -2,8 +2,9 @@ name: 每日单词推送
 
 on:
   schedule:
-    # UTC 00:00 = 北京时间 08:00。GitHub 的 cron 只认 UTC，改时间要自己换算。
-    - cron: "0 0 * * *"
+    # GitHub 的 cron 只认 UTC，且整点最拥堵（曾被延迟 4 小时）。
+    # 这里在 06:17-21:17（北京）之间每小时探测一次，由代码判断当天是否已推。
+    - cron: "17 0-13,22-23 * * *"
   workflow_dispatch:
     inputs:
       force:

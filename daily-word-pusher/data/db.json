@@ -1,9 +1,9 @@
 {
   "meta": {
     "currentRound": 3,
-    "lastPushAt": "2026-11-17T07:01:58.718Z",
-    "lastPushDate": "2026-11-17",
-    "totalPushes": 8,
+    "lastPushAt": "2026-11-19T06:51:27.090Z",
+    "lastPushDate": "2026-11-19",
+    "totalPushes": 9,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -567,9 +567,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-19T06:51:27.090Z",
       "source": "upload"
     },
     {
@@ -584,9 +584,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-19T06:51:27.090Z",
       "source": "upload"
     },
     {
@@ -601,9 +601,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-19T06:51:27.090Z",
       "source": "upload"
     },
     {
@@ -618,9 +618,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-19T06:51:27.090Z",
       "source": "upload"
     },
     {
@@ -635,9 +635,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 0,
-      "pushCount": 0,
-      "lastPushedAt": null,
+      "lastRound": 3,
+      "pushCount": 1,
+      "lastPushedAt": "2026-11-19T06:51:27.090Z",
       "source": "upload"
     },
     {
