@@ -1,9 +1,9 @@
 {
   "meta": {
     "currentRound": 4,
-    "lastPushAt": "2026-11-25T04:53:26.383Z",
-    "lastPushDate": "2026-11-25",
-    "totalPushes": 13,
+    "lastPushAt": "2026-11-26T04:08:38.970Z",
+    "lastPushDate": "2026-11-26",
+    "totalPushes": 14,
     "createdAt": "2026-10-21T03:32:21.001Z"
   },
   "settings": {
@@ -329,9 +329,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 3,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-15T04:03:56.208Z",
+      "lastRound": 4,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-26T04:08:38.970Z",
       "source": "upload"
     },
     {
@@ -346,9 +346,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 3,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-15T04:03:56.208Z",
+      "lastRound": 4,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-26T04:08:38.970Z",
       "source": "upload"
     },
     {
@@ -363,9 +363,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 3,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-15T04:03:56.208Z",
+      "lastRound": 4,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-26T04:08:38.970Z",
       "source": "upload"
     },
     {
@@ -380,9 +380,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 3,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-15T04:03:56.208Z",
+      "lastRound": 4,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-26T04:08:38.970Z",
       "source": "upload"
     },
     {
@@ -397,9 +397,9 @@
       "translationStatus": "disabled",
       "translationError": "",
       "createdAt": "2026-11-12T06:32:25.761Z",
-      "lastRound": 3,
-      "pushCount": 1,
-      "lastPushedAt": "2026-11-16T04:03:54.612Z",
+      "lastRound": 4,
+      "pushCount": 2,
+      "lastPushedAt": "2026-11-26T04:08:38.970Z",
       "source": "upload"
     },
     {
